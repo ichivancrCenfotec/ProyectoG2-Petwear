@@ -1,0 +1,24 @@
+# SPDX-FileCopyrightText: 2022 Dan Halbert for Adafruit Industries
+#
+# SPDX-License-Identifier: MIT
+
+import board
+import keypad
+from ideaboard import IdeaBoard
+
+ib = IdeaBoard()
+
+keys = keypad.Keys((board.IO27,), value_when_pressed=False)
+
+estado = False
+
+while True:
+    event = keys.events.get()
+    
+    if event:
+        if event.pressed:
+            estado = not estado
+            if estado: 
+                ib.pixel =  (255,0,255)
+            else: 
+                ib.pixel = (0,0,0)
