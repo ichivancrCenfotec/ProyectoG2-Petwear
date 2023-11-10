@@ -8,9 +8,9 @@ namespace DTOs
 {
     public class Payment : BaseDTO
     {
-        private int IdPayment { get; set; }
-        private string Description { get; set; }
-        private string PaymenteMethod { get; set; }
+        public int IdPayment { get; set; }
+        public string Description { get; set; }
+        public string PaymenteMethod { get; set; }
 
     }
 }
