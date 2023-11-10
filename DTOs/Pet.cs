@@ -15,6 +15,10 @@ namespace DTOs
         private int weight {  get; set; }
         private string description {  get; set; }
         private int levelAggressiveness {  get; set; }
+        private string fotoUno { get; set; }
+        private string fotoDos { get; set; }
+
+        
 
     }
 }
