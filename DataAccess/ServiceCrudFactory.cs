@@ -65,7 +65,15 @@ namespace DataAccess
             return lstServices;
         }
 
+        public override T RetrieveById<T>(int id)
+        {
+            throw new NotImplementedException();
+        }
 
+        public override void Update(BaseDTO baseDTO)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public override T RetrieveById<T>(int id)
