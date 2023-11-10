@@ -8,8 +8,8 @@ namespace DTOs
 {
     public class Temperature
     {
-        private int idTemperature {  get; set; }
-        private float value {  get; set; }
-        private DateTime date {  get; set; }
+        private int IdTemperature {  get; set; }
+        private float Value {  get; set; }
+        private DateTime Date {  get; set; }
     }
 }
