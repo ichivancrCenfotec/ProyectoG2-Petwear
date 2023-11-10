@@ -14,7 +14,8 @@ namespace CoreApp
 
         public void Create(Package package)
         {
-            // TODO implement here
+            var uc = new PackageCrudFactory();
+            uc.Create(package);
         }
 
         public Package? RetrieveById(Package package)
