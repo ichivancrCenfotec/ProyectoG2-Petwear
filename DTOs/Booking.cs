@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace DTOs
 {
-    public class Booking
+    public class Booking: BaseDTO
     {
-        public int idBooking {  get; set; }
-        public DateTime checkInDate {  get; set; }
-        public DateTime checkOutDate {  get; set; }
-        public string considerations {  get; set; }
-        public bool status {  get; set; }
+
+        public int IdBooking {  get; set; }
+        public DateTime CheckInDate {  get; set; }
+        public DateTime CheckOutDate {  get; set; }
+        public string Considerations {  get; set; }
+        public bool Status {  get; set; }
+
     }
 }

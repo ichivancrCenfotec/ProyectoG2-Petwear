@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DTOs
 {
-    public class Humidity
+    public class Humidity : BaseDTO
     {
-        private int idHumidity {  get; set; }
-        private float value {  get; set; }
-        private DateTime date {  get; set; }
+        public int IdHumidity {  get; set; }
+        public float Value {  get; set; }
+        public DateTime Date {  get; set; }
        
     }
 }
