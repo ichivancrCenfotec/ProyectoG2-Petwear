@@ -97,12 +97,12 @@ namespace DataAccess
         {
             var sqlOperation = new SqlOperation { ProcedureName = "RET_ID_BOOKING_PR" };
 
-            sqlOperation.AddIntParam("ID", id);//Parametro que se envia
+            sqlOperation.AddIntParam("ID", id);
 
-            var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);//Se ejecuta el procedimiento almacenado, el resultado se almacena en lstResults, que es una lista de diccionarios. 
+            var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
             if (lstResults.Count > 0)
             {
-                var row = lstResults[0];//Extraemos el primer valor de la lista
+                var row = lstResults[0];
 
                 //Construir el objeto
                 var bookingDTO = BuildBooking<T>(row);
