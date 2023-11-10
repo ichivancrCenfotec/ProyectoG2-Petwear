@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,14 @@ namespace CoreApp
 {
     public class UserManager
     {
+        public object? RetrieveAll()
+        {
+            throw new NotImplementedException();
+        }
 
-
-
+        public object? RetrieveById(User user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

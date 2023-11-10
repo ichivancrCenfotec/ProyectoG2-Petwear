@@ -8,10 +8,8 @@ namespace DTOs
 {
     public class Service : BaseDTO
     {
-        public int IdService {  get; set; }
-        public string Name {  get; set; }
-        public float Cost {  get; set; }
-        public string Description {  get; set; }
-        public bool Status {  get; set; }
+        public string Description { get; set; }
+        public float Cost { get; set; }
+
     }
 }
