@@ -16,5 +16,7 @@ namespace DTOs
         private string description {  get; set; }
         private int levelAggressiveness {  get; set; }
 
+        //foto//
+
     }
 }
