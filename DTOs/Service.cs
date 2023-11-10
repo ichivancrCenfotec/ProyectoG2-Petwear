@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DTOs
 {
-    public class Service
+    public class Service : BaseDTO
     {
-        private int idService {  get; set; }
-        private string name {  get; set; }
-        private float cost {  get; set; }
-        private string description {  get; set; }
-        private bool status {  get; set; }
+        public int IdService {  get; set; }
+        public string Name {  get; set; }
+        public float Cost {  get; set; }
+        public string Description {  get; set; }
+        public bool Status {  get; set; }
     }
 }

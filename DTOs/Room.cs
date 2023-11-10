@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace DTOs
 {
-    public class Room
+    public class Room : BaseDTO
     {
-        private int idRoom {  get; set; }
-        private string name {  get; set; }
-        private string description {  get; set; }
-        private int capacity {  get; set; }
-        private float cost {  get; set; }
-        private bool status {  get; set; }
+        public int IdRoom {  get; set; }
+        public string name {  get; set; }
+        public string description {  get; set; }
+        public int capacity {  get; set; }
+        public float cost {  get; set; }
+        public bool status {  get; set; }
     }
 }

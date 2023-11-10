@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoreApp
 {
-    public class UsuarioManager
+    public class UserManager
     {
 
 

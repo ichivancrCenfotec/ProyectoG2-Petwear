@@ -9,19 +9,17 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class UsuarioCrudFactory : CrudFactory
+    public class PackageCrudFactory : CrudFactory
     {
 
-      public UsuarioCrudFactory()
+        public PackageCrudFactory()
         {
             _dao = SqlDao.GetInstance();
         }
 
-
         public override void Create(BaseDTO baseDTO)
         {
             throw new NotImplementedException();
-
         }
 
         public override void Delete(BaseDTO baseDTO)
@@ -36,30 +34,17 @@ namespace DataAccess
 
         public override List<T> RetrieveAll<T>()
         {
-
             throw new NotImplementedException();
-
-
         }
 
-        public override T RetrieveById<T>(int Id)
-        {
-            throw new NotImplementedException();
-
-        }
-
-    
-
-        public T RetrieveByEmail<T>(int Id)
+        public override T RetrieveById<T>(int id)
         {
             throw new NotImplementedException();
         }
-
 
         public override void Update(BaseDTO baseDTO)
         {
             throw new NotImplementedException();
         }
-
     }
 }

@@ -8,13 +8,13 @@ namespace DTOs
 {
     public class Pet: BaseDTO
     {
-        private int idPet {  get; set; }
-        private string namePet {  get; set; }
-        private int age {  get; set; }
-        private string breed {  get; set; }
-        private int weight {  get; set; }
-        private string description {  get; set; }
-        private int levelAggressiveness {  get; set; }
+        private int IdPet {  get; set; }
+        private string NamePet {  get; set; }
+        private int Age {  get; set; }
+        private string Breed {  get; set; }
+        private int Weight {  get; set; }
+        private string Description {  get; set; }
+        private int LevelAggressiveness {  get; set; }
 
     }
 }

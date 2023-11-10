@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace DTOs
 {
-    public class FinancialReport
+    public class FinancialReport : BaseDTO
     {
-        private int idFinancialReport {  get; set; }
-        private DateTime date {  get; set; }
-        private float total {  get; set; }
-        private float totalCost {  get; set; }
-        private float totalProfit {  get; set; }
-        private float totalTaxes {  get; set; }
-        private float totalExpenses {  get; set; }
-        private float totalIncome {  get; set; }
-        private float totalServices {  get; set; }
-        private float totalPackages {  get; set; }
-        private float totalBookings {  get; set; }
-        private float totalOther {  get; set; }
+        public int IdFinancialReport {  get; set; }
+        public DateTime Date {  get; set; }
+        public float Total {  get; set; }
+        public float TotalCost {  get; set; }
+        public float TotalProfit {  get; set; }
+        public float TotalTaxes {  get; set; }
+        public float TotalExpenses {  get; set; }
+        public float TotalIncome {  get; set; }
+        public float TotalServices {  get; set; }
+        public float TotalPackages {  get; set; }
+        public float TotalBookings {  get; set; }
+        public float TotalOther {  get; set; }
     }
 }
