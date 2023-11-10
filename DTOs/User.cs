@@ -8,7 +8,6 @@ namespace DTOs
 {
     public class User : BaseDTO
     {
-
         public string Name {  get; set; }
         public string LastName {  get; set; }
         public string Password {  get; set; }
@@ -17,6 +16,7 @@ namespace DTOs
         public string Role { get; set; }
         public int PhoneNumber { get; set; }
 
+        //falta foto
 
 
     }

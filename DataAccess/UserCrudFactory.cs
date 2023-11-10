@@ -70,16 +70,14 @@ namespace DataAccess
             return lstUsers;
         }
 
-        private T BuildUser<T>(Dictionary<string, object> row)
-        {
-            throw new NotImplementedException();
-        }
 
-        public override T RetrieveById<T>(int Id)
+    }
+
+        public override T RetrieveById<T>(int id)
         {
         var sqlOperation = new SqlOperation { ProcedureName = "RET_USER_BY_ID_PR" };
 
-        sqlOperation.AddIntParam("P_ID", Id); //agarra el id con el parametro definido en el PR de BD
+        sqlOperation.AddIntParam("P_ID", id); //agarra el id con el parametro definido en el PR de BD
 
         //Devuelve la lista de diccionarios
         var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
@@ -98,8 +96,29 @@ namespace DataAccess
 
     }
 
+    private T BuildUser<T>(Dictionary<string, object> row)
+    {
+        //Construir el objeto
+        var userDTO = new User()
+        {
+            Id = (int)row["ID"],
+            Name = (string)row["NAME"],
+            LastName = (string)row["LASTNAME"],
+            Password = (string)row["PASSWORD"],
+            Email = (string)row["EMAIL"],
+            Address = (string)row["ADDRESS"],
+            Role = (string)row["ROLE"],
+            PhoneNumber = (int)row["PHONENUMBER"]
+        };
+        return (T)Convert.ChangeType(userDTO, typeof(T));
 
-        public T RetrieveByEmail<T>(int Id) => throw new NotImplementedException();
+    }
+
+
+    public T RetrieveByEmail<T>(int id)
+        {
+            throw new NotImplementedException();
+        }
 
 
         public override void Update(BaseDTO baseDTO)

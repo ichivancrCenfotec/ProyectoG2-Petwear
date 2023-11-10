@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DTOs
 {
-    public class Temperature : BaseDTO
+    public class Temperature
     {
-        public int IdTemperature {  get; set; }
-        public float Value {  get; set; }
-        public DateTime Date {  get; set; }
+        private int IdTemperature {  get; set; }
+        private float Value {  get; set; }
+        private DateTime Date {  get; set; }
     }
 }
