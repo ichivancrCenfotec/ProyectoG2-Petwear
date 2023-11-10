@@ -8,13 +8,16 @@ namespace DTOs
 {
     public class User : BaseDTO
     {
-        private string name {  get; set; }
-        private string lastName {  get; set; }
-        private string password {  get; set; }
-        private string email {  get; set; }
-        private string address {  get; set; }
-        private string role { get; set; }
-        private int phoneNumber { get; set; }
+        public string Name {  get; set; }
+        public string LastName {  get; set; }
+        public string Password {  get; set; }
+        public string Email {  get; set; }
+        public string Address {  get; set; }
+        public string Role { get; set; }
+        public int PhoneNumber { get; set; }
+
+        //falta foto
+
 
     }
 }

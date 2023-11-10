@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class UserCrudFactory : CrudFactory
+    public class ServiceCrudFactory : CrudFactory
     {
 
-      public UserCrudFactory()
+        public ServiceCrudFactory()
         {
             _dao = SqlDao.GetInstance();
         }
@@ -21,7 +21,6 @@ namespace DataAccess
         public override void Create(BaseDTO baseDTO)
         {
             throw new NotImplementedException();
-
         }
 
         public override void Delete(BaseDTO baseDTO)
@@ -41,6 +40,7 @@ namespace DataAccess
         }
 
         public override T RetrieveById<T>(int id)
+
         {
             throw new NotImplementedException();
         }
@@ -51,4 +51,6 @@ namespace DataAccess
         }
     }
 
+
+}
 
