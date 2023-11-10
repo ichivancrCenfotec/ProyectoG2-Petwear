@@ -8,10 +8,10 @@ namespace DTOs
 {
     public class Booking
     {
-        private int idBooking {  get; set; }
-        private DateTime checkInDate {  get; set; }
-        private DateTime checkOutDate {  get; set; }
-        private string considerations {  get; set; }
-        private bool status {  get; set; }
+        public int idBooking {  get; set; }
+        public DateTime checkInDate {  get; set; }
+        public DateTime checkOutDate {  get; set; }
+        public string considerations {  get; set; }
+        public bool status {  get; set; }
     }
 }
