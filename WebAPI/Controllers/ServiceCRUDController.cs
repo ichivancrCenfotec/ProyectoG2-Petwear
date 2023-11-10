@@ -8,9 +8,9 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserCRUDController : ControllerBase
+    public class ServiceCRUDController : ControllerBase
     {
-        ///Controlador de mantenimiento del usuario.
+        ///Controlador de mantenimiento del servicio.
         ///C -> Create (post)
         ///R -> Retrieve (get)
         ///U -> Update (put)
@@ -18,14 +18,14 @@ namespace WebAPI.Controllers
 
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> Create(User user)
+        public async Task<IActionResult> Create(Service service)
         {
-            var um = new UserManager();
+            var um = new ServiceManager();
 
             try
             {
-                um.Create(user);
-                return Ok(user);
+                um.Create(service);
+                return Ok(service);
             }
             catch (Exception ex)
             {
@@ -40,10 +40,10 @@ namespace WebAPI.Controllers
         {
             try
             {
-                var um = new UserManager();
-                var user = new User { Id = id };
+                var um = new ServiceManager();
+                var service = new Service { Id = id };
 
-                return Ok(um.RetrieveById(user));
+                return Ok(um.RetrieveById(service));
             }
             catch (Exception ex)
             {
@@ -57,7 +57,7 @@ namespace WebAPI.Controllers
         {
             try
             {
-                var um = new UserManager();
+                var um = new ServiceManager();
 
                 return Ok(um.RetrieveAll());
             }
