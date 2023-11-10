@@ -44,6 +44,7 @@ namespace WebAPI.Controllers
                 var service = new Service { Id = id };
 
                 return Ok(um.RetrieveById(service));
+
             }
             catch (Exception ex)
             {
@@ -66,5 +67,47 @@ namespace WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpPut]
+        [Route("Update")]
+
+        public async Task<IActionResult> Update(Service service)
+        {
+
+            var um = new ServiceManager();
+
+            try
+            {
+                um.Update(service);
+                return Ok(service);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+        }
+
+        [HttpDelete]
+        [Route("Delete")]
+
+        public async Task<IActionResult> Delete(Service service)
+        {
+            var um = new ServiceManager();
+
+            try
+            {
+
+                um.Delete(service);
+                return Ok(service);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+        }
+
     }
 }
