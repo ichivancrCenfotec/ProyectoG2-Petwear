@@ -20,11 +20,11 @@ namespace WebAPI.Controllers
         [Route("Create")]
         public async Task<IActionResult> Create(Pet pet)
         {
-            var um = new PetManager();
+            var pm = new PetManager();
 
             try
             {
-                um.Create(pet);
+                pm.Create(pet);
                 return Ok(pet);
             }
             catch (Exception ex)
@@ -40,10 +40,10 @@ namespace WebAPI.Controllers
         {
             try
             {
-                var um = new PetManager();
+                var pm = new PetManager();
                 var pet = new Pet { Id = id };
 
-                return Ok(um.RetrieveById(pet));
+                return Ok(pm.RetrieveById(pet));
             }
             catch (Exception ex)
             {
@@ -57,9 +57,9 @@ namespace WebAPI.Controllers
         {
             try
             {
-                var um = new PetManager();
+                var pm = new PetManager();
 
-                return Ok(um.RetrieveAll());
+                return Ok(pm.RetrieveAll());
             }
             catch (Exception ex)
             {
