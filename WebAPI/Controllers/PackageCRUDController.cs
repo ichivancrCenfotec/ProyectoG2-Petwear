@@ -1,64 +1,61 @@
 ﻿using CoreApp;
 using DTOs;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ServiceCRUDController : ControllerBase
+    public class PackageCRUDController : Controller
     {
-        ///Controlador de mantenimiento del servicio.
-        ///C -> Create (post)
-        ///R -> Retrieve (get)
-        ///U -> Update (put)
-        ///D -> Delete (delete)
 
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> Create(Service service)
+        public async Task<IActionResult> Create(Package package)
         {
-            var um = new ServiceManager();
+            var um = new PackageManager();
 
             try
             {
-                um.Create(service);
-                return Ok(service);
+                um.Create(package);
+                return Ok(package);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
-
         }
 
         [HttpGet]
         [Route("RetrieveById")]
-        public async Task<IActionResult> RetrieveById(int id)
+        public async Task<IActionResult> RetrieveById(int Id)
         {
+
             try
             {
-                var um = new ServiceManager();
-                var service = new Service { Id = id };
 
-                return Ok(um.RetrieveById(service));
+                var um = new PackageManager();
+                var package = new Package { Id = Id };
+
+                return Ok(um.RetrieveById(package));
 
             }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
+
+
         }
 
         [HttpGet]
-        [Route("RetrieveAll")]
-        public async Task<IActionResult> RetrieveAll()
+        [Route("RetriveAll")]
+        public async Task<IActionResult> RetriveAll()
         {
+
             try
             {
-                var um = new ServiceManager();
+                var um = new PackageManager();
 
                 return Ok(um.RetrieveAll());
             }
@@ -71,15 +68,15 @@ namespace WebAPI.Controllers
         [HttpPut]
         [Route("Update")]
 
-        public async Task<IActionResult> Update(Service service)
+        public async Task<IActionResult> Update(Package package)
         {
 
-            var um = new ServiceManager();
+            var um = new PackageManager();
 
             try
             {
-                um.Update(service);
-                return Ok(service);
+                um.Update(package);
+                return Ok(package);
             }
             catch (Exception ex)
             {
@@ -91,15 +88,15 @@ namespace WebAPI.Controllers
         [HttpDelete]
         [Route("Delete")]
 
-        public async Task<IActionResult> Delete(Service service)
+        public async Task<IActionResult> Delete(Package package)
         {
-            var um = new ServiceManager();
+            var um = new PackageManager();
 
             try
             {
 
-                um.Delete(service);
-                return Ok(service);
+                um.Delete(package);
+                return Ok(package);
 
             }
             catch (Exception ex)
@@ -110,4 +107,6 @@ namespace WebAPI.Controllers
         }
 
     }
+
 }
+

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DTOs
 {
-    public class UVIndex
+    public class UVIndex : BaseDTO
     {
-        private int idUVIndex {  get; set; }
-        private float value {  get; set; }
-        private DateTime date {  get; set; }
+        public int IdUVIndex {  get; set; }
+        public float Value {  get; set; }
+        public DateTime Date {  get; set; }
     }
 }
 

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DTOs
 {
-    public class Payment
+    public class Payment : BaseDTO
     {
-        private int idPayment { get; set; }
-        private string description { get; set; }
-        private string paymenteMethod { get; set; }
+        public int IdPayment { get; set; }
+        public string Description { get; set; }
+        public string PaymenteMethod { get; set; }
 
     }
 }

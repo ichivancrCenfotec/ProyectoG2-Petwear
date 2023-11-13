@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DTOs
 {
-    public class Package
+    public class Package: BaseDTO
     {
-        private int idPackage {  get; set; }
-        private float cost {  get; set; }
-        private string description {  get; set; }
+        public int TdPackage {  get; set; }
+        public float Cost {  get; set; }
+        public string Description {  get; set; }
 
     }
 }
