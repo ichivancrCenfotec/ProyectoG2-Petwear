@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class UserCrudFactory : CrudFactory
+    public class PetCrudFactory : CrudFactory
     {
 
-      public UserCrudFactory()
+      public PetCrudFactory()
         {
             _dao = SqlDao.GetInstance();
         }
