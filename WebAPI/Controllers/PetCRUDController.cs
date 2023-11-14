@@ -66,5 +66,46 @@ namespace WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpPut]
+        [Route("Update")]
+
+        public async Task<IActionResult> Update(Pet pet)
+        {
+
+            var pm = new PetManager();
+
+            try
+            {
+                pm.Update(pet);
+                return Ok(pet);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+        }
+
+        [HttpDelete]
+        [Route("Delete")]
+
+        public async Task<IActionResult> Delete(Pet pet)
+        {
+            var pm = new PetManager();
+
+            try
+            {
+
+                pm.Delete(pet);
+                return Ok(pet);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+        }
     }
 }
