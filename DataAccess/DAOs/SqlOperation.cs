@@ -33,16 +33,17 @@ namespace DataAccess.DAOs
         {
             Parameters.Add(new SqlParameter(paramName, paramValue));
         }
-<<<<<<< HEAD
-        public void AddBoolParam(string paramName, bool paramValue) 
-        { 
-            Parameters.Add(new SqlParameter(paramName,paramValue));
-=======
 
+        public void AddBoolParam(string paramName, bool paramValue)
+        {
+            Parameters.Add(new SqlParameter(paramName, paramValue));
+
+        }
         public void AddFloatParam(string paramName, float paramValue)
         {
             Parameters.Add(new SqlParameter(paramName, paramValue));
->>>>>>> 6a4bbcea2771d1285370a82851a4f39bfce07f53
+
         }
+
     }
 }
