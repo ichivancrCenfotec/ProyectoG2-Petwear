@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class UsuarioCrudFactory : CrudFactory
+    public class UserCrudFactory : CrudFactory
     {
 
-      public UsuarioCrudFactory()
+      public UserCrudFactory()
         {
             _dao = SqlDao.GetInstance();
         }
@@ -98,7 +98,17 @@ namespace DataAccess
             return userDTO;
 
         }
-        return default(T);
+        return defaultpublic override T RetrieveById<T>(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Update(BaseDTO baseDTO)
+        {
+            throw new NotImplementedException();
+        }
+
+        (T);
 
     }
 
@@ -111,9 +121,6 @@ namespace DataAccess
             throw new NotImplementedException();
         }
 
-<<<<<<< HEAD
-    }
-}
-=======
 
->>>>>>> a77c21485cc05a4f66f726d0002e027e17ce790a
+    
+}
