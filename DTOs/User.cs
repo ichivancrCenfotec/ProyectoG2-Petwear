@@ -15,6 +15,7 @@ namespace DTOs
         public string Address {  get; set; }
         public string Role { get; set; }
         public int PhoneNumber { get; set; }
+        public DateTime BirthDate {  get; set; }
 
         //falta foto
 

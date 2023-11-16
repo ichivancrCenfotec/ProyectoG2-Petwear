@@ -46,6 +46,11 @@ namespace CoreApp
                 }
             }
         }
+
+        public void Delete(Service service)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
