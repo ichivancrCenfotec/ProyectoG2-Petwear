@@ -114,7 +114,20 @@ namespace DataAccess
 
         public override void Update(BaseDTO baseDTO)
         {
-            throw new NotImplementedException();
+            var booking = baseDTO as Booking;
+
+            var sqlOperation = new SqlOperation { ProcedureName = "UPDATE_BOOKING_PR" };
+            sqlOperation.AddIntParam("P_idBooking", booking.Id);
+            sqlOperation.AddIntParam("P_idPet", booking.IdPet);
+            sqlOperation.AddIntParam("P_idPayment", booking.IdPayment);
+            sqlOperation.AddIntParam("P_idPackage", booking.IdPackage);
+            sqlOperation.AddDateTimeParam("P_checkInDate", booking.CheckInDate);
+            sqlOperation.AddDateTimeParam("P_checkOutDate", booking.CheckOutDate);
+            sqlOperation.AddVarcharParam("P_considerations", booking.Considerations);
+            sqlOperation.AddBoolParam("P_status", booking.Status);
+
+            _dao.ExecuteProcedure(sqlOperation);
+
         }
     }
 }

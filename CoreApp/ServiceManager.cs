@@ -9,42 +9,44 @@ namespace CoreApp
     {
         public void Create(Service service)
         {
-            var uc = new ServiceCrudFactory();
-            uc.Create(service);
+            if (service.Cost < 0)
+            {
+                throw new Exception("Please type a correct cost");
+            }
+            if (service.Description.Equals(""))
+            {
+                throw new Exception("There cannot be blank fields");
+            }
+            else
+            {
+                var sc = new ServiceCrudFactory();
+                sc.Create(service);
+            }
         }
 
         public List<Service> RetrieveAll()
         {
-            var uc = new ServiceCrudFactory();
-            return uc.RetrieveAll<Service>();
-
+            var sc = new ServiceCrudFactory();
+            return sc.RetrieveAll<Service>();
         }
 
         public Service RetrieveById(Service service)
         {
-            var uc = new ServiceCrudFactory();
-          return  uc.RetrieveById<Service>(service.Id);
+            var sc = new ServiceCrudFactory();
+          return  sc.RetrieveById<Service>(service.Id);
         }
      
 
         public void Update(Service service)
         {
-            var uc = new ServiceManager();
-            uc.Update(service);
+            var sc = new ServiceManager();
+            sc.Update(service);
         }
 
-        public void Delete(Package package)
+        public void Delete(Service service)
         {
-            var uc = new PackageCrudFactory();
-            var lstPackage = uc.RetrieveAll<Package>();
-
-            foreach (var item in lstPackage)
-            {
-                if (item.Id.Equals(package.Id))
-                {
-                    uc.Delete(item);
-                }
-            }
+            var sc = new ServiceCrudFactory();
+            sc.Delete(service);
         }
     }
 
