@@ -12,7 +12,9 @@ namespace DataAccess
     public class UserCrudFactory : CrudFactory
     {
 
+
         public UserCrudFactory()
+
         {
             _dao = SqlDao.GetInstance();
         }
@@ -98,6 +100,7 @@ namespace DataAccess
             }
             return default(T);
         }
+
 
         public override void Update(BaseDTO baseDTO)
         {
