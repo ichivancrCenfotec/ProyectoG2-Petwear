@@ -66,5 +66,43 @@ namespace WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpPut]
+        [Route("Update")]
+
+        public async Task<IActionResult> Update(User user)
+        {
+            var um = new UserManager();
+
+            try
+            {
+                um.Update(user);
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpDelete]
+        [Route("Delete")]
+
+        public async Task<IActionResult> Delete(User user)
+        {
+            var um = new UserManager();
+
+            try
+            {
+
+                um.Delete(user);
+                return Ok(user);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }
