@@ -27,20 +27,14 @@ namespace CoreApp
                  throw new Exception("The password does not meet the required criteria. It must be at least 8 characters long and include" +
                      " at least one uppercase letter, one lowercase letter, one digit, and one special character (e.g., !, @, #, $, etc.).");
              }
+              //En general aqui se aplican las validaciones.
+
              */
 
-            //En general aqui se aplican las validaciones.
-            if (IsOver18(user))
-            {
-                //Despues de validar, se envia la información a la base de datos.
-                var uc = new UserCrudFactory();
-                uc.Create(user);
-            }
-            else
-            {
-                throw new Exception("User must be 18 years old.");
-            }
 
+
+            var uc = new UserCrudFactory();
+            uc.Create(user);
         }
 
         public void Update(User user)
@@ -94,21 +88,7 @@ namespace CoreApp
 
         }
 
-        // Calcular la edad del usuario
-        public bool IsOver18(User user)
-        {
-            DateTime currentDate = DateTime.Now;
 
-            int age = currentDate.Year - user.BirthDate.Year;
-
-            // If the user hasn't had their birthday yet this year, subtract 1 from age
-            if (user.BirthDate.Date > currentDate.AddYears(-age).Date)
-            {
-                age--;
-            }
-
-            return age >= 18;
-        }
 
     }
 }

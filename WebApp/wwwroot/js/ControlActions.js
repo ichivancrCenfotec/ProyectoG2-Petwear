@@ -1,7 +1,7 @@
 
 function ControlActions() {
-
-	this.URL_API = "https://localhost:7155/api/";
+	//Ruta base del API
+	this.URL_API = "https://localhost:7246/api/";
 
 	this.GetUrlApiService = function (service) {
 		return this.URL_API + service;
@@ -68,18 +68,6 @@ function ControlActions() {
 		return data;
 	}
 
-	this.ShowMessage = function (type, message) {
-		if (type == 'E') {
-			$("#alert_container").removeClass("alert alert-success alert-dismissable")
-			$("#alert_container").addClass("alert alert-danger alert-dismissable");
-			$("#alert_message").text(message);
-		} else if (type == 'I') {
-			$("#alert_container").removeClass("alert alert-danger alert-dismissable")
-			$("#alert_container").addClass("alert alert-success alert-dismissable");
-			$("#alert_message").text(message);
-		}
-		$('.alert').show();
-	};
 
 	/* ACCIONES VIA AJAX, O ACCIONES ASINCRONAS*/
 
@@ -115,7 +103,7 @@ function ControlActions() {
 					icon: 'error',
 					title: 'Oops...',
 					html: message,
-					footer: 'CenfoChat Client'
+					footer: 'UCenfotec'
 				})
 			}
 		});
@@ -125,7 +113,13 @@ function ControlActions() {
 	this.PutToAPI = function (service, data, callBackFunction) {
 		var jqxhr = $.put(this.GetUrlApiService(service), data, function (response) {
 			var ctrlActions = new ControlActions();
-			ctrlActions.ShowMessage('I', response.Message);
+
+			Swal.fire(
+				'Good job!',
+				'Transaction completed!',
+				'success'
+			)
+
 			if (callBackFunction) {
 				callBackFunction(response.Data);
 			}
@@ -133,25 +127,42 @@ function ControlActions() {
 		})
 			.fail(function (response) {
 				var data = response.responseJSON;
-				var ctrlActions = new ControlActions();
-				ctrlActions.ShowMessage('E', data.ExceptionMessage);
-				console.log(data);
+				var errors = data.errors;
+				var errorMessages = Object.values(errors).flat();
+				message = errorMessages.join("<br/> ");
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					html: message,
+					footer: 'UCenfotec'
+				})
 			})
 	};
 
 	this.DeleteToAPI = function (service, data, callBackFunction) {
 		var jqxhr = $.delete(this.GetUrlApiService(service), data, function (response) {
 			var ctrlActions = new ControlActions();
-			ctrlActions.ShowMessage('I', response.Message);
+			Swal.fire(
+				'Good job!',
+				'Transaction completed!',
+				'success'
+			)
+
 			if (callBackFunction) {
 				callBackFunction(response.Data);
 			}
 		})
 			.fail(function (response) {
 				var data = response.responseJSON;
-				var ctrlActions = new ControlActions();
-				ctrlActions.ShowMessage('E', data.ExceptionMessage);
-				console.log(data);
+				var errors = data.errors;
+				var errorMessages = Object.values(errors).flat();
+				message = errorMessages.join("<br/> ");
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					html: message,
+					footer: 'UCenfotec'
+				})
 			})
 	};
 

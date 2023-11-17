@@ -11,10 +11,10 @@ namespace WebAPI.Controllers
     public class UserCRUDController : ControllerBase
     {
         ///Controlador de mantenimiento del usuario.
-        ///C -> Create (post)
-        ///R -> Retrieve (get)
-        ///U -> Update (put)
-        ///D -> Delete (delete)
+        ///C -> Create
+        ///R -> Retrieve
+        ///U -> Update
+        ///D -> Delete
 
         [HttpPost]
         [Route("Create")]
@@ -31,30 +31,35 @@ namespace WebAPI.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
-
         }
 
         [HttpGet]
         [Route("RetrieveById")]
-        public async Task<IActionResult> RetrieveById(int id)
+        public IActionResult RetrieveById(int id)
         {
+
             try
             {
+
                 var um = new UserManager();
                 var user = new User { Id = id };
 
                 return Ok(um.RetrieveById(user));
+
             }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
+
+
         }
 
         [HttpGet]
-        [Route("RetrieveAll")]
-        public async Task<IActionResult> RetrieveAll()
+        [Route("RetriveAll")]
+        public async Task<IActionResult> RetriveAll()
         {
+
             try
             {
                 var um = new UserManager();
@@ -66,12 +71,12 @@ namespace WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
         [HttpPut]
         [Route("Update")]
 
         public async Task<IActionResult> Update(User user)
         {
+
             var um = new UserManager();
 
             try
@@ -83,6 +88,7 @@ namespace WebAPI.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
+
         }
 
         [HttpDelete]
@@ -103,6 +109,8 @@ namespace WebAPI.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
+
         }
+
     }
 }
