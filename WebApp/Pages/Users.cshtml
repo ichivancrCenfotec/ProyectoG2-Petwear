@@ -2,7 +2,7 @@
 @model WebApp.Pages.UsersModel
 @{
 }
-<script src="~/js/pages/users.js"></script>
+<script src="~/js/pages/user.js"></script>
 <div class="bs-docs-section">
     <br />
 
@@ -20,13 +20,17 @@
 
                         <th>Name</th>
 
+                        <th>Last Name</th>
+
                         <th>Email</th>
 
-                        <th>Birth date</th>
+                        <th>Address</th>
 
-                        <th>Status</th>
+                        <th>Role</th>
 
-                        <th>Created at</th>
+                        <th>Phone Number</th>
+
+                        <th>Birth Date</th>
 
 
                     </tr>
@@ -50,32 +54,44 @@
                         <input id="txtId" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter User ID">
                         <small id="emailHelp" class="form-text text-muted">Your User ID</small>
                     </div>
+                    <div class="form-group">
+                        <label for="txtName" class="form-label mt-4">Name</label>
+                        <input type="text" class="form-control" id="txtName" aria-describedby="emailHelp" placeholder="Enter your complete name">
+                        <small id="emailHelp" class="form-text text-muted">Use your name.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtLastName" class="form-label mt-4">LastName</label>
+                        <input type="text" class="form-control" id="txtLastName" aria-describedby="emailHelp" placeholder="Enter your Last Nmae">
+                        <small id="emailHelp" class="form-text text-muted">Use your name.</small>
+                    </div>
                         <div class="form-group">
                             <label for="txtEmail" class="form-label mt-4">Email address</label>
                             <input id="txtEmail" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
-                        <div class="form-group">
-                            <label for="txtName" class="form-label mt-4">Name</label>
-                            <input type="text" class="form-control" id="txtName" aria-describedby="emailHelp" placeholder="Enter your complete name">
-                            <small id="emailHelp" class="form-text text-muted">Use your name.</small>
-                        </div>
+                    <div class="form-group">
+                        <label for="txtAddress" class="form-label mt-4">Address</label>
+                        <input id="txtAddress" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter your Address">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your address with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtRole" class="form-label mt-4">Role</label>
+                        <input id="txtRole" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter your Role">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your address with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtNumber" class="form-label mt-4">Phone Number</label>
+                        <input id="txtNumber" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter your Phone Number">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your address with anyone else.</small>
+                    </div>
+                 
                         <div class="form-group">
                             <label for="txtPassword" class="form-label mt-4">Password</label>
                             <input type="password" class="form-control" id="txtPassword" aria-describedby="emailHelp">
-                            <small id="emailHelp" class="form-text text-muted">Use your last name.</small>
+                            <small id="emailHelp" class="form-text text-muted">Enter your Password.</small>
                         </div>
-                        <div class="form-group">
-                            <label for="txtBirthDate" class="form-label mt-4">Birth date</label>
-                            <input type="date" class="form-control" id="txtBirthDate" aria-describedby="emailHelp" placeholder="Enter your bithdate">
-                        </div>
-                        <div class="form-group">
-                            <label for="cbStatus" class="form-label mt-4">Status</label>
-                            <select class="form-select" id="cbStatus">
-                                <option value="1">Enabled</option>
-                                <option value="0">Disabled</option>
-                            </select>
-                        </div>
+         
+       
                         @*<div class="form-group">
                         <label for="formFile" class="form-label mt-4">Attach your document ID.</label>
                         <input class="form-control" type="file" id="formFile">

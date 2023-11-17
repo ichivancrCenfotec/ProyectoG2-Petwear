@@ -12,7 +12,7 @@ namespace DataAccess
     public class PetCrudFactory : CrudFactory
     {
 
-      public PetCrudFactory()
+        public PetCrudFactory()
         {
             _dao = SqlDao.GetInstance();
         }
@@ -50,5 +50,5 @@ namespace DataAccess
             throw new NotImplementedException();
         }
     }
-
+}
 
