@@ -15,8 +15,7 @@ namespace DTOs
         public string? Address {  get; set; }
         public string? Role { get; set; }
         public int PhoneNumber { get; set; }
-
-        public string? VerificationOTP { get; set; }
+        public string? ValidationOTP { get; set; } 
 
         public string? ResetOTP { get; set; }
 

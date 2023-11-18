@@ -33,6 +33,8 @@ namespace DataAccess
             sqlOperation.AddVarcharParam("P_ADDRESS", user.Address);
             sqlOperation.AddVarcharParam("P_ROLE", user.Role);
             sqlOperation.AddIntParam("P_PHONE_NUMBER", user.PhoneNumber);
+            sqlOperation.AddVarcharParam("P_VALIDATIONOTP", "FSDUIFH");
+            sqlOperation.AddVarcharParam("P_RESETOTP", "DSAODJHSA");
 
 
             //Invocamos
@@ -195,6 +197,8 @@ namespace DataAccess
             sqlOperation.AddVarcharParam("P_ADDRESS", user.Address);
             sqlOperation.AddVarcharParam("P_ROLE", user.Role);
             sqlOperation.AddIntParam("P_PHONE_NUMBER", user.PhoneNumber);
+            sqlOperation.AddVarcharParam("P_VALIDATIONOTP", user.ValidationOTP);
+            sqlOperation.AddVarcharParam("P_RESETOTP", user.ResetOTP);
         
 
             //Invocamos
