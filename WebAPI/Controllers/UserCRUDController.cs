@@ -3,6 +3,11 @@ using DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using WebAPI.Data;
 
 namespace WebAPI.Controllers
 {
@@ -15,6 +20,14 @@ namespace WebAPI.Controllers
         ///R -> Retrieve
         ///U -> Update
         ///D -> Delete
+
+        private readonly DataContext _context;
+
+        public UserCRUDController(DataContext context)
+        {
+            _context = context;
+        }
+
 
         [HttpPost]
         [Route("Create")]
@@ -32,6 +45,57 @@ namespace WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpPost]
+        [Route("LogIn")]
+        public async Task<IActionResult> LogIn(string password, string email)
+        {
+
+           
+
+            try
+            {
+                var um = new UserManager();
+                var user =new User { Email = email };
+                User user1 = (User)um.RetrieveByEmail(user);
+            
+
+                if (VerifyPassword(password, user1))
+                {
+                    return Ok("Welcome");
+                }
+                else
+                {
+                    return StatusCode(500, "Wrong Password");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+            
+            return Ok("Welcome");
+        }
+
+
+        private bool VerifyPassword(string password, User user)
+        {
+            var userPassword = user.Password;
+            
+            if (password == userPassword)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+
+        }
+
+
 
         [HttpGet]
         [Route("RetrieveById")]

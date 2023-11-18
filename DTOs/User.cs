@@ -19,6 +19,21 @@ namespace DTOs
 
         public string? ResetOTP { get; set; }
 
+
+        // Constructot
+        public User()
+        {
+            Name = null;
+            LastName = null;
+            Password = null;
+            Email = null;
+            Address = null;
+            Role = null;
+            PhoneNumber = 0;
+            ValidationOTP = null;
+            ResetOTP = null;
+        }
+
         //falta foto
 
 

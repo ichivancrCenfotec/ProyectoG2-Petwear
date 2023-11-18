@@ -37,6 +37,9 @@ namespace CoreApp
             uc.Create(user);
         }
 
+
+        
+
         public void Update(User user)
         {
             var uc = new UserCrudFactory();
@@ -61,6 +64,12 @@ namespace CoreApp
         {
             var uc = new UserCrudFactory();
             return uc.RetrieveById<User>(user.Id);
+        }
+
+        public object? RetrieveByEmail(User user)
+        {
+            var uc = new UserCrudFactory();
+            return uc.RetrieveByEmail<User>(user.Email);
         }
 
         //Validar contraseña
@@ -88,7 +97,45 @@ namespace CoreApp
 
         }
 
+        public bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                return false;
+            }
+
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
+        public bool PasswordOK (string password, string email, int id)
+        {
+            //Validamos que la contraseña sea la correcta parar el usuario.
+
+            User user = RetrieveById(new User { Id = id }) as User; //Obtenemos el usuario por el id.
 
 
+            if (user.Password == password && user.Email == email)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public object RetrieveAll<T>()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -84,6 +84,26 @@ namespace DataAccess
             return lstUsers;
         }
 
+
+
+        public override T RetrieveByEmail<T>(string email)
+        {
+            var sqlOperation = new SqlOperation { ProcedureName = "RET_BY_EMAIL_PW" };
+            sqlOperation.AddVarcharParam("P_EMAIL", email);
+
+            var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
+
+            if (lstResults.Count > 0)
+            {
+                //Extraermos el primer valor de la lista
+                var row = lstResults[0];
+
+                var userDTO = BuildUser<T>(row);
+                return userDTO;
+            }
+            return default(T);
+        }
+
         public override T RetrieveById<T>(int id)
         {
             var sqlOperation = new SqlOperation { ProcedureName = "RET_BY_ID_PW" };
