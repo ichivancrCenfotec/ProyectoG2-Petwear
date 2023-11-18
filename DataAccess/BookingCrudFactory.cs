@@ -129,5 +129,10 @@ namespace DataAccess
             _dao.ExecuteProcedure(sqlOperation);
 
         }
+
+        public override T RetrieveByEmail<T>(string email)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
