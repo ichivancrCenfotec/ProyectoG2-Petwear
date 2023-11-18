@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.DAOs
+namespace DataAccess
 {
     public class FinancialReportCrudFactory : CrudFactory
     {
