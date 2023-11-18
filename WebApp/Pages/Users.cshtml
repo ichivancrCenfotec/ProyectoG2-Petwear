@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model WebApp.Pages.UsersModel
 @{
 }
@@ -44,54 +44,56 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6" style="width:490px; margin:10px; background-color:#4e4e4e; padding:20px; border-radius:15px">
             <div class="bs-component">
                 <form>
-                   
-                        <legend>User registration form</legend>
+
+                    <legend style="color: #0092d2;">User registration form</legend>
                     <div class="form-group">
-                        <label for="txtId" class="form-label mt-4">User ID</label>
-                        <input id="txtId" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter User ID">
+                        <label style="color: #0092d2;" for="txtId" class="form-label mt-4">User ID</label>
+                        <input style="background-color:#fff2e8;" id="txtId" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter User ID">
                         <small id="emailHelp" class="form-text text-muted">Your User ID</small>
                     </div>
                     <div class="form-group">
-                        <label for="txtName" class="form-label mt-4">Name</label>
-                        <input type="text" class="form-control" id="txtName" aria-describedby="emailHelp" placeholder="Enter your complete name">
+                        <label style="color: #0092d2;" for="txtName" class="form-label mt-4">Name</label>
+                        <input style="background-color:#fff2e8;" type="text" class="form-control" id="txtName" aria-describedby="emailHelp" placeholder="Enter your complete name">
                         <small id="emailHelp" class="form-text text-muted">Use your name.</small>
                     </div>
                     <div class="form-group">
-                        <label for="txtLastName" class="form-label mt-4">LastName</label>
-                        <input type="text" class="form-control" id="txtLastName" aria-describedby="emailHelp" placeholder="Enter your Last Name">
+
+                        <label style="color: #0092d2;" for="txtLastName" class="form-label mt-4">LastName</label>
+                        <input style="background-color:#fff2e8;" type="text" class="form-control" id="txtLastName" aria-describedby="emailHelp" placeholder="Enter your Last Nmae">
+
                         <small id="emailHelp" class="form-text text-muted">Use your name.</small>
                     </div>
                         <div class="form-group">
-                            <label for="txtEmail" class="form-label mt-4">Email address</label>
-                            <input id="txtEmail" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
+                        <label style="color: #0092d2;" for="txtEmail" class="form-label mt-4">Email address</label>
+                        <input style="background-color:#fff2e8;" id="txtEmail" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                     <div class="form-group">
-                        <label for="txtAddress" class="form-label mt-4">Address</label>
-                        <input id="txtAddress" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter your Address">
+                        <label style="color: #0092d2;" for="txtAddress" class="form-label mt-4">Address</label>
+                        <input style="background-color:#fff2e8;" id="txtAddress" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter your Address">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your address with anyone else.</small>
                     </div>
                     <div class="form-group">
-                        <label for="txtRole" class="form-label mt-4">Role</label>
-                        <input id="txtRole" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter your Role">
+                        <label style="color: #0092d2;" for="txtRole" class="form-label mt-4">Role</label>
+                        <input style="background-color:#fff2e8;" id="txtRole" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter your Role">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your address with anyone else.</small>
                     </div>
                     <div class="form-group">
-                        <label for="txtNumber" class="form-label mt-4">Phone Number</label>
-                        <input id="txtNumber" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter your Phone Number">
+                        <label style="color: #0092d2;" for="txtNumber" class="form-label mt-4">Phone Number</label>
+                        <input style="background-color:#fff2e8;" id="txtNumber" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter your Phone Number">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your address with anyone else.</small>
                     </div>
                  
                         <div class="form-group">
-                            <label for="txtPassword" class="form-label mt-4">Password</label>
-                            <input type="password" class="form-control" id="txtPassword" aria-describedby="emailHelp">
+                        <label style="color: #0092d2;" for="txtPassword" class="form-label mt-4">Password</label>
+                        <input style="background-color:#fff2e8;" type="password" class="form-control" id="txtPassword" aria-describedby="emailHelp">
                             <small id="emailHelp" class="form-text text-muted">Enter your Password.</small>
                         </div>
          
-       
+ 
                         @*<div class="form-group">
                         <label for="formFile" class="form-label mt-4">Attach your document ID.</label>
                         <input class="form-control" type="file" id="formFile">
@@ -99,12 +101,13 @@
                 </form>
                 <br />
                 @*<button id="btnNew" class="source-button btn btn-info btn-xs" type="button" tabindex="0"><i class="bi bi-code">New</i></button>*@
-                <button id="btnCreate" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Save</i></button>
-                <button id="btnUpdate" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Update</i></button>
+                <button id="btnCreate" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Registrar</i></button>
+                @*<button id="btnUpdate" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Update</i></button>
                 <button id="btnDelete" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Delete</i></button>
                 @*<button id="btnUpdate" class="source-button btn btn-warning btn-xs" type="button" tabindex="0"><i class="bi bi-code">Update</i></button>
                 <button id="btnDelete" class="source-button btn btn-danger btn-xs" type="button" tabindex="0"><i class="bi bi-code">Delete</i></button>*@
             </div>
         </div>
+        <div class="col-lg-6" style="width:490px; margin:10px;"><img style=" border-radius:15px" src="c:\users\dell\documents\u\proyectog2-petwear-ax\webapp\pages\shared\img\perro.jpg" width="490" /></div>
     </div>
 </div>
