@@ -1,0 +1,80 @@
+﻿@page
+@model WebApp.Pages.ServicesModel
+<script src="~/js/pages/service.js"></script>
+<div class="bs-docs-section">
+    <br />
+
+    <div class=" row">
+
+        <div class=" col-lg-6">
+
+            <table id="tblListService" class=" display" style="width:100%">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Id Package</th>
+
+                        <th>Cost</th>
+
+                        <th>Service Name</th>
+
+                        <th>Description</th>
+
+                        <th>Availability</th>
+
+
+                    </tr>
+
+                </thead>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="bs-component">
+                <form>
+                   
+                        <legend>Service registration form</legend>
+                    <div class="form-group">
+                        <label for="txtId" class="form-label mt-4">Package ID</label>
+                        <input id="txtId" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter Package ID">
+                        <small id="emailHelp" class="form-text text-muted">Your selected Package ID</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtCost" class="form-label mt-4">Service Cost</label>
+                        <input id="txtCost" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter the service cost">
+                        @*<small id="emailHelp" class="form-text text-muted"></small>*@
+                    </div>
+                    <div class="form-group">
+                        <label for="txtServiceName" class="form-label mt-4">Service Name</label>
+                        <input type="text" class="form-control" id="txtServiceName" aria-describedby="emailHelp" placeholder="Enter the service name">
+                        <small id="emailHelp" class="form-text text-muted">Use the service name.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDescription" class="form-label mt-4">Service Description</label>
+                        <input type="text" class="form-control" id="txtDescription" aria-describedby="emailHelp" placeholder="Enter the service description">
+                        <small id="emailHelp" class="form-text text-muted">Be detallist.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="cbAvailability" class="form-label mt-4">Service Availability</label>
+                        <select class="form-select" id="cbAvailability">
+                            <option value="1">Enabled</option>
+                            <option value="0">Disabled</option>
+                        </select>
+                    </div>
+                </form>
+                <br />
+
+                <button id="btnCreate" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Save</i></button>
+                <button id="btnUpdate" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Update</i></button>
+                <button id="btnDelete" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Delete</i></button>
+            </div>
+        </div>
+    </div>
+</div>

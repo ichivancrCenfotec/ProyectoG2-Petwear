@@ -51,6 +51,18 @@ namespace CoreApp
         {
             throw new NotImplementedException();
         }
+
+        //Validar contraseña
+        public bool IsValidService(string service)
+        {
+
+            if (string.IsNullOrWhiteSpace(service))
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 
 }

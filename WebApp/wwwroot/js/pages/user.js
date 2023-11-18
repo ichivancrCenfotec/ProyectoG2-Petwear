@@ -97,7 +97,7 @@ function UsersController() {
         var serviceRoute = this.ApiService + "/Update";
 
         ctrlActions.PutToAPI(serviceRoute, users, function () {
-            console.log("City updated ---> " + JSON.stringify(users))
+            console.log("User updated ---> " + JSON.stringify(users))
 
         });
     }
