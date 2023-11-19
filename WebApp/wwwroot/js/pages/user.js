@@ -11,6 +11,7 @@ function UsersController() {
 
         console.log("User view init!!!");
 
+
         //Binding del evento del clic al metodo de create del controlador
         $("#btnCreate").click(function () {
             var vc = new UsersController();
@@ -73,6 +74,8 @@ function UsersController() {
 
         ctrlActions.PostToAPI(serviceRoute, users, function () {
             console.log("User created ---> " + JSON.stringify(users))
+
+            window.location.href = "https://localhost:7298/RegisterValidation";
         });
 
         console.log(JSON.stringify(users));

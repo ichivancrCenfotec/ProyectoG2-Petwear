@@ -2,7 +2,7 @@
 @model WebApp.Pages.UsersModel
 @{
 }
-<script src="~/js/pages/forgotpassword.js"></script>
+<script src="~/js/pages/registervalidation.js"></script>
 <div class="bs-docs-section">
     <br />
 
@@ -13,13 +13,19 @@
         <div class="bs-component">
             <form>
 
-                <legend>Please Enter your Email</legend>
+                <legend>Reset Password Verification</legend>
 
 
                 <div class="form-group">
                     <label for="txtEmail" class="form-label mt-4">Email address</label>
                     <input id="txtEmail" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">Please enter your Email.</small>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="txtRegisterValidation" class="form-label mt-4">OTP Register</label>
+                    <input id="txtRegisterValidation" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter OTP">
+                    <small id="emailHelp" class="form-text text-muted">Please enter OTP sent to your Email.</small>
                 </div>
 
                 @*<div class="form-group">
@@ -29,7 +35,7 @@
             </form>
             <br />
             @*<button id="btnNew" class="source-button btn btn-info btn-xs" type="button" tabindex="0"><i class="bi bi-code">New</i></button>*@
-            <button id="btnResetPassword" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Reset Password</i></button>
+            <button id="btnValidateOTP" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Validate OTP</i></button>
             <button id="btnCancel" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Cancel</i></button>
             @*<button id="btnUpdate" class="source-button btn btn-warning btn-xs" type="button" tabindex="0"><i class="bi bi-code">Update</i></button>
             <button id="btnDelete" class="source-button btn btn-danger btn-xs" type="button" tabindex="0"><i class="bi bi-code">Delete</i></button>*@

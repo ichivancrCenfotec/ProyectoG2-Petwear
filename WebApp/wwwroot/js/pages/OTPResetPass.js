@@ -12,41 +12,41 @@ function UsersController() {
         console.log("User view init!!!");
 
         //Binding del evento del clic al metodo de create del controlador
-        $("#btnResetPassword").click(function () {
+        $("#btnValidateOTP").click(function () {
             var vc = new UsersController();
-            vc.ResetPassword();
-        })
+            vc.ValidateOTP();
 
+        })
     }
 
-    this.ResetPassword = function () {
+    this.ValidateOTP = function () {
 
 
         //Crear un DTO de USER
 
         var users = {};
         users.email = $("#txtEmail").val();
-  
+        users.resetotp = $("#txtResetOTP").val();
+
+
+
 
         //Llamado al API
         var ctrlActions = new ControlActions();
-        var serviceRoute = this.ApiService + "/ResetPassword";
+        var serviceRoute = this.ApiService + "/ResetOTP";
 
-        ctrlActions.PutToAPI(serviceRoute, users, function () {
-            console.log("User logged in ---> " + JSON.stringify(users))
+        ctrlActions.PostToAPI(serviceRoute, users, function () {
+            console.log("User Validated in ---> " + JSON.stringify(users))
 
-            //Redireccionar a la pagina de inicio
-            window.location.href = "https://localhost:7298/OTPReset";
+            window.location.href = "https://localhost:7298/NewPassword";
 
         });
+
+        console.log(JSON.stringify(users));
     }
 
 
 }
-
- 
-
-
 
 //Instanciamiento de la clase
 $(document).ready(function () {

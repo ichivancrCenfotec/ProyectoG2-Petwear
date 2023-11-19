@@ -15,11 +15,6 @@ function UsersController() {
         $("#btnLogIn").click(function () {
             var vc = new UsersController();
             vc.LogIn();
-
-
-
-
-
         })
 
 
@@ -36,18 +31,20 @@ function UsersController() {
         users.email = $("#txtEmail").val();
         users.password = $("#txtPassword").val();
       
-
-
-
         //Llamado al API
         var ctrlActions = new ControlActions();
         var serviceRoute = this.ApiService + "/LogIn";
 
         ctrlActions.PostToAPI(serviceRoute, users, function () {
             console.log("User logged in ---> " + JSON.stringify(users))
+
+            //Redireccionar a la pagina de inicio
+            window.location.href = "https://localhost:7298/UserDashboard";
+
         });
 
         console.log(JSON.stringify(users));
+
     }
 
 

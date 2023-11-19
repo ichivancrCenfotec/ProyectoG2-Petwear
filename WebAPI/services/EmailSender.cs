@@ -7,9 +7,10 @@ namespace WebAPI.services
 {
     public class EmailSender
     {
+
         public async Task SendEmail(string toEmail, string username,string message)
         {
-            var apiKey = "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";
+            var apiKey = "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";
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("aulateu@ucenfotec.ac.cr", "Petwear");
             var subject = "correo verificación";

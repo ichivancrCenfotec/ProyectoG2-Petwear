@@ -14,27 +14,52 @@ namespace CoreApp
 
         public void Create(User user)
         {
-            //Validar que los campos este completos en el user.
-            /*
+            
+             
+              //Validar que los campos este completos en el user.
+            if (string.IsNullOrEmpty(user.Name))
+            {
+                throw new Exception("Name is required");
+            }
+            //Validacion sobre el estado
+            if (user.Status > 1)
+            {
+                throw new Exception("Status no valid");
+            }
+            //Validar que un usuario sea mayor que 18
 
-             if (string.IsNullOrEmpty(user.Name))
-             {
-                 throw new Exception("Name is required");
-             }
+    
 
-             if (!IsValidPassword(user.Password))
-             {
-                 throw new Exception("The password does not meet the required criteria. It must be at least 8 characters long and include" +
-                     " at least one uppercase letter, one lowercase letter, one digit, and one special character (e.g., !, @, #, $, etc.).");
-             }
-              //En general aqui se aplican las validaciones.
-
-             */
+            //Validar que contraseña sea mayor de 8 caracteres, usar simbolos, numeros, letras, mayusculas y minusculas
 
 
+            if (!IsValidPassword(user.Password))
+            {
+                throw new Exception("The password does not meet the required criteria. It must be at least 8 characters long and include" +
+                    " at least one uppercase letter, one lowercase letter, one digit, and one special character (e.g., !, @, #, $, etc.).");
+            }
+             
+             
 
-            var uc = new UserCrudFactory();
-            uc.Create(user);
+
+
+
+
+
+            //En general aqui se aplican las validaciones.
+        
+            
+                //Despues de validar, se envia la información a la base de datos.
+                var uc = new UserCrudFactory();
+                uc.Create(user);
+            
+          
+             
+             
+
+
+
+            
         }
 
 
@@ -45,11 +70,22 @@ namespace CoreApp
             var uc = new UserCrudFactory();
             uc.Update(user);
         }
+        public void VerifyRegister(User user)
+        {
+            var uc = new UserCrudFactory();
+            uc.VerifyStatus(user);
+        }
 
         public void ResetPassword(User user)
         {
             var uc = new UserCrudFactory();
             uc.ResetPassword(user);
+        }
+
+        public void NewPassword(User user)
+        {
+            var uc = new UserCrudFactory();
+            uc.NewPassword(user);
         }
 
         public void Delete(User user)

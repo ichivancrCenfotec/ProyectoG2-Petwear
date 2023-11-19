@@ -3,12 +3,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace WebApp.Pages
 {
-    public class UsersModel : PageModel
+    public class NewPasswordModel : PageModel
     {
         public void OnGet()
         {
         }
-
     }
-
 }

@@ -175,6 +175,7 @@ function ControlActions() {
 
 		});
 	}
+
 }
 
 //Custom jquery actions

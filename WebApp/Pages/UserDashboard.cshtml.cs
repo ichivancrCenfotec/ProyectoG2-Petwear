@@ -3,12 +3,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace WebApp.Pages
 {
-    public class UsersModel : PageModel
+    public class UserDashboardModel : PageModel
     {
         public void OnGet()
         {
         }
-
     }
-
 }

@@ -13,7 +13,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserCRUDController : ControllerBase
+    public class UserCRUDController : Controller
     {
         ///Controlador de mantenimiento del usuario.
         ///C -> Create
@@ -33,7 +33,11 @@ namespace WebAPI.Controllers
             try
             {
                 um.Create(user);
-                emailSender.SendEmail(user.Email, user.Name, user.Password).Wait();
+
+                var user2 = new User { Email = user.Email };
+                User user3 = (User)um.RetrieveByEmail(user);
+
+                emailSender.SendEmail(user.Email, user.Name, user3.ValidationOTP).Wait();
                 return Ok(user);
             }
             catch (Exception ex)
@@ -49,10 +53,36 @@ namespace WebAPI.Controllers
         {
 
             var um = new UserManager();
-
+            EmailSender emailSender = new EmailSender();
             try
             {
                 um.ResetPassword(user);
+
+                var user2 = new User { Email = user.Email };
+                User user3 = (User)um.RetrieveByEmail(user);
+
+                emailSender.SendEmail(user.Email, user3.Name, user3.ResetOTP).Wait();
+
+                return Ok(user);
+			}
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+        }
+
+        [HttpPut]
+        [Route("NewPassword")]
+
+        public async Task<IActionResult> NewPassword(User user)
+        {
+
+            var um = new UserManager();
+
+            try
+            {
+                um.NewPassword(user);
                 return Ok(user);
             }
             catch (Exception ex)
@@ -76,18 +106,16 @@ namespace WebAPI.Controllers
                 var um = new UserManager();
                 var user =new User { Email = email };
                 User user1 = (User)um.RetrieveByEmail(user);
-            
+
 
                 if (VerifyPassword(password, user1))
                 {
-                    return Ok("Welcome");
-                    return RedirectToAction("Index", "Home");
 
-                    
-                }
+                    return Ok(user1);
+                    }
                 else
                 {
-                    return StatusCode(500, "Wrong Password");
+                    return StatusCode(500, "Wrong Password or User not validated");
                 }
             }
 
@@ -102,8 +130,9 @@ namespace WebAPI.Controllers
         private bool VerifyPassword(string password, User user)
         {
             var userPassword = user.Password;
+            var userStatus = user.Status;
             
-            if (password == userPassword)
+            if (password == userPassword && user.Status != 0)
             {
                 return true;
             }
@@ -111,12 +140,105 @@ namespace WebAPI.Controllers
             {
                 return false;
             }
-            
+        }
+
+        [HttpPost]
+        [Route("ValidateOTP")]
+        public async Task<IActionResult> ValidateOTP(User request)
+        {
+
+            string email = request.Email;
+            string resetOTP = request.ResetOTP;
+
+
+            try
+            {
+                var um = new UserManager();
+                var user = new User { Email = email };
+                User user1 = (User)um.RetrieveByEmail(user);
+
+
+                if (VerifyRegistrationOTP(resetOTP, user1))
+                {   
+                       um.VerifyRegister(user1);
+                    return Ok(user1);
+
+                }
+                else
+                {
+                    return StatusCode(500, "Wrong OTP");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+
+        }
+        private bool VerifyRegistrationOTP(string otp, User user)
+        {
+            var userOTP = user.ValidationOTP;
+
+            if (userOTP == otp)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [HttpPost]
+        [Route("ResetOTP")]
+        public async Task<IActionResult> ResetOTP(User request)
+        {
+
+            string email = request.Email;
+            string resetOTP = request.ResetOTP;
+
+
+            try
+            {
+                var um = new UserManager();
+                var user = new User { Email = email };
+                User user1 = (User)um.RetrieveByEmail(user);
+
+
+                if (VerifyOTP(resetOTP, user1))
+                {
+                    return Ok(user1);
+      
+                }
+                else
+                {
+                    return StatusCode(500, "Wrong OTP");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
 
         }
 
-   
+        private bool VerifyOTP(string otp, User user)
+        {
+            var userOTP = user.ResetOTP;
 
+            if (userOTP == otp)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
         [HttpGet]
