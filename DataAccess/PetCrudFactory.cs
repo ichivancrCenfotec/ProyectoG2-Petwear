@@ -29,6 +29,11 @@ namespace DataAccess
             throw new NotImplementedException();
         }
 
+        public override void ResetPassword(BaseDTO baseDTO)
+        {
+            throw new NotImplementedException();
+        }
+
         public override T Retrieve<T>()
         {
             throw new NotImplementedException();

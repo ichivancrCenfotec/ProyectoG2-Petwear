@@ -39,11 +39,30 @@ namespace WebAPI.Controllers
             }
         }
 
+        [HttpPut]
+        [Route("ResetPassword")]
+
+        public async Task<IActionResult> ResetPassword(User user)
+        {
+
+            var um = new UserManager();
+
+            try
+            {
+                um.ResetPassword(user);
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+        }
+
         [HttpPost]
         [Route("LogIn")]
         public async Task<IActionResult> LogIn(User request)
         {
-
 
             string email = request.Email;
             string password = request.Password;
@@ -58,7 +77,8 @@ namespace WebAPI.Controllers
 
                 if (VerifyPassword(password, user1))
                 {
-                    return Ok("Welcome" );
+                    return Ok("Welcome");
+                    
                 }
                 else
                 {
@@ -73,7 +93,6 @@ namespace WebAPI.Controllers
             
           
         }
-
 
         private bool VerifyPassword(string password, User user)
         {
@@ -90,6 +109,8 @@ namespace WebAPI.Controllers
             
 
         }
+
+   
 
 
 
@@ -131,6 +152,7 @@ namespace WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
         [HttpPut]
         [Route("Update")]
 
