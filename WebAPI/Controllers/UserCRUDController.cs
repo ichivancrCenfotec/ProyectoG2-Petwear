@@ -44,8 +44,10 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> LogIn(User request)
         {
 
+
             string email = request.Email;
             string password = request.Password;
+
 
             try
             {
