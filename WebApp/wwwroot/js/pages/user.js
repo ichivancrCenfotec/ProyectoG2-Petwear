@@ -74,6 +74,8 @@ function UsersController() {
 
         ctrlActions.PostToAPI(serviceRoute, users, function () {
             console.log("User created ---> " + JSON.stringify(users))
+
+            window.location.href = "https://localhost:7298/RegisterValidation";
         });
 
         console.log(JSON.stringify(users));
