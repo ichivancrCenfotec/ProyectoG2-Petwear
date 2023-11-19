@@ -200,9 +200,7 @@ namespace WebAPI.Controllers
                 if (VerifyOTP(resetOTP, user1))
                 {
                     return Ok(user1);
-                    return RedirectToAction("Index", "Home");
-
-
+      
                 }
                 else
                 {

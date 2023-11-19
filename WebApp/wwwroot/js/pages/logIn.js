@@ -15,11 +15,6 @@ function UsersController() {
         $("#btnLogIn").click(function () {
             var vc = new UsersController();
             vc.LogIn();
-
-
-           
-
-
         })
 
 
@@ -44,7 +39,7 @@ function UsersController() {
             console.log("User logged in ---> " + JSON.stringify(users))
 
             //Redireccionar a la pagina de inicio
-            window.location.href = "/Pages/NewPassword.cshtml";
+            window.location.href = "https://localhost:7298/UserDashboard";
 
         });
 

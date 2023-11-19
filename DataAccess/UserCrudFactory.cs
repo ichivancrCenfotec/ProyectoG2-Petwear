@@ -129,8 +129,9 @@ namespace DataAccess
             var user = baseDTO as User;
 
             var sqlOperation = new SqlOperation { ProcedureName = "NEW_PASS_PW" };
-            sqlOperation.AddVarcharParam("P_PASSWORD", user.Password);
+            
             sqlOperation.AddVarcharParam("P_EMAIL", user.Email);
+            sqlOperation.AddVarcharParam("P_PASSWORD", user.Password);
 
             _dao.ExecuteProcedure(sqlOperation);
         }
