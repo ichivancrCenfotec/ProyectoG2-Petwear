@@ -6,4 +6,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\img\encantadoras-mascotas-mimadas-juegan-lado-lado-mirando-alerta-generada-ia.jpg" />
+    <None Include="wwwroot\img\gatito-gris-pared-monocromatica-detras-ella.jpg" />
+    <None Include="wwwroot\img\icono.png" />
+    <None Include="wwwroot\img\perro.jpg" />
+  </ItemGroup>
+
 </Project>
