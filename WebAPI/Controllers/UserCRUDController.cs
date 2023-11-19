@@ -77,6 +77,9 @@ namespace WebAPI.Controllers
 
                 if (VerifyPassword(password, user1))
                 {
+                    return Ok(new { RedirectUrl = "Index.cshtml"});
+
+				}
                     return Ok(user1);
                     return RedirectToAction("Index", "Home");
 
