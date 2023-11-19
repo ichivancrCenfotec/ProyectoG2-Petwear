@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-
+using WebAPI.services;
 
 namespace WebAPI.Controllers
 {
@@ -27,10 +27,13 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> Create(User user)
         {
             var um = new UserManager();
+            EmailSender emailSender = new EmailSender();   
+
 
             try
             {
                 um.Create(user);
+                emailSender.SendEmail(user.Email, user.Name, user.Password).Wait();
                 return Ok(user);
             }
             catch (Exception ex)
