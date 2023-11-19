@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using WebAPI.Data;
+
 
 namespace WebAPI.Controllers
 {
@@ -20,13 +20,6 @@ namespace WebAPI.Controllers
         ///R -> Retrieve
         ///U -> Update
         ///D -> Delete
-
-        private readonly DataContext _context;
-
-        public UserCRUDController(DataContext context)
-        {
-            _context = context;
-        }
 
 
         [HttpPost]
@@ -48,8 +41,12 @@ namespace WebAPI.Controllers
 
         [HttpPost]
         [Route("LogIn")]
-        public async Task<IActionResult> LogIn(string password, string email)
+        public async Task<IActionResult> LogIn(User request)
         {
+
+            string email = request.Email;
+            string password = request.Password;
+
 
             try
             {
@@ -60,7 +57,7 @@ namespace WebAPI.Controllers
 
                 if (VerifyPassword(password, user1))
                 {
-                    return Ok("Welcome");
+                    return Ok("Welcome" );
                 }
                 else
                 {
@@ -73,7 +70,7 @@ namespace WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
             
-            return Ok("Welcome");
+          
         }
 
 
