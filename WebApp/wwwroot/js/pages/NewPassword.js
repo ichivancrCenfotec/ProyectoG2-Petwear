@@ -25,7 +25,7 @@ function UsersController() {
         //Crear un DTO de USER
 
         var users = {};
-        user.email = $("#txtEmail").val();
+        users.email = $("#txtEmail").val();
         users.password = $("#txtNewPass").val();
 
 
@@ -35,6 +35,9 @@ function UsersController() {
 
         ctrlActions.PutToAPI(serviceRoute, users, function () {
             console.log("User Password Reseted ---> " + JSON.stringify(users))
+
+            window.location.href = "https://localhost:7298/LogIn";
+
         });
     }
 

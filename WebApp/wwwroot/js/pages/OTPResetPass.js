@@ -37,6 +37,9 @@ function UsersController() {
 
         ctrlActions.PostToAPI(serviceRoute, users, function () {
             console.log("User Validated in ---> " + JSON.stringify(users))
+
+            window.location.href = "https://localhost:7298/NewPassword";
+
         });
 
         console.log(JSON.stringify(users));

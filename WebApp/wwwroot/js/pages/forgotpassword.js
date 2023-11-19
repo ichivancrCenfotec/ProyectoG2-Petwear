@@ -33,7 +33,11 @@ function UsersController() {
         var serviceRoute = this.ApiService + "/ResetPassword";
 
         ctrlActions.PutToAPI(serviceRoute, users, function () {
-            console.log("User Password Reseted ---> " + JSON.stringify(users))
+            console.log("User logged in ---> " + JSON.stringify(users))
+
+            //Redireccionar a la pagina de inicio
+            window.location.href = "https://localhost:7298/OTPReset";
+
         });
     }
 
