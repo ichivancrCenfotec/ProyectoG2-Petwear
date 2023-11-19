@@ -77,7 +77,7 @@ namespace WebAPI.Controllers
 
                 if (VerifyPassword(password, user1))
                 {
-                    return Ok("Welcome");
+                    return Ok(user1);
                     return RedirectToAction("Index", "Home");
 
                     
@@ -108,12 +108,59 @@ namespace WebAPI.Controllers
             {
                 return false;
             }
-            
+        }
+
+
+        [HttpPost]
+        [Route("ResetOTP")]
+        public async Task<IActionResult> ResetOTP(User request)
+        {
+
+            string email = request.Email;
+            string resetOTP = request.ResetOTP;
+
+
+            try
+            {
+                var um = new UserManager();
+                var user = new User { Email = email };
+                User user1 = (User)um.RetrieveByEmail(user);
+
+
+                if (VerifyOTP(resetOTP, user1))
+                {
+                    return Ok(user1);
+                    return RedirectToAction("Index", "Home");
+
+
+                }
+                else
+                {
+                    return StatusCode(500, "Wrong OTP");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
 
         }
 
-   
+        private bool VerifyOTP(string otp, User user)
+        {
+            var userOTP = user.ResetOTP;
 
+            if (userOTP == otp)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
         [HttpGet]
