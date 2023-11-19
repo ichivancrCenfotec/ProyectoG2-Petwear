@@ -7,13 +7,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-
+using WebAPI.services;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserCRUDController : ControllerBase
+    public class UserCRUDController : Controller
     {
         ///Controlador de mantenimiento del usuario.
         ///C -> Create
@@ -27,10 +27,13 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> Create(User user)
         {
             var um = new UserManager();
+            EmailSender emailSender = new EmailSender();   
+
 
             try
             {
                 um.Create(user);
+                emailSender.SendEmail(user.Email, user.Name, user.Password).Wait();
                 return Ok(user);
             }
             catch (Exception ex)
@@ -50,8 +53,8 @@ namespace WebAPI.Controllers
             try
             {
                 um.ResetPassword(user);
-                return Ok(user);
-            }
+                return Redirect("LogIn.cshtml");
+			}
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
@@ -73,15 +76,13 @@ namespace WebAPI.Controllers
                 var um = new UserManager();
                 var user =new User { Email = email };
                 User user1 = (User)um.RetrieveByEmail(user);
-            
+
 
                 if (VerifyPassword(password, user1))
                 {
-                    return Ok(user1);
-                    return Ok(new { RedirectUrl = "Index.cshtml"});
 
-				}
-              
+                    return Ok(user1);
+
                 else
                 {
                     return StatusCode(500, "Wrong Password");
