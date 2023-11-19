@@ -11,6 +11,7 @@ function UsersController() {
 
         console.log("User view init!!!");
 
+
         //Binding del evento del clic al metodo de create del controlador
         $("#btnCreate").click(function () {
             var vc = new UsersController();

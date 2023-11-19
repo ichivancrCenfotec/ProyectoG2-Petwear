@@ -82,7 +82,7 @@ namespace WebAPI.Controllers
                 {
 
                     return Ok(user1);
-
+                }
                 else
                 {
                     return StatusCode(500, "Wrong Password");
