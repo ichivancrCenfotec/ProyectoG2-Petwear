@@ -14,5 +14,50 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #fff2e8;
 }
+
+header {
+    background-color: 00cebd;
+}
+
+input {
+    background-color: #fff2e8;
+}
+
+label {
+    color: #0092d2
+}
+
+button {
+    background-color: #0092d2;
+    color: #0092d2
+}
+
+.col-lg-6 {
+    width: 590px;
+    margin: 10px;
+    background-color: #4e4e4e;
+    padding: 20px;
+    border-radius: 15px
+}
+
+.block{
+   width:1200px;
+    margin:0 auto;
+
+}
+
+    .block p {
+        width: 590px;
+        margin: 20px;
+        float: left;s
+    }
+
+.block img {
+    margin:20px;
+    float:left;
+    }
+
+img{border-radius:15px; }
