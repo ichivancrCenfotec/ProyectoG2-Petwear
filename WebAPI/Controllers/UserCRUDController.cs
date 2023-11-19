@@ -77,9 +77,8 @@ namespace WebAPI.Controllers
 
                 if (VerifyPassword(password, user1))
                 {
-                    return Ok("Welcome");
+                    return Ok(user1);
                     return RedirectToAction("Index", "Home");
-
                     
                 }
                 else
