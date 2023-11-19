@@ -175,6 +175,29 @@ function ControlActions() {
 
 		});
 	}
+
+	this.RedirectPage = function (service, data, callBackFunction) {
+
+		$.ajax({
+			url: this.GetUrlApiService(service),
+			type: 'POST',
+			data: JSON.stringify(data),
+			success: function (response) {
+				if (response.success) {
+					// Redireccionar a la página deseada
+					callBackFunction(response);
+				} else {
+					// Manejar el caso de inicio de sesión fallido
+					alert('Inicio de sesión fallido: ' + response.message);
+				}
+			},
+			error: function () {
+				// Manejar errores de la solicitud AJAX
+				alert('Error en la solicitud AJAX');
+			}
+		});
+
+
 }
 
 //Custom jquery actions

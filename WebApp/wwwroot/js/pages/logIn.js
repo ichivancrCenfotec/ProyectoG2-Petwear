@@ -36,9 +36,6 @@ function UsersController() {
         users.email = $("#txtEmail").val();
         users.password = $("#txtPassword").val();
       
-
-
-
         //Llamado al API
         var ctrlActions = new ControlActions();
         var serviceRoute = this.ApiService + "/LogIn";
@@ -47,7 +44,11 @@ function UsersController() {
             console.log("User logged in ---> " + JSON.stringify(users))
         });
 
+        //Redirigir a la pagina de inicio
+        wimdow.location.href = "index.html";
+
         console.log(JSON.stringify(users));
+
     }
 
 
