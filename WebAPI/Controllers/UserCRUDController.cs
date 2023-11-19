@@ -33,7 +33,11 @@ namespace WebAPI.Controllers
             try
             {
                 um.Create(user);
-                emailSender.SendEmail(user.Email, user.Name, user.Password).Wait();
+
+                var user2 = new User { Email = user.Email };
+                User user3 = (User)um.RetrieveByEmail(user);
+
+                emailSender.SendEmail(user.Email, user.Name, user3.ValidationOTP).Wait();
                 return Ok(user);
             }
             catch (Exception ex)
@@ -49,10 +53,16 @@ namespace WebAPI.Controllers
         {
 
             var um = new UserManager();
-
+            EmailSender emailSender = new EmailSender();
             try
             {
                 um.ResetPassword(user);
+
+                var user2 = new User { Email = user.Email };
+                User user3 = (User)um.RetrieveByEmail(user);
+
+                emailSender.SendEmail(user.Email, user3.Name, user3.ResetOTP).Wait();
+
                 return Ok(user);
 			}
             catch (Exception ex)
