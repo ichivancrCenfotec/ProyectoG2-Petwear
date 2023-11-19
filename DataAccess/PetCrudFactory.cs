@@ -29,6 +29,11 @@ namespace DataAccess
             throw new NotImplementedException();
         }
 
+        public override void NewPassword(BaseDTO baseDTO)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void ResetPassword(BaseDTO baseDTO)
         {
             throw new NotImplementedException();
@@ -56,6 +61,11 @@ namespace DataAccess
         }
 
         public override void Update(BaseDTO baseDTO)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void VerifyStatus(BaseDTO baseDTO)
         {
             throw new NotImplementedException();
         }

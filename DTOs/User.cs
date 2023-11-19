@@ -19,6 +19,8 @@ namespace DTOs
 
         public string? ResetOTP { get; set; }
 
+        public int Status { get; set; }
+
 
         // Constructot
         public User()
@@ -32,6 +34,7 @@ namespace DTOs
             PhoneNumber = 0;
             ValidationOTP = null;
             ResetOTP = null;
+            Status = 0;
         }
 
         //falta foto

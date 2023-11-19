@@ -12,44 +12,34 @@ function UsersController() {
         console.log("User view init!!!");
 
         //Binding del evento del clic al metodo de create del controlador
-        $("#btnLogIn").click(function () {
+        $("#btnValidateOTP").click(function () {
             var vc = new UsersController();
-            vc.LogIn();
-
-
-           
-
+            vc.ValidateOTP();
 
         })
-
-
-
-
     }
 
-    this.LogIn = function () {
+    this.ValidateOTP = function () {
 
 
         //Crear un DTO de USER
 
         var users = {};
         users.email = $("#txtEmail").val();
-        users.password = $("#txtPassword").val();
-      
+        users.resetotp = $("#txtRegisterValidation").val();
+
+
+
+
         //Llamado al API
         var ctrlActions = new ControlActions();
-        var serviceRoute = this.ApiService + "/LogIn";
+        var serviceRoute = this.ApiService + "/ValidateOTP";
 
         ctrlActions.PostToAPI(serviceRoute, users, function () {
-            console.log("User logged in ---> " + JSON.stringify(users))
-
-            //Redireccionar a la pagina de inicio
-            window.location.href = "/Pages/NewPassword.cshtml";
-
+            console.log("User Validated in ---> " + JSON.stringify(users))
         });
 
         console.log(JSON.stringify(users));
-
     }
 
 

@@ -25,6 +25,7 @@ function UsersController() {
         //Crear un DTO de USER
 
         var users = {};
+        user.email = $("#txtEmail").val();
         users.password = $("#txtNewPass").val();
 
 
