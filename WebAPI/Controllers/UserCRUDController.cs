@@ -51,8 +51,6 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> LogIn(string password, string email)
         {
 
-           
-
             try
             {
                 var um = new UserManager();
