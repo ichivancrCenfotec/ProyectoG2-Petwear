@@ -41,9 +41,6 @@ function UsersController() {
 }
 
 
-
-
-
 //Instanciamiento de la clase
 $(document).ready(function () {
     var viewCont = new UsersController();
