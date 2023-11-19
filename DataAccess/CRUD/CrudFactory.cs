@@ -23,8 +23,9 @@ namespace DataAccess.CRUD
         public abstract List<T> RetrieveAll<T>();
         public abstract void Update(BaseDTO baseDTO);
         public abstract void Delete(BaseDTO baseDTO);
-
         public abstract T RetrieveByEmail<T>(string email);
+
+        public abstract void ResetPassword(BaseDTO baseDTO);
 
         /*
                 public abstract void OTP(BaseDTO baseDTO);

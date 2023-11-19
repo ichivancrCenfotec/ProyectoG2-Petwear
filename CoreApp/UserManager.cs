@@ -46,6 +46,11 @@ namespace CoreApp
             uc.Update(user);
         }
 
+        public void ResetPassword(User user)
+        {
+            var uc = new UserCrudFactory();
+            uc.ResetPassword(user);
+        }
 
         public void Delete(User user)
         {
