@@ -213,6 +213,8 @@ namespace DataAccess
                 Address = (string)row["ADDRESS"],
                 Role = (string)row["ROLE"],
                 PhoneNumber = (int)row["PHONENUMBER"],
+                ValidationOTP = (string)row["VALIDATIONOTP"],
+                ResetOTP = (string)row["RESETOTP"]
            
             };
 
