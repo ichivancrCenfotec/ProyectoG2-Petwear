@@ -33,8 +33,9 @@ namespace DataAccess
             sqlOperation.AddVarcharParam("P_ADDRESS", user.Address);
             sqlOperation.AddVarcharParam("P_ROLE", user.Role);
             sqlOperation.AddIntParam("P_PHONE_NUMBER", user.PhoneNumber);
-            sqlOperation.AddVarcharParam("P_VALIDATIONOTP", "FSDUIFH");
-            sqlOperation.AddVarcharParam("P_RESETOTP", "DSAODJHSA");
+            sqlOperation.AddVarcharParam("P_VALIDATIONOTP", GenerateOTP(6));
+            sqlOperation.AddVarcharParam("P_RESETOTP", " ");
+            sqlOperation.AddIntParam("P_STATUS", 0);
 
 
             //Invocamos
@@ -123,6 +124,30 @@ namespace DataAccess
         }
 
 
+        public override void NewPassword(BaseDTO baseDTO)
+        {
+            var user = baseDTO as User;
+
+            var sqlOperation = new SqlOperation { ProcedureName = "NEW_PASS_PW" };
+            sqlOperation.AddVarcharParam("P_PASSWORD", user.Password);
+            sqlOperation.AddVarcharParam("P_EMAIL", user.Email);
+
+            _dao.ExecuteProcedure(sqlOperation);
+        }
+
+        public override void VerifyStatus(BaseDTO baseDTO)
+        {
+            var user = baseDTO as User;
+
+            var sqlOperation = new SqlOperation { ProcedureName = "VERIFY_STATUS_PW" };
+            sqlOperation.AddVarcharParam("P_VALIDATIONOTP", user.ValidationOTP);
+            sqlOperation.AddIntParam("P_STATUS", 1);
+
+
+            _dao.ExecuteProcedure(sqlOperation);
+        }
+
+
         public override void ResetPassword(BaseDTO baseDTO)
         {
             //cONVERSION DEL baseDTO al user
@@ -139,6 +164,7 @@ namespace DataAccess
 
             _dao.ExecuteProcedure(sqlOperation);
         }
+
 
         static string GenerateOTP(int length)
         {
@@ -214,7 +240,8 @@ namespace DataAccess
                 Role = (string)row["ROLE"],
                 PhoneNumber = (int)row["PHONENUMBER"],
                 ValidationOTP = (string)row["VALIDATIONOTP"],
-                ResetOTP = (string)row["RESETOTP"]
+                ResetOTP = (string)row["RESETOTP"],
+                Status = (int)row["STATUS"]
            
             };
 

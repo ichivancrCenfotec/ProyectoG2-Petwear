@@ -26,6 +26,8 @@ namespace DataAccess.CRUD
         public abstract T RetrieveByEmail<T>(string email);
 
         public abstract void ResetPassword(BaseDTO baseDTO);
+        public abstract void NewPassword(BaseDTO baseDTO);
+        public abstract void VerifyStatus(BaseDTO baseDTO);
 
         /*
                 public abstract void OTP(BaseDTO baseDTO);

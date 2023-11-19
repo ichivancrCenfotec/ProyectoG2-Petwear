@@ -45,11 +45,22 @@ namespace CoreApp
             var uc = new UserCrudFactory();
             uc.Update(user);
         }
+        public void VerifyRegister(User user)
+        {
+            var uc = new UserCrudFactory();
+            uc.VerifyStatus(user);
+        }
 
         public void ResetPassword(User user)
         {
             var uc = new UserCrudFactory();
             uc.ResetPassword(user);
+        }
+
+        public void NewPassword(User user)
+        {
+            var uc = new UserCrudFactory();
+            uc.NewPassword(user);
         }
 
         public void Delete(User user)
