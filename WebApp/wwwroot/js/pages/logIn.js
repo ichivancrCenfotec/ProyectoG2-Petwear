@@ -17,7 +17,7 @@ function UsersController() {
             vc.LogIn();
 
 
-
+           
 
 
         })
@@ -42,10 +42,13 @@ function UsersController() {
 
         ctrlActions.PostToAPI(serviceRoute, users, function () {
             console.log("User logged in ---> " + JSON.stringify(users))
+
+            //Redireccionar a la pagina de inicio
+            window.location.href = "/Pages/NewPassword.cshtml";
+
         });
 
-        //Redirigir a la pagina de inicio
-        wimdow.location.href = "index.html";
+    
 
         console.log(JSON.stringify(users));
 
