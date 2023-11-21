@@ -14,27 +14,47 @@ namespace CoreApp
 
         public void Create(User user)
         {
-            //Validar que los campos este completos en el user.
             /*
-
-             if (string.IsNullOrEmpty(user.Name))
-             {
-                 throw new Exception("Name is required");
-             }
-
-             if (!IsValidPassword(user.Password))
-             {
-                 throw new Exception("The password does not meet the required criteria. It must be at least 8 characters long and include" +
-                     " at least one uppercase letter, one lowercase letter, one digit, and one special character (e.g., !, @, #, $, etc.).");
-             }
-              //En general aqui se aplican las validaciones.
-
+             
+             
              */
+             
+              //Validar que los campos este completos en el user.
+            if (string.IsNullOrEmpty(user.Name))
+            {
+                throw new Exception("Name is required");
+            }
+
+       
+            //Validar que un usuario sea mayor que 18
+
+    
+
+            //Validar que contraseña sea mayor de 8 caracteres, usar simbolos, numeros, letras, mayusculas y minusculas
+
+
+            if (!IsValidPassword(user.Password))
+            {
+                throw new Exception("The password does not meet the required criteria. It must be at least 8 characters long and include" +
+                    " at least one uppercase letter, one lowercase letter, one digit, and one special character (e.g., !, @, #, $, etc.).");
+            }
 
 
 
-            var uc = new UserCrudFactory();
-            uc.Create(user);
+            //En general aqui se aplican las validaciones.
+        
+            
+                //Despues de validar, se envia la información a la base de datos.
+                var uc = new UserCrudFactory();
+                uc.Create(user);
+            
+          
+             
+             
+
+
+
+            
         }
 
 
