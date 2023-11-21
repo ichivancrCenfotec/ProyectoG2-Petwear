@@ -39,7 +39,9 @@ function UsersController() {
             console.log("User logged in ---> " + JSON.stringify(users))
 
             //Redireccionar a la pagina de inicio
-            window.location.href = "https://localhost:7298/UserDashboard";
+            window.location.href = "https://localhost:7298/Index"; 
+
+            //window.location.href = "https://localhost:7298/UserDashboard"; ESTO LO COMENTÉ XQ NO EXISTE LA PAG AÚN!
 
         });
 

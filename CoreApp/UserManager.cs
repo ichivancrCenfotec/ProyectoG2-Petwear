@@ -14,10 +14,7 @@ namespace CoreApp
 
         public void Create(User user)
         {
-            /*
-             
-             
-             */
+
              
               //Validar que los campos este completos en el user.
             if (string.IsNullOrEmpty(user.Name))
@@ -25,7 +22,7 @@ namespace CoreApp
                 throw new Exception("Name is required");
             }
 
-       
+
             //Validar que un usuario sea mayor que 18
 
     
@@ -38,6 +35,15 @@ namespace CoreApp
                 throw new Exception("The password does not meet the required criteria. It must be at least 8 characters long and include" +
                     " at least one uppercase letter, one lowercase letter, one digit, and one special character (e.g., !, @, #, $, etc.).");
             }
+             
+             
+
+            if (!IsValidPassword(user.Password))
+            {
+                throw new Exception("The password does not meet the required criteria. It must be at least 8 characters long and include" +
+                    " at least one uppercase letter, one lowercase letter, one digit, and one special character (e.g., !, @, #, $, etc.).");
+            }
+
 
 
 
