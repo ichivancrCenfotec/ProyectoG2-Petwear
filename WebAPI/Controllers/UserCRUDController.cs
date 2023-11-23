@@ -13,7 +13,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserCRUDController : Controller
+    public class UserCRUDController : ControllerBase
     {
         ///Controlador de mantenimiento del usuario.
         ///C -> Create
