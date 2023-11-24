@@ -23,8 +23,7 @@ namespace DataAccess
 
             var sqlOperation = new SqlOperation { ProcedureName = "CRE_BOOKING_PR" };
             sqlOperation.AddIntParam("P_idPet", booking.IdPet);
-            sqlOperation.AddIntParam("P_idPayment", booking.IdPayment);
-            sqlOperation.AddIntParam("P_idPackage", booking.IdPackage);
+            sqlOperation.AddIntParam("P_idUser", booking.IdUser);
             sqlOperation.AddDateTimeParam("P_checkInDate", booking.CheckInDate);
             sqlOperation.AddDateTimeParam("P_checkOutDate", booking.CheckOutDate);
             sqlOperation.AddVarcharParam("P_considerations", booking.Considerations);
@@ -63,8 +62,7 @@ namespace DataAccess
                     {
                         Id = (int)row["idBooking"],
                         IdPet = (int)row["idPet"],
-                        IdPayment = (int)row["idPayment"],
-                        IdPackage = (int)row["idPackage"],
+                        IdUser = (int)row["idUser"],
                         CheckInDate = (DateTime)row["checkInDate"],
                         CheckOutDate = (DateTime)row["checkOutDate"],
                         Considerations = (string)row["considerations"],
@@ -82,8 +80,7 @@ namespace DataAccess
             {
                 Id = (int)row["idBooking"],
                 IdPet = (int)row["idPet"],
-                IdPayment = (int)row["idPayment"],
-                IdPackage = (int)row["idPackage"],
+                IdUser = (int)row["idUser"],
                 CheckInDate = (DateTime)row["checkInDate"],
                 CheckOutDate = (DateTime)row["checkOutDate"],
                 Considerations = (string)row["considerations"],
@@ -119,8 +116,7 @@ namespace DataAccess
             var sqlOperation = new SqlOperation { ProcedureName = "UPDATE_BOOKING_PR" };
             sqlOperation.AddIntParam("P_idBooking", booking.Id);
             sqlOperation.AddIntParam("P_idPet", booking.IdPet);
-            sqlOperation.AddIntParam("P_idPayment", booking.IdPayment);
-            sqlOperation.AddIntParam("P_idPackage", booking.IdPackage);
+            sqlOperation.AddIntParam("P_idUser", booking.IdUser);
             sqlOperation.AddDateTimeParam("P_checkInDate", booking.CheckInDate);
             sqlOperation.AddDateTimeParam("P_checkOutDate", booking.CheckOutDate);
             sqlOperation.AddVarcharParam("P_considerations", booking.Considerations);
