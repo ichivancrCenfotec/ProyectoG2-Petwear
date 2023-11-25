@@ -18,7 +18,5 @@ namespace DTOs
         private string FotoUno { get; set; }
         private string FotoDos { get; set; }
 
-        
-
     }
 }
