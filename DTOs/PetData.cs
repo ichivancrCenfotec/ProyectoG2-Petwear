@@ -8,15 +8,13 @@ namespace DTOs
 {
     public class PetData : BaseDTO
     {
-        public String? Name { get; set; }
-        /*
-         public int? IdPet {  get; set; }
+        public int IdPet { get; set; }
 
-         public float? Temperature { get; set; }
+        public float Temperature { get; set; }
 
-         public float? UltraViolet { get; set; }
-         public float? Humidity {  get; set; }
-         public DateTime? Date {  get; set; }
-        */
+        public int Humidity { get; set; }
+        public int UltraViolet { get; set; }
+
+        public DateTime Created { get; set; }
     }
 }
