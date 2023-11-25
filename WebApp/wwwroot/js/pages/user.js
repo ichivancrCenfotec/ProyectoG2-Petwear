@@ -65,7 +65,7 @@ function UsersController() {
         users.address = $("#txtAddress").val();
         users.phone = $("#txtNumber").val();
         users.role = $("#txtRole").val();
-        users.photo = document.getElementById("#uploadedimage").src;
+        users.photo = localStorage.getItem('photouser');
 
   
 
@@ -93,7 +93,7 @@ function UsersController() {
         users.address = $("#txtAddress").val();
         users.phone = $("#txtNumber").val();
         users.role = $("#txtRole").val();
-        users.photo = document.getElementById("#uploadedimage").src;
+        users.photo = localStorage.getItem('photouser');
 
 
 
