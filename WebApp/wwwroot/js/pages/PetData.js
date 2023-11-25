@@ -13,7 +13,7 @@ function IDEAController() {
 
         //RUTA DEL API PARA CONSUMIR EL SERVICIO
 
-        var urlService = ctrlActions.GetUrlApiService(this.ApiService + "/RetriveAll/RetriveAll")
+        var urlService = ctrlActions.GetUrlApiService(this.ApiService + "/RetrieveAll/RetrieveAll")
 
         //Definir las columnas que vamos a extraer del json de respuesta del API
         var columns = [];
