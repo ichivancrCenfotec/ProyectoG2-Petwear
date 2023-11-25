@@ -28,9 +28,18 @@ namespace WebAPI.Controllers
 
 
         [HttpPost]
-        public PetData PostPetData(PetData pd)
+        public async Task<IActionResult> Create(PetData pd)
         {
-            return pd;
+            var im = new IDEAManager();
+
+            try
+            {
+                im.Create(pd);
+                return Ok(pd);
+            }catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }

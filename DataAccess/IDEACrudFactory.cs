@@ -24,7 +24,7 @@ namespace DataAccess
 
             //Vamos a definir el SqlOperation para esta operacion de creacion
             var sqlOperation = new SqlOperation { ProcedureName = "CRE_PETDATA_PW" };
-            sqlOperation.AddIntParam("P_ID", petData.IdPet);
+            sqlOperation.AddIntParam("P_IDPET", petData.IdPet);
             sqlOperation.AddFloatParam("P_TEMPERATURE", petData.Temperature);
             sqlOperation.AddIntParam("P_HUMIDITY", petData.Humidity);
             sqlOperation.AddIntParam("P_ULTRAVIOLET", petData.UltraViolet);
@@ -56,7 +56,43 @@ namespace DataAccess
 
         public override List<T> RetrieveAll<T>()
         {
-            throw new NotImplementedException();
+            var lstPetData = new List<T>();
+
+            var sqlOperation = new SqlOperation { ProcedureName = "RET_ALL_PETDATA_PW" };
+
+            //Devuelve la lista de diccionarios
+
+            var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
+
+
+            if (lstResults.Count > 0)
+            {
+                foreach (var row in lstResults)
+                {
+
+                    var petdata = BuildPetData<T>(row);
+
+                    lstPetData.Add(petdata);
+
+                }
+
+            }
+
+            return lstPetData;
+        }
+        private T BuildPetData<T>(Dictionary<string, object> row)
+        {
+            var pet = new PetData
+            {
+                Id = (int)row["ID"],
+                IdPet = (int)row["IDPET"],
+                Temperature = (float)Convert.ToSingle(row["TEMPERATURE"]),
+                Humidity = (int)row["HUMIDITY"],
+                UltraViolet = (int)row["ULTRAVIOLET"],
+                Created = (DateTime)row["CREATED"]
+            };
+
+            return (T)Convert.ChangeType(pet, typeof(T));
         }
 
         public override T RetrieveByEmail<T>(string email)
@@ -66,9 +102,21 @@ namespace DataAccess
 
         public override T RetrieveById<T>(int id)
         {
-            throw new NotImplementedException();
-        }
+            var sqlOperation = new SqlOperation { ProcedureName = "RET_BY_ID_PETDATA" };
+            sqlOperation.AddIntParam("P_ID", id);
 
+            var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
+
+            if (lstResults.Count > 0)
+            {
+                //Extraermos el primer valor de la lista
+                var row = lstResults[0];
+
+                var petData = BuildPetData<T>(row);
+                return petData;
+            }
+            return default(T);
+        }
         public override void Update(BaseDTO baseDTO)
         {
             throw new NotImplementedException();
