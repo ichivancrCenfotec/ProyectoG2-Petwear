@@ -21,11 +21,22 @@ app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(
 
 
 
+<<<<<<< Updated upstream
  //if (app.Environment.IsDevelopment())
 //{
   //  app.UseSwagger();
    // app.UseSwaggerUI();
 //}
+=======
+/* if (app.Environment.IsDevelopment())
+{
+app.UseSwagger();
+app.UseSwaggerUI();
+}
+*/
+
+
+>>>>>>> Stashed changes
 // Configure the HTTP request pipeline.
 
 
