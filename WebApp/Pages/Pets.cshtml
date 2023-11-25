@@ -26,20 +26,26 @@
              
                     <div class="form-group">
                         <label for="txtAge" class="form-label mt-4">Pet's age</label>
-                        <input id="txtage" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter your Pet's age">
+                        <input id="txtAge" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter your Pet's age">
                         <small id="emailHelp" class="form-text text-muted">We'll never share this information with anyone else.</small>
                     </div>
+
                     <div class="form-group">
-                        <label for="txtWeight" class="form-label mt-4">Address</label>
+                        <label for="txtBreed" class="form-label mt-4">Breed</label>
+                        <input id="txtBreed" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Please enter breed of your pet">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your information with anyone else.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtWeight" class="form-label mt-4">Weight</label>
                         <input id="txtWeight" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter your Pet's weight in kg">
                         <small id="emailHelp" class="form-text text-muted">We'll never share this information with anyone else.</small>
                     </div>
                     <div class="form-group">
                         <label for="txtDescription" class="form-label mt-4">Description</label>
-                        <input id="txtDescription" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Please enter any aditional description of your pet">
+                        <input id="txtDescription" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Please enter any aditional description of your pet">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your address with anyone else.</small>
                     </div>
-                 
                     <div class="form-group">
                         <label for="LevelAggressivenes" class="form-label mt-4">Select a level of aggressiveness of your pet</label>
                         <select id="LevelAggressivenes" class="form-control">
@@ -58,42 +64,48 @@
                         <small id="emailHelp" class="form-text text-muted">Select a number from 1 to 10.</small>
                     </div>
 
+                    @*
+
                     <div class="form-group">
-                        <label for="txtPhoto" class="form-label mt-4">Photo</label>
-                        <button id="upload_widget" class="cloudinary-button">Upload files</button>
+                    <label for="txtPhoto" class="form-label mt-4">Photo</label>
+                    <button id="upload_widget" class="cloudinary-button">Upload files</button>
 
-                        <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+                    <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 
-                        <script type="text/javascript">
-                            var myWidget = cloudinary.createUploadWidget({
-                                cloudName: 'deyzvu9sp',
-                                uploadPreset: 'brgss5d8'
-                            }, (error, result) => {
-                                if (!error && result && result.event === "success") {
-                                    console.log('Done! Here is the image info: ', result.info);
-                                    localStorage.setItem('photouser', result.info.secure_url);
-                                    document
-                                        .getElementById("uploadedimage")
-                                        .setAttribute("src", result.info.secure_url);
+                    <script type="text/javascript">
+                    var myWidget = cloudinary.createUploadWidget({
+                    cloudName: 'deyzvu9sp',
+                    uploadPreset: 'brgss5d8'
+                    }, (error, result) => {
+                    if (!error && result && result.event === "success") {
+                    console.log('Done! Here is the image info: ', result.info);
+                    localStorage.setItem('photouser', result.info.secure_url);
+                    document
+                    .getElementById("uploadedimage")
+                    .setAttribute("src", result.info.secure_url);
 
-                                }
-                            }
-                            )
+                    }
+                    }
+                    )
 
-                            document.getElementById("upload_widget").addEventListener("click", function () {
-                                myWidget.open();
-                            }, false);
-                        </script>
+                    document.getElementById("upload_widget").addEventListener("click", function () {
+                    myWidget.open();
+                    }, false);
+                    </script>
 
-                        <!-- placeholder for uploaded image -->
-                        <img id="uploadedimage"
-                             src="" width="300">
-                        </img>
+                    <!-- placeholder for uploaded image -->
+                    <img id="uploadedimage"
+                    src="" width="300">
+                    </img>
 
 
-                        <!-- local upload instantiation -->
+                    <!-- local upload instantiation -->
 
                     </div>
+
+                    *@
+
+                    
 
 
                     @*<div class="form-group">
