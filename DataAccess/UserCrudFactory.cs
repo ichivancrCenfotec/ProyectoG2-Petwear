@@ -32,6 +32,7 @@ namespace DataAccess
             sqlOperation.AddVarcharParam("P_EMAIL", user.Email);
             sqlOperation.AddVarcharParam("P_ADDRESS", user.Address);
             sqlOperation.AddVarcharParam("P_ROLE", user.Role);
+            sqlOperation.AddVarcharParam("P_PHOTO", user.Photo);
             sqlOperation.AddIntParam("P_PHONE_NUMBER", user.PhoneNumber);
             sqlOperation.AddVarcharParam("P_VALIDATIONOTP", GenerateOTP(6));
             sqlOperation.AddVarcharParam("P_RESETOTP", " ");
@@ -220,6 +221,7 @@ namespace DataAccess
             sqlOperation.AddVarcharParam("P_EMAIL", user.Email);
             sqlOperation.AddVarcharParam("P_ADDRESS", user.Address);
             sqlOperation.AddVarcharParam("P_ROLE", user.Role);
+            sqlOperation.AddVarcharParam("P_PHOTO", user.Photo);
             sqlOperation.AddIntParam("P_PHONE_NUMBER", user.PhoneNumber);
 
 
@@ -239,6 +241,7 @@ namespace DataAccess
                 Email = (string)row["EMAIL"],
                 Address = (string)row["ADDRESS"],
                 Role = (string)row["ROLE"],
+                Photo = (string)row["PHOTO"],
                 PhoneNumber = (int)row["PHONENUMBER"],
                 ValidationOTP = (string)row["VALIDATIONOTP"],
                 ResetOTP = (string)row["RESETOTP"],
