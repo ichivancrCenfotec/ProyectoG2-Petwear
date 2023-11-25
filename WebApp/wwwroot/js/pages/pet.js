@@ -60,43 +60,40 @@ function PetsController() {
 
         //Crear un DTO de USER
 
-        var users = {};
-        users.name = $("#txtName").val();
-        users.lastname = $("#txtLastName").val();
-        users.email = $("#txtEmail").val();
-        users.password = $("#txtPassword").val();
-        users.address = $("#txtAddress").val();
-        users.phone = $("#txtNumber").val();
-        users.role = $("#txtRole").val();
-        users.photo = localStorage.getItem('photouser');
+        var pets = {};
+        pets.namepet = $("#txtNamePet").val();
+        pets.age = $("#txtAge").val();
+        pets.breed = $("#txtBreed").val();
+        pets.weight = $("#txtWeight").val();    
+        pets.description = $("#txtDescription").val();
+        pets.levelAggressiveness = $("#LevelAggressiveness").val();
+        pets.fotoUno = " ";
+        pets.fotoDos = " ";
 
-
+  
 
         //Llamado al API
         var ctrlActions = new ControlActions();
         var serviceRoute = this.ApiService + "/Create";
 
-        ctrlActions.PostToAPI(serviceRoute, users, function () {
-            console.log("User created ---> " + JSON.stringify(users))
+        ctrlActions.PostToAPI(serviceRoute, pets, function () {
+            console.log("Pet created ---> " + JSON.stringify(pets))
 
         });
 
-        console.log(JSON.stringify(users));
+        console.log(JSON.stringify(pets));
     }
 
     this.Update = function () {
 
-        var users = {};
-        users.id = $("#txtId").val();
-        users.name = $("#txtName").val();
-        users.lastname = $("#txtLastName").val();
-        users.email = $("#txtEmail").val();
-        users.password = $("#txtPassword").val();
-        users.address = $("#txtAddress").val();
-        users.phone = $("#txtNumber").val();
-        users.role = $("#txtRole").val();
-        users.photo = localStorage.getItem('photouser');
-
+        var pets = {};
+        pets.idPet = $("#txtPetId").val();
+        pets.namePet = $("#txtNamePet").val();
+        pets.age = $("#txtAge").val();
+        pets.breed = $("#txtBreed").val();
+        pets.weight = $("#txtWeight").val();
+        pets.description = $("#txtDescription").val();
+        pets.levelAggressiveness = $("#txtLevelAggressiveness").val();
 
 
         //Llamado al API
@@ -104,22 +101,22 @@ function PetsController() {
         var serviceRoute = this.ApiService + "/Update";
 
         ctrlActions.PutToAPI(serviceRoute, users, function () {
-            console.log("User updated ---> " + JSON.stringify(users))
+            console.log("Pet updated ---> " + JSON.stringify(pets))
 
         });
     }
 
     this.Delete = function () {
         //Crear un DTO de USER
-        var users = {};
-        users.id = $("#txtId").val();
+        var pets = {};
+        pets.idPet = $("#txtIdPet").val();
 
         //Llamado al API
         var ctrlActions = new ControlActions();
         var serviceRoute = this.ApiService + "/Delete";
 
         ctrlActions.DeleteToAPI(serviceRoute, users, function () {
-            console.log("User deleted ---> " + JSON.stringify(users))
+            console.log("Pet deleted ---> " + JSON.stringify(pets))
         });
 
     }
@@ -191,6 +188,6 @@ function PetsController() {
 
 //Instanciamiento de la clase
 $(document).ready(function () {
-    var viewCont = new UsersController();
+    var viewCont = new PetsController();
     viewCont.InitView();
 })
