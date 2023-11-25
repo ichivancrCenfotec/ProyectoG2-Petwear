@@ -23,7 +23,7 @@ namespace CoreApp
         public object? RetrieveById(PetData pet) 
         {
             var uc = new IDEACrudFactory();
-            return uc.RetrieveAll<PetData>();
+            return uc.RetrieveById<PetData>(pet.Id);
         }
     }
 }

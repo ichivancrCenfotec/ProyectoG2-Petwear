@@ -11,8 +11,8 @@ namespace WebAPI.Controllers
     {
 
         [HttpGet]
-        [Route("RetriveAll")]
-        public async Task<IActionResult> RetriveAll()
+        [Route("RetrieveAll")]
+        public async Task<IActionResult> RetrieveAll()
         {
             try
             {
