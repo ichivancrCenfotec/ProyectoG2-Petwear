@@ -20,13 +20,30 @@ namespace DataAccess
 
         public override void Create(BaseDTO baseDTO)
         {
-            throw new NotImplementedException();
+            var pet = baseDTO as Pet;
+
+            var sqlOperation = new SqlOperation { ProcedureName = "CRE_PET" };
+            sqlOperation.AddVarcharParam("P_NAME_PET", pet.NamePet);
+            sqlOperation.AddIntParam("P_AGE", pet.Age);
+            sqlOperation.AddVarcharParam("P_BREED", pet.Breed);
+            sqlOperation.AddIntParam("P_WEIGHT", pet.Weight);
+            sqlOperation.AddVarcharParam("P_DESCRIPTION", pet.Description);
+            sqlOperation.AddIntParam("P_LEVEL_AGGRESSIVENESS", pet.LevelAggressiveness);
+            sqlOperation.AddVarcharParam("P_FOTO_UNO", pet.FotoUno);
+            sqlOperation.AddVarcharParam("P_FOTO_DOS", pet.FotoDos);
+
+
+             //Invocamos
+            _dao.ExecuteProcedure(sqlOperation);
 
         }
 
         public override void Delete(BaseDTO baseDTO)
         {
-            throw new NotImplementedException();
+               var pet = baseDTO as Pet;
+            var sqlOperation = new SqlOperation { ProcedureName = "DEL_PET" };
+            sqlOperation.AddIntParam("P_ID_PET", pet.idPet);
+            _dao.ExecuteProcedure(sqlOperation);
         }
 
         public override void NewPassword(BaseDTO baseDTO)
@@ -62,12 +79,35 @@ namespace DataAccess
 
         public override void Update(BaseDTO baseDTO)
         {
-            throw new NotImplementedException();
+           var pet = baseDTO as Pet;
+
+            var sqlOperation = new SqlOperation { ProcedureName = "UPDATE_PET" };
+            sqlOperation.AddIntParam("P_ID_PET", pet.idPet);
+            sqlOperation.AddVarcharParam("P_NAME_PET", pet.NamePet);
+            sqlOperation.AddIntParam("P_AGE", pet.Age);
+            sqlOperation.AddVarcharParam("P_BREED", pet.Breed);
+            sqlOperation.AddIntParam("P_WEIGHT", pet.Weight);
+            sqlOperation.AddVarcharParam("P_DESCRIPTION", pet.Description);
+            sqlOperation.AddIntParam("P_LEVEL_AGGRESSIVENESS", pet.LevelAggressiveness);
+            sqlOperation.AddVarcharParam("P_FOTO_UNO", pet.FotoUno);
+            sqlOperation.AddVarcharParam("P_FOTO_DOS", pet.FotoDos);
+
+            _dao.ExecuteProcedure(sqlOperation);
         }
 
         public override void VerifyStatus(BaseDTO baseDTO)
         {
             throw new NotImplementedException();
+        }
+
+        private T BuildPet<T>(Dictionary<string, object> row)
+        {
+            var pet = new Pet
+            {
+
+            }
+
+            return pet as T;
         }
     }
 }
