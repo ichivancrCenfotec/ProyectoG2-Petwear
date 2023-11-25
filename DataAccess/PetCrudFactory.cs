@@ -26,7 +26,7 @@ namespace DataAccess
             sqlOperation.AddVarcharParam("P_NAME_PET", pet.NamePet);
             sqlOperation.AddIntParam("P_AGE", pet.Age);
             sqlOperation.AddVarcharParam("P_BREED", pet.Breed);
-            sqlOperation.AddIntParam("P_WEIGHT", pet.Weight);
+            sqlOperation.AddFloatParam("P_WEIGHT", pet.Weight);
             sqlOperation.AddVarcharParam("P_DESCRIPTION", pet.Description);
             sqlOperation.AddIntParam("P_LEVEL_AGGRESSIVENESS", pet.LevelAggressiveness);
             sqlOperation.AddVarcharParam("P_FOTO_UNO", pet.FotoUno);
@@ -74,7 +74,21 @@ namespace DataAccess
 
         public override T RetrieveById<T>(int id)
         {
-            throw new NotImplementedException();
+            var sqlOperation = new SqlOperation { ProcedureName = "RET_PET_BY_ID" };
+            sqlOperation.AddIntParam("P_IDPET", id);
+
+            var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
+
+            if (lstResults.Count > 0)
+            {
+                var row = lstResults[0];
+
+                //Construir el objeto
+                var petDTO = BuildPet<T>(row);
+                return petDTO;
+
+            }
+            return default(T);
         }
 
         public override void Update(BaseDTO baseDTO)
@@ -86,7 +100,7 @@ namespace DataAccess
             sqlOperation.AddVarcharParam("P_NAME_PET", pet.NamePet);
             sqlOperation.AddIntParam("P_AGE", pet.Age);
             sqlOperation.AddVarcharParam("P_BREED", pet.Breed);
-            sqlOperation.AddIntParam("P_WEIGHT", pet.Weight);
+            sqlOperation.AddFloatParam("P_WEIGHT", pet.Weight);
             sqlOperation.AddVarcharParam("P_DESCRIPTION", pet.Description);
             sqlOperation.AddIntParam("P_LEVEL_AGGRESSIVENESS", pet.LevelAggressiveness);
             sqlOperation.AddVarcharParam("P_FOTO_UNO", pet.FotoUno);
@@ -105,9 +119,19 @@ namespace DataAccess
             var pet = new Pet
             {
 
-            }
 
-            return pet as T;
+                idPet = (int)row["IDPET"],
+                NamePet = (string)row["NAMEPET"],
+                Age = (int)row["AGE"],
+                Breed = (string)row["BREED"],
+                Weight = (float)row["WEIGHT"],
+                Description = (string)row["DESCRIPTION"],
+                LevelAggressiveness = (int)row["LEVELAGGRESSIVENESS"],
+                FotoUno = (string)row["FOTO_UNO"],
+                FotoDos = (string)row["FOTO_DOS"]
+            };
+
+            return (T)Convert.ChangeType(pet, typeof(T));
         }
     }
 }
