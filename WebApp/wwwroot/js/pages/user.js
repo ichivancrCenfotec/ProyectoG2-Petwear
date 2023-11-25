@@ -65,6 +65,7 @@ function UsersController() {
         users.address = $("#txtAddress").val();
         users.phone = $("#txtNumber").val();
         users.role = $("#txtRole").val();
+        users.photo = $("#uploadedimage").getAttribute('src');
 
   
 
