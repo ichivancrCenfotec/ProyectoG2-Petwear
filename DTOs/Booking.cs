@@ -12,8 +12,7 @@ namespace DTOs
     {
 
         public int IdPet { get; set; }
-        public int IdPayment { get; set; }
-        public int IdPackage { get; set; }
+        public int IdUser { get; set; }
         public DateTime CheckInDate { get; set; }
         public DateTime CheckOutDate { get; set; }
         public string Considerations { get; set; }

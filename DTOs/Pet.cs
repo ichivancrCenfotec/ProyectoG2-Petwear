@@ -8,17 +8,28 @@ namespace DTOs
 {
     public class Pet: BaseDTO
     {
-        private int idPet {  get; set; }
-        private string namePet {  get; set; }
-        private int age {  get; set; }
-        private string breed {  get; set; }
-        private int weight {  get; set; }
-        private string description {  get; set; }
-        private int levelAggressiveness {  get; set; }
-        private string fotoUno { get; set; }
-        private string fotoDos { get; set; }
+        public int idPet {  get; set; }
+        public string? NamePet {  get; set; }
+        public int Age {  get; set; }
+        public string? Breed {  get; set; }
+        public int Weight {  get; set; }
+        public string? Description {  get; set; }
+        public int LevelAggressiveness {  get; set; }
+        public string? FotoUno { get; set; }
+        public string? FotoDos { get; set; }
 
-        
-
+        //Constructor
+        public Pet()
+        {
+            idPet = 0;
+            NamePet = null;
+            Age = 0;
+            Breed = null;
+            Weight = 0;
+            Description = null;
+            LevelAggressiveness = 0;
+            FotoUno = null;
+            FotoDos = null;
+        }
     }
 }

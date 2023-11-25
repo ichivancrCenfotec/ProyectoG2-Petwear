@@ -14,12 +14,16 @@ namespace DTOs
         public string? Email {  get; set; }
         public string? Address {  get; set; }
         public string? Role { get; set; }
+
+        public string? Photo { get; set; }
         public int PhoneNumber { get; set; }
         public string? ValidationOTP { get; set; } 
 
         public string? ResetOTP { get; set; }
 
         public int Status { get; set; }
+
+        
 
 
         // Constructot
@@ -31,6 +35,7 @@ namespace DTOs
             Email = null;
             Address = null;
             Role = null;
+            Photo = null;
             PhoneNumber = 0;
             ValidationOTP = null;
             ResetOTP = null;

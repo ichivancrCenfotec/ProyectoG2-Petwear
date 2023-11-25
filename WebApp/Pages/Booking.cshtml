@@ -1,0 +1,52 @@
+﻿@page
+@model WebApp.Pages.BookingModel
+@{
+}
+<div class="bs-docs-section">
+    <br />
+
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="bs-component">
+                <form>
+
+                    <legend style="color: #0092d2;">Booking registration form</legend>
+                    <div class="form-group">
+                        <label for="txtId" class="form-label mt-4">Booking ID</label>
+                        <input id="txtId" type="number" class="form-control" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtId" class="form-label mt-4">Pet ID</label>
+                        <input id="txtIdPet" type="number" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtId" class="form-label mt-4">User ID</label>
+                        <input id="txtIdUser" type="number" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDate" class="form-label mt-4">ChecInDate</label>
+                        <input type="datetime-local" class="form-control" id="txtCheckInDate" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDate" class="form-label mt-4">ChecOutDate</label>
+                        <input type="datetime-local" class="form-control" id="txtCheckOutDate" />
+                    </div>
+                    <div class="form-group">
+                        <label for="txtStatus" class="form-label mt-4">Status</label>
+                        <input type="text" class="form-control" id="txtStatus"/>
+                    </div>
+                </form>
+                <br />
+                @*<button id="btnNew" class="source-button btn btn-info btn-xs" type="button" tabindex="0"><i class="bi bi-code">New</i></button>*@
+                <button id="btnCreate" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Registrar reserva</i></button>
+                @*<button id="btnUpdate" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Update</i></button>
+                <button id="btnDelete" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Delete</i></button>
+                @*<button id="btnUpdate" class="source-button btn btn-warning btn-xs" type="button" tabindex="0"><i class="bi bi-code">Update</i></button>
+                <button id="btnDelete" class="source-button btn btn-danger btn-xs" type="button" tabindex="0"><i class="bi bi-code">Delete</i></button>*@
+            </div>
+        </div>
+        
+
+    </div>
+</div>
