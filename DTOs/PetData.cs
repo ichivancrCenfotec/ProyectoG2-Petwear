@@ -13,7 +13,7 @@ namespace DTOs
         public float Temperature { get; set; }
 
         public int Humidity { get; set; }
-        public int UltraViolet { get; set; }
+        public float UltraViolet { get; set; }
 
         public DateTime Created { get; set; }
     }
