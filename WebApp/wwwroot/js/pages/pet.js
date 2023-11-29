@@ -68,7 +68,7 @@ function PetsController() {
         pets.description = $("#txtDescription").val();
         pets.levelAggressiveness = $("#LevelAggressiveness").val();
         pets.fotoUno = localStorage.getItem('photouser1');
-        pets.fotoDos = localStorage.getItem('photouser2');;
+        pets.fotoDos = localStorage.getItem('photouser2');
 
   
 
@@ -94,6 +94,8 @@ function PetsController() {
         pets.weight = $("#txtWeight").val();
         pets.description = $("#txtDescription").val();
         pets.levelAggressiveness = $("#txtLevelAggressiveness").val();
+        pets.fotoUno = localStorage.getItem('photouser1');
+        pets.fotoDos = localStorage.getItem('photouser2');
 
 
         //Llamado al API
