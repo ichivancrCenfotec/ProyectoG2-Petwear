@@ -58,7 +58,7 @@ function PetsController() {
         
         */
 
-        //Crear un DTO de USER
+        //Crear un DTO de PETS
 
         var pets = {};
         pets.namepet = $("#txtNamePet").val();
@@ -67,8 +67,8 @@ function PetsController() {
         pets.weight = $("#txtWeight").val();    
         pets.description = $("#txtDescription").val();
         pets.levelAggressiveness = $("#LevelAggressiveness").val();
-        pets.fotoUno = " ";
-        pets.fotoDos = " ";
+        pets.fotoUno = localStorage.getItem('photouser1');
+        pets.fotoDos = localStorage.getItem('photouser2');;
 
   
 
