@@ -40,7 +40,7 @@ function PetsController() {
 
         /*
 
-        EndPoint: https://localhost:7246/api/UserCRUD/Create
+        EndPoint: https://localhost:7246/api/PetCRUD/Create
 
         {
   "id": 0,
