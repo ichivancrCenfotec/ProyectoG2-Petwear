@@ -27,7 +27,7 @@ namespace DataAccess
             sqlOperation.AddIntParam("P_IDPET", petData.IdPet);
             sqlOperation.AddFloatParam("P_TEMPERATURE", petData.Temperature);
             sqlOperation.AddIntParam("P_HUMIDITY", petData.Humidity);
-            sqlOperation.AddIntParam("P_ULTRAVIOLET", petData.UltraViolet);
+            sqlOperation.AddFloatParam("P_ULTRAVIOLET", petData.UltraViolet);
 
             //Invocamos
 
@@ -88,7 +88,7 @@ namespace DataAccess
                 IdPet = (int)row["IDPET"],
                 Temperature = (float)Convert.ToSingle(row["TEMPERATURE"]),
                 Humidity = (int)row["HUMIDITY"],
-                UltraViolet = (int)row["ULTRAVIOLET"],
+                UltraViolet = (float)Convert.ToSingle(row["ULTRAVIOLET"]),
                 Created = (DateTime)row["CREATED"]
             };
 

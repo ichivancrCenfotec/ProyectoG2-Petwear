@@ -1,0 +1,52 @@
+﻿@page
+@model WebApp.Pages.packageModel
+@{
+}
+<script src="~/js/pages/package.js"></script>
+<div class="bs-docs-section">
+    <br />
+
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="bs-component">
+                <form>
+
+                    <legend style="color: #0092d2;">Package creation form</legend>
+                    <div class="form-group">
+                        <label for="txtPackageId" class="form-label mt-4">User ID</label>
+                        <input id="txtPackageId" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter your Package ID">
+                        <small id="emailHelp" class="form-text text-muted">Your Package ID </small>
+                    </div>
+                  
+                    <div class="form-group">
+                        <label for="txtCost" class="form-label mt-4">Cost</label>
+                        <input id="txtCost" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter your Package's cost">
+                        <small id="emailHelp" class="form-text text-muted">Enter your Package's cost</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtdescription" class="form-label mt-4">Description</label>
+                        <input type="text" class="form-control" id="txtdescription" aria-describedby="emailHelp" placeholder="Enter your Package description">
+                        <small id="emailHelp" class="form-text text-muted">Client would see Package description</small>
+                    </div>
+                   
+
+                    @*<div class="form-group">
+                    <label for="formFile" class="form-label mt-4">Attach your document ID.</label>
+                    <input class="form-control" type="file" id="formFile">
+                    </div>*@
+                </form>
+                <br />
+                @*<button id="btnNew" class="source-button btn btn-info btn-xs" type="button" tabindex="0"><i class="bi bi-code">New</i></button>*@
+                <button id="btnCreate" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Registrar</i></button>
+                @*<button id="btnUpdate" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Update</i></button>
+                <button id="btnDelete" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Delete</i></button>
+                @*<button id="btnUpdate" class="source-button btn btn-warning btn-xs" type="button" tabindex="0"><i class="bi bi-code">Update</i></button>
+                <button id="btnDelete" class="source-button btn btn-danger btn-xs" type="button" tabindex="0"><i class="bi bi-code">Delete</i></button>*@
+            </div>
+        </div>
+      
+
+    </div>
+</div>
