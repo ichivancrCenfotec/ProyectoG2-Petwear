@@ -176,21 +176,6 @@ function ControlActions() {
 		});
 	}
 
-	this.GetToApi2 = function (service, data) {
-
-		fetch(service(data))
-			.then(response => {
-				if (!response.ok) {
-					throw new Error('Network response was not ok');
-				}
-				var aux = $.parseJSON(response.json());
-				console.log(aux)
-				sessionStorage.setItem('role', aux.Role);
-				sessionStorage.setItem('photo', aux.Photo);
-
-			})
-	}
-
 }
 
 //Custom jquery actions
