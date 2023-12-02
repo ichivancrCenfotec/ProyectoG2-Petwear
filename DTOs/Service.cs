@@ -8,15 +8,14 @@ namespace DTOs
 {
     public class Service : BaseDTO
     {
-        public int IdPackage { get; set; }
-
+        public int IdService { get; set; }
         public float Cost { get; set; }
 
-        public string ServiceName { get; set; }
+        public string? ServiceName { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
       
-        public bool Availability { get; set; }
+        public int Availability { get; set; }
 
     }
 }

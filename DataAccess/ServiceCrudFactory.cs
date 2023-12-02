@@ -23,11 +23,10 @@ namespace DataAccess
             var service = baseDTO as Service;
 
             var sqlOperation = new SqlOperation { ProcedureName = "CRE_SERVICE_PR" };
-            sqlOperation.AddIntParam("P_IdPackage", service.IdPackage);
-            sqlOperation.AddFloatParam("P_Cost", service.Cost);
-            sqlOperation.AddVarcharParam("P_ServiceName", service.ServiceName);
-            sqlOperation.AddVarcharParam("P_Description", service.Description);
-            sqlOperation.AddBoolParam("P_Availability", service.Availability);
+            sqlOperation.AddFloatParam("P_COST", service.Cost);
+            sqlOperation.AddVarcharParam("P_SERVICENAME", service.ServiceName);
+            sqlOperation.AddVarcharParam("P_DESCRIPTION", service.Description);
+            sqlOperation.AddIntParam("P_AVAILABILITY", service.Availability);
 
             _dao.ExecuteProcedure(sqlOperation);
         }
@@ -47,7 +46,7 @@ namespace DataAccess
 
         public override List<T> RetrieveAll<T>()
         {
-            var lstBooking = new List<T>();
+            var lstService = new List<T>();
 
             var sqlOperation = new SqlOperation { ProcedureName = "RET_ALL_SERVICE_PR" };
 
@@ -57,19 +56,13 @@ namespace DataAccess
             {
                 foreach (var row in lstResults)
                 {
-                    var serviceDTO = new Service()
-                    {
-                        Id = (int)row["idService"],
-                        IdPackage = (int)row["idPackage"],
-                        Cost = Convert.ToSingle(row["cost"]),
-                        ServiceName = (string)row["serviceName"],
-                        Description = (string)row["description"],
-                        Availability = (bool)row["availability"]
-                    };
-                    lstBooking.Add((T)Convert.ChangeType(serviceDTO, typeof(T)));
+                  
+                    var serviceDTO = BuildService<T>(row);
+
+                    lstService.Add((T)Convert.ChangeType(serviceDTO, typeof(T)));
                 }
             }
-            return lstBooking;
+            return lstService;
 
         }
         private T BuildService<T>(Dictionary<string, object> row)
@@ -77,12 +70,11 @@ namespace DataAccess
             //Construir el objeto
             var service = new Service()
             {
-                Id = (int)row["idService"],
-                IdPackage = (int)row["idPackage"],
-                Cost = Convert.ToSingle(row["cost"]),
-                ServiceName = (string)row["serviceName"],
-                Description = (string)row["description"],
-                Availability = (bool)row["availability"]
+                IdService = (int)row["ID_SERVICE"],
+                Cost = Convert.ToSingle(row["COST"]),
+                ServiceName = (string)row["SERVICE_NAME"],
+                Description = (string)row["DESCRIPTION"],
+                Availability = (int)row["AVAILABILITY"]
             };
             return (T)Convert.ChangeType(service, typeof(T));
 
@@ -115,11 +107,10 @@ namespace DataAccess
 
             var sqlOperation = new SqlOperation { ProcedureName = "UPDATE_SERVICE_PR" };
             sqlOperation.AddIntParam("P_IdService", service.Id);
-            sqlOperation.AddIntParam("P_IdPackage", service.IdPackage);
             sqlOperation.AddFloatParam("P_Cost", service.Cost);
             sqlOperation.AddVarcharParam("P_ServiceName", service.ServiceName);
             sqlOperation.AddVarcharParam("P_Description", service.Description);
-            sqlOperation.AddBoolParam("P_Availability", service.Availability);
+            sqlOperation.AddIntParam("P_Availability", service.Availability);
 
             _dao.ExecuteProcedure(sqlOperation);
         }

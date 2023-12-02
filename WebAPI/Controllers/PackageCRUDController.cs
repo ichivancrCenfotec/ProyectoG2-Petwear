@@ -65,6 +65,23 @@ namespace WebAPI.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("RetriveAllServices")]
+        public async Task<IActionResult> RetriveAllServices()
+        {
+
+            try
+            {
+                var um = new ServiceManager();
+
+                return Ok(um.RetrieveAll());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPut]
         [Route("Update")]
 

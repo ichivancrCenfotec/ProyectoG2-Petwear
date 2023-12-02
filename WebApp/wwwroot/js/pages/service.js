@@ -62,7 +62,7 @@ function ServicesController() {
         var services = {};
         services.idpackage = $("#txtId").val();
         services.cost = $("#txtCost").val();
-        services.name = $("#txtServiceName").val();
+        services.servicename = $("#txtServiceName").val();
         services.description = $("#txtDescription").val();
         services.availability = $("#cbAvailability").val();
 
