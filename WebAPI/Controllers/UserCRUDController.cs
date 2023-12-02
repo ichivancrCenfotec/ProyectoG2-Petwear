@@ -110,7 +110,7 @@ namespace WebAPI.Controllers
 
                 if (VerifyPassword(password, user1))
                 {
-
+                    
                     return Ok(user1);
                     }
                 else
@@ -264,6 +264,28 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
+        [Route("RetrieveByEmail")]
+        public IActionResult RetrieveByEmail(string email)
+        {
+
+            try
+            {
+
+                var um = new UserManager();
+                var user = new User { Email = email };
+
+                return Ok(um.RetrieveByEmail(user));
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+
+        }
+
+        [HttpGet]
         [Route("RetriveAll")]
         public async Task<IActionResult> RetriveAll()
         {
@@ -279,6 +301,8 @@ namespace WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+
 
         [HttpPut]
         [Route("Update")]
