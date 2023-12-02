@@ -34,10 +34,10 @@ function UsersController() {
         //Llamado al API
         var ctrlActions = new ControlActions();
         var serviceRoute = this.ApiService + "/LogIn";
-        var serviceRoute2 = this.ApiService + "/RetrieveByEmail";
+        var serviceRoute2 = this.ApiService + "/RetriveAll";
 
 
-       // ctrlActions.GetToApi2(serviceRoute2, users.email){ };
+        console.log(ctrlActions.GetToApi(serviceRoute2, function () { }));
 
 
         ctrlActions.PostToAPI(serviceRoute, users, function () {
