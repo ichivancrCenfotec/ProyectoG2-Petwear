@@ -13,5 +13,6 @@ const menuItemslogout = document.getElementsByClassName('vis-log-out');
 if (isAdmin != null) {
     for (let i = 0; i < menuItems.length; i++) {
         menuItemslogout[i].style.display = 'none';
+        document.getElementById('pfp').setAttribute("src", sessionStorage.getItem('phto') );
     }
 }

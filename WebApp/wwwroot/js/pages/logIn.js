@@ -48,6 +48,8 @@ function UsersController() {
                     var aux = $.parseJSON(response.json());
                     console.log(aux)
                     sessionStorage.setItem('role', aux.Role);
+                    sessionStorage.setItem('photo', aux.Photo);
+
                 })
 
             
