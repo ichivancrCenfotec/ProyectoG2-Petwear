@@ -12,5 +12,7 @@ namespace DTOs
         public float Cost {  get; set; }
         public string Description {  get; set; }
 
+        public int idService { get; set; }
+
     }
 }

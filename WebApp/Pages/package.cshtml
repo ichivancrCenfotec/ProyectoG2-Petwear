@@ -5,7 +5,35 @@
 <script src="~/js/pages/package.js"></script>
 <div class="bs-docs-section">
     <br />
+     <div class=" row">
+        <legend>Services List</legend>
+        <div class="col-lg-6">
 
+            <table id="tblServices" class=" display" style="width:100%">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Id Service</th>
+
+                        <th>Name Service</th>
+
+                        <th>Cost</th>
+
+                        <th>Description</th>
+
+                        <th>Availability</th>
+
+                    </tr>
+
+                </thead>
+
+            </table>
+
+        </div>
+
+    </div>
 
     <div class="row">
         <div class="col-lg-6">
@@ -14,23 +42,11 @@
 
                     <legend style="color: #0092d2;">Package creation form</legend>
                     <div class="form-group">
-                        <label for="txtPackageId" class="form-label mt-4">User ID</label>
-                        <input id="txtPackageId" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter your Package ID">
-                        <small id="emailHelp" class="form-text text-muted">Your Package ID </small>
+                        <label for="txtServiceId" class="form-label mt-4">Service ID</label>
+                        <input id="txtServiceId" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter Service you want to add ID">
+                        <small id="emailHelp" class="form-text text-muted">Service ID </small>
                     </div>
-                  
-                    <div class="form-group">
-                        <label for="txtCost" class="form-label mt-4">Cost</label>
-                        <input id="txtCost" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter your Package's cost">
-                        <small id="emailHelp" class="form-text text-muted">Enter your Package's cost</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="txtdescription" class="form-label mt-4">Description</label>
-                        <input type="text" class="form-control" id="txtdescription" aria-describedby="emailHelp" placeholder="Enter your Package description">
-                        <small id="emailHelp" class="form-text text-muted">Client would see Package description</small>
-                    </div>
-                   
+                    
 
                     @*<div class="form-group">
                     <label for="formFile" class="form-label mt-4">Attach your document ID.</label>

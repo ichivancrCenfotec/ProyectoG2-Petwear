@@ -34,16 +34,26 @@ function UsersController() {
         //Llamado al API
         var ctrlActions = new ControlActions();
         var serviceRoute = this.ApiService + "/LogIn";
+        var serviceRoute2 = this.ApiService + "/RetriveAll";
+
+
+        console.log(ctrlActions.GetToApi(serviceRoute2, function () { }));
+
 
         ctrlActions.PostToAPI(serviceRoute, users, function () {
             console.log("User logged in ---> " + JSON.stringify(users))
 
+
+
+            
             //Redireccionar a la pagina de inicio
-            window.location.href = "https://localhost:7298/Index"; 
+          //  window.location.href = "https://localhost:7298/Index"; 
 
             //window.location.href = "https://localhost:7298/UserDashboard"; ESTO LO COMENTÉ XQ NO EXISTE LA PAG AÚN!
 
         });
+
+        
 
         console.log(JSON.stringify(users));
 

@@ -30,7 +30,7 @@ function PackagesController() {
         })
 
         //Inicializacion de la tabla
-        // this.LoadTable();
+         this.LoadTable();
 
 
 
@@ -114,6 +114,66 @@ function PackagesController() {
 
     }
 
+    this.LoadTable = function () {
+
+
+
+
+        var ctrlActions = new ControlActions();
+
+        //Ruta del API para concluir el servicio
+        var urlService = ctrlActions.GetUrlApiService(this.ApiService + "/RetriveAllServices");
+
+        /*
+    {
+    "idService": 2,
+    "cost": 0,
+    "serviceName": "string",
+    "description": "string",
+    "availability": 0,
+    "id": 0
+  },
+        */
+        //Definir columnas de la tabla
+        var columns = [];
+        columns[0] = { "data": "idService" };
+        columns[1] = { "data": "cost" };
+        columns[2] = { "data": "serviceName" };
+        columns[3] = { "data": "description" };
+        columns[4] = { "data": "availability" };
+
+
+        //Inicializamos la tabla como un datatable Y CARGAR A PARTIR DEL API
+        $("#tblServices").dataTable({
+            "ajax": {
+                "url": urlService,
+                "dataSrc": ""
+            },
+            "columns": columns
+
+        });
+
+        //hacer un binding de los eventos de la tabla
+
+        $('#tblServices tbody').on('click', 'tr', function () {
+
+            //Buscamos la fila que se le dio clic
+            var row = $(this).closest('tr');
+
+            //Extraemos la data de la fila
+
+            var serviceData = $('#tblServices').DataTable().row(row).data();
+
+            //Binding de valores de la data sobre el formulario
+
+
+            $("txtServiceId").val(serviceData.ID_SERVICE);
+          
+
+        });
+
+
+    }
 
 
 }

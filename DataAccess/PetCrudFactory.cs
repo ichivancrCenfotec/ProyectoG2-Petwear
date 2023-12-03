@@ -119,7 +119,6 @@ namespace DataAccess
             var pet = new Pet
             {
 
-
                 idPet = (int)row["IDPET"],
                 NamePet = (string)row["NAMEPET"],
                 Age = (int)row["AGE"],
