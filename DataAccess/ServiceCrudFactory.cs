@@ -86,7 +86,7 @@ namespace DataAccess
         {
             var sqlOperation = new SqlOperation { ProcedureName = "RET_ID_SERVICE_PR" };
 
-            sqlOperation.AddIntParam("ID", id);
+            sqlOperation.AddIntParam("ID_SERVICE", id);
 
             var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
             if (lstResults.Count > 0)
@@ -131,6 +131,11 @@ namespace DataAccess
         }
 
         public override void VerifyStatus(BaseDTO baseDTO)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void AddService(BaseDTO baseDTO)
         {
             throw new NotImplementedException();
         }

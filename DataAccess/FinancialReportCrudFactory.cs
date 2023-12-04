@@ -10,7 +10,10 @@ namespace DataAccess
 {
     public class FinancialReportCrudFactory : CrudFactory
     {
-
+        public override void AddService(BaseDTO baseDTO)
+        {
+            throw new NotImplementedException();
+        }
 
         public override void Create(BaseDTO baseDTO)
         {

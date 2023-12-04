@@ -145,5 +145,10 @@ namespace DataAccess
         {
             throw new NotImplementedException();
         }
+
+        public override void AddService(BaseDTO baseDTO)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

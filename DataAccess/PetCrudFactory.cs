@@ -17,6 +17,10 @@ namespace DataAccess
             _dao = SqlDao.GetInstance();
         }
 
+        public override void AddService(BaseDTO baseDTO)
+        {
+            throw new NotImplementedException();
+        }
 
         public override void Create(BaseDTO baseDTO)
         {
