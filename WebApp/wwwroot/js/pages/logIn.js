@@ -37,7 +37,11 @@ function UsersController() {
         var serviceRoute2 = this.ApiService + "/RetriveAll";
 
 
-        console.log(ctrlActions.GetToApi(serviceRoute2, function () { }));
+        var response = this.ctrlActions.GetToAPI(serviceRoute2);
+        if (response != null) {
+            sessionStorage.setItem("SESSION_USER", JSON.stringify(response));
+            console.log(sessionStorage.getItem("SESSION_USER");
+        } 
 
 
         ctrlActions.PostToAPI(serviceRoute, users, function () {

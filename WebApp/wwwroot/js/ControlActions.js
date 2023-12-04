@@ -176,6 +176,24 @@ function ControlActions() {
 		});
 	}
 
+	this.GetToAPI2 = function (service) {
+		var response = {};
+		try {
+			$.ajax({
+				type: "GET",
+				url: this.GetUrlApiService(service),
+				cache: false,
+				async: false,
+				success: function (data) {
+					response = data['Data'];
+				}
+			});
+		} catch (err) {
+			console.log(err);
+		}
+		return response;
+	}
+
 }
 
 //Custom jquery actions
