@@ -8,11 +8,12 @@ namespace DTOs
 {
     public class Package: BaseDTO
     {
-        public int TdPackage {  get; set; }
+        public int IdPackage {  get; set; }
+        public string? NamePackage {  get; set; }
         public float Cost {  get; set; }
-        public string Description {  get; set; }
+        public string? Description {  get; set; }
 
-        public int idService { get; set; }
+        
 
     }
 }

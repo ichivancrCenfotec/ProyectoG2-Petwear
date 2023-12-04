@@ -26,6 +26,24 @@ namespace WebAPI.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("AddService")]
+        public async Task<IActionResult> AddService(Package_Service package_service)
+        {
+            var um = new PackageManager();
+
+            try
+            {
+                um.AddService(package_service);
+                return Ok(package_service);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+
         [HttpGet]
         [Route("RetrieveById")]
         public async Task<IActionResult> RetrieveById(int Id)

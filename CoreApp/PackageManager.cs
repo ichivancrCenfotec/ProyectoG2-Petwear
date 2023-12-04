@@ -24,6 +24,11 @@ namespace CoreApp
             return uc.RetrieveById<Package>(package.Id);
         }
 
+        public void AddService(Package_Service package_service)
+        {
+            var uc = new PackageCrudFactory();
+            uc.AddService(package_service);
+        }
 
         public List<Package> RetrieveAll()
         {
