@@ -21,6 +21,7 @@ namespace DataAccess.CRUD
         public abstract T Retrieve<T>();
         public abstract T RetrieveById<T>(int id);
         public abstract List<T> RetrieveAll<T>();
+        public abstract List<T> RetrieveAllById<T>(int id);
         public abstract void Update(BaseDTO baseDTO);
         public abstract void Delete(BaseDTO baseDTO);
         public abstract T RetrieveByEmail<T>(string email);

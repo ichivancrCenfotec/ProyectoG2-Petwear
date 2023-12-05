@@ -66,6 +66,28 @@ namespace WebAPI.Controllers
 
         }
 
+        [HttpPost]
+        [Route("RetrieveAllById")]
+        public async Task<IActionResult> RetrieveAllById(int Id)
+        {
+
+            try
+            {
+
+                var um = new ServiceManager();
+          
+
+                return Ok(um.RetrieveAllById(Id));
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+
+        }
+
         [HttpGet]
         [Route("RetriveAll")]
         public async Task<IActionResult> RetriveAll()
@@ -99,6 +121,8 @@ namespace WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+
 
         [HttpPut]
         [Route("Update")]

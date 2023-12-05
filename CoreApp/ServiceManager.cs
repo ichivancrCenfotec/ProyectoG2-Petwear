@@ -20,7 +20,11 @@ namespace CoreApp
 
         }
 
-
+        public List< Service> RetrieveAllById(int id)
+        {
+            var uc = new ServiceCrudFactory();
+            return uc.RetrieveAllById<Service>(id);
+        }
         public Service RetrieveById(Service service)
         {
             var uc = new ServiceCrudFactory();
