@@ -286,6 +286,28 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
+        [Route("RetrieveByEmail2/{email}")]
+        public IActionResult RetrieveByEmail2(string email)
+        {
+
+            try
+            {
+
+                var um = new UserManager();
+                var user = new User { Email = email };
+
+                return Ok(um.RetrieveByEmail(user));
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+
+        }
+
+        [HttpGet]
         [Route("RetriveAll")]
         public async Task<IActionResult> RetriveAll()
         {
