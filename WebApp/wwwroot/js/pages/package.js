@@ -304,14 +304,8 @@ function PackagesController() {
         //Llamado al API
         var ctrlActions = new ControlActions();
 
-            var serviceRoute = this.ApiService + "/RetrieveAllById";
+            var serviceRoute = this.ApiService + "/RetrieveAllById/" + packages.idpackage;
 
-            ctrlActions.PostToAPI(serviceRoute, packages, function () {
-
-                console.log("Package created ---> " + JSON.stringify(packages))
-
-
-            });
 
             //Ruta del API para concluir el servicio
 
@@ -326,7 +320,7 @@ function PackagesController() {
             //Inicializamos la tabla como un datatable Y CARGAR A PARTIR DEL API
             $("#tblPackages_Services").dataTable({
                 "ajax": {
-                    "url": urlService,
+                    "url": serviceRoute,
                     "dataSrc": ""
                 },
                 "columns": columns

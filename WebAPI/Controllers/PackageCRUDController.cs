@@ -66,8 +66,8 @@ namespace WebAPI.Controllers
 
         }
 
-        [HttpPost]
-        [Route("RetrieveAllById")]
+        [HttpGet]
+        [Route("RetrieveAllById/{Id}")]
         public async Task<IActionResult> RetrieveAllById(int Id)
         {
 
