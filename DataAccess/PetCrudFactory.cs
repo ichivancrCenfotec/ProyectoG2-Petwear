@@ -71,6 +71,11 @@ namespace DataAccess
 
         }
 
+        public override List<T> RetrieveAllById<T>(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public override T RetrieveByEmail<T>(string email)
         {
             throw new NotImplementedException();

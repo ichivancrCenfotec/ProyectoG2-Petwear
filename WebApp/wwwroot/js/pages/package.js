@@ -30,6 +30,12 @@ function PackagesController() {
             vc.Delete();
         })
 
+        $("#btnSeeDetails").click(function () {
+            var vc = new PackagesController();
+            vc.LoadTablePackages_Services();
+        })
+
+        
 
         //Inicializacion de la tabla
          this.LoadTableServices();
@@ -109,9 +115,9 @@ function PackagesController() {
         //Crear un DTO de PETS
 
         var packages_services = {};
-
-        packages_services.serviceId =  $("#txtServiceId").val(); 
-        packages_services.packageId =  $("#txtPackageId").val();
+     
+        packages_services.idservice =  $("#txtServiceId").val(); 
+        packages_services.idpackage =  $("#txtPackageId").val();
       
 
 
@@ -283,68 +289,55 @@ function PackagesController() {
 
     }
 
-    this.LoadTablePackages_Services = function () {
+
+    
+    
+        this.LoadTablePackages_Services = function () {
 
 
-        
 
+        var packages = {};
+            packages.idpackage = $("#txtPackageId").val();
+ 
+
+
+        //Llamado al API
         var ctrlActions = new ControlActions();
 
-        //Ruta del API para concluir el servicio
-        var urlService = ctrlActions.GetUrlApiService(this.ApiService + "/RetriveById");
+            var serviceRoute = this.ApiService + "/RetrieveAllById/" + packages.idpackage;
+
+
+            //Ruta del API para concluir el servicio
+
+
+            var columns = [];
+            columns[0] = { "data": "idService" };
+            columns[1] = { "data": "serviceName" };
+            columns[2] = { "data": "description" };
+            columns[3] = { "data": "cost" };
+
+
+            //Inicializamos la tabla como un datatable Y CARGAR A PARTIR DEL API
+            $("#tblPackages_Services").dataTable({
+                "ajax": {
+                    "url": serviceRoute,
+                    "dataSrc": ""
+                },
+                "columns": columns
+
+            });
+
+        };
+    
+
 
 
     
 
-        /*
-  {
-    "idPackage": 1,
-    "namePackage": "string",
-    "cost": 0,
-    "description": "string",
-    "id": 0
-  }
-        */
-        //Definir columnas de la tabla
-        var columns = [];
-        columns[0] = { "data": "idPackage" };
-        columns[1] = { "data": "namePackage" };
-        columns[2] = { "data": "cost" };
-        columns[3] = { "data": "description" };
 
 
-        //Inicializamos la tabla como un datatable Y CARGAR A PARTIR DEL API
-        $("#tblPackages").dataTable({
-            "ajax": {
-                "url": urlService,
-                "dataSrc": ""
-            },
-            "columns": columns
 
-        });
-
-        //hacer un binding de los eventos de la tabla
-        //hacer un binding de los eventos de la tabla
-
-        $('#tblServices tbody').on('click', 'tr', function () {
-
-            //Buscamos la fila que se le dio clic
-            var row = $(this).closest('tr');
-
-            //Extraemos la data de la fila
-
-            var serviceData = $('#tblServices').DataTable().row(row).data();
-
-            //Binding de valores de la data sobre el formulario
-
-
-            $("txtServiceId").val(serviceData.ID_SERVICE);
-
-
-        });
-
-
-    }
+    
 
 
 
