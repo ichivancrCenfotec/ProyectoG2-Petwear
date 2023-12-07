@@ -40,7 +40,8 @@ button {
     margin: 10px;
     background-color: #4e4e4e;
     padding: 20px;
-    border-radius: 15px
+    border-radius: 15px;
+    color:#fff2e8;
 }
 
 .block{
@@ -61,3 +62,10 @@ button {
     }
 
 img{border-radius:15px; }
+
+#form-pack {
+    float: right;
+    position: absolute;
+    top: 150px;
+    right: 100px;
+}
