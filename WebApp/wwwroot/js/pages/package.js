@@ -35,7 +35,6 @@ function PackagesController() {
             vc.LoadTablePackages_Services();
         })
 
-        
 
         //Inicializacion de la tabla
          this.LoadTableServices();
@@ -292,54 +291,44 @@ function PackagesController() {
 
     
     
-        this.LoadTablePackages_Services = function () {
-
-
-
+    this.LoadTablePackages_Services = function () {
         var packages = {};
-            packages.idpackage = $("#txtPackageId").val();
- 
+        packages.idpackage = $("#txtPackageId").val();
 
 
         //Llamado al API
         var ctrlActions = new ControlActions();
+      
 
-            var serviceRoute = this.ApiService + "/RetrieveAllById/" + packages.idpackage;
+     
+            window.location.href = "https://localhost:7298/PackService";
 
-
-            //Ruta del API para concluir el servicio
-
-
-            var columns = [];
+            var urlService = ctrlActions.GetUrlApiService(this.ApiService + "/RetrieveAllById/" + packages.idpackage);
+            
+                 var columns = [];
             columns[0] = { "data": "idService" };
             columns[1] = { "data": "serviceName" };
             columns[2] = { "data": "description" };
             columns[3] = { "data": "cost" };
 
-
             //Inicializamos la tabla como un datatable Y CARGAR A PARTIR DEL API
             $("#tblPackages_Services").dataTable({
                 "ajax": {
-                    "url": serviceRoute,
+                    "url": urlService,
                     "dataSrc": ""
                 },
                 "columns": columns
 
             });
+            
+            
 
-        };
+       
+        
+
+     
+    };
     
-
-
-
-    
-
-
-
-
-    
-
-
 
 }
 
