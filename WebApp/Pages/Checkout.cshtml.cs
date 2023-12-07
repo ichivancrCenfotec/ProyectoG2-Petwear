@@ -27,8 +27,7 @@ namespace WebApp.Pages
         public void OnGet()
         {
             Total = "1111";
-            System.Console.WriteLine("tempdata total= " + TempData["Total"]?.ToString() ?? "");
-            //Total = TempData["Total"]?.ToString() ?? "";
+            
             PackageIdentifiers = TempData["PackageIdentifiers"]?.ToString() ?? "";
 
             TempData.Keep();
