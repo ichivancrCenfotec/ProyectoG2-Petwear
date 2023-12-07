@@ -6,6 +6,7 @@ function UsersController() {
 
     this.ViewName = "Users";
     this.ApiService = "UserCRUD";
+   
 
     this.InitView = function () {
 
@@ -34,14 +35,36 @@ function UsersController() {
         //Llamado al API
         var ctrlActions = new ControlActions();
         var serviceRoute = this.ApiService + "/LogIn";
-        var serviceRoute2 = this.ApiService + "/RetrieveByEmail2/" + users.email;
+
+        var ctrlActions = new ControlActions();
+
+        //Ruta del API para concluir el servicio
+        var urlService = ctrlActions.GetUrlApiService(this.ApiService + "/RetrieveByEmail2/" + users.email);
 
 
-        var response = this.ctrlActions.GetToAPI(serviceRoute2);
-        if (response != null) {
+        console.log(urlService);
+        
+        var response = {};
+        try {
+            $.ajax({
+                type: "GET",
+                url: urlService,
+                cache: false,
+                async: false,
+                success: function (data) {
+                    
+                    response = data;
+                }
+            });
+        } catch (err) {
+            console.log(err);
+        }
+        console.log(JSON.stringify(response));
+
+       if (response != null) {
             sessionStorage.setItem("SESSION_USER", JSON.stringify(response));
-            console.log(sessionStorage.getItem("SESSION_USER");
-        } 
+           console.log(sessionStorage.getItem("SESSION_USER"));
+        };
 
 
         ctrlActions.PostToAPI(serviceRoute, users, function () {
@@ -51,7 +74,7 @@ function UsersController() {
 
             
             //Redireccionar a la pagina de inicio
-          //  window.location.href = "https://localhost:7298/Index"; 
+           window.location.href = "https://localhost:7298/Index"; 
 
             //window.location.href = "https://localhost:7298/UserDashboard"; ESTO LO COMENTÉ XQ NO EXISTE LA PAG AÚN!
 
