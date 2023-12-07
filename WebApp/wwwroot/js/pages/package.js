@@ -321,32 +321,17 @@ function PackagesController() {
             columns[2] = { "data": "description" };
             columns[3] = { "data": "cost" };
 
-            var response = {};
-            try {
-                $.ajax({
-                    type: "GET",
-                    url: serviceRoute,
-                    cache: false,
-                    async: false,
-                    success: function (data) {
-                        console.log(data);
-                        response = data;
-                    }
-                });
-            } catch (err) {
-                console.log(err);
-            }
-            console.log(JSON.stringify(response));
+           
 
             //Inicializamos la tabla como un datatable Y CARGAR A PARTIR DEL API
-            //$("#tblPackages_Services").dataTable({
-             //   "ajax": {
-             //       "url": serviceRoute,
-            //        "dataSrc": ""
-            //    },
-           //     "columns": columns
+            $("#tblPackages_Services").dataTable({
+                "ajax": {
+                    "url": serviceRoute,
+                   "dataSrc": ""
+              },
+              "columns": columns
 
-            //});
+            });
 
         };
     
