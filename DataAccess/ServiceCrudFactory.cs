@@ -52,6 +52,7 @@ namespace DataAccess
 
             //Devuelve la lista de diccionarios
             var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
+            System.Console.WriteLine("listea de resultados " + lstResults);
             if (lstResults.Count > 0)
             {
                 foreach (var row in lstResults)
@@ -65,6 +66,9 @@ namespace DataAccess
             return lstService;
 
         }
+
+        
+
         private T BuildService<T>(Dictionary<string, object> row)
         {
             //Construir el objeto
@@ -126,26 +130,49 @@ namespace DataAccess
             throw new NotImplementedException();
         }
 
+        // public override List<T> RetrieveAllById<T>(int id)
+        // {
+        //     var lstService = new List<T>();
+
+        // var sqlOperation = new SqlOperation { ProcedureName = "RET_ALL_SERVICE_BY_ID_PR" };
+        // sqlOperation.AddIntParam("P_IDPACKAGE", id);
+
+        //Devuelve la lista de diccionarios
+        //  var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
+        //     if (lstResults.Count > 0)
+        //    {
+        //       foreach (var row in lstResults)
+        //       {
+
+        //  var serviceDTO = BuildService<T>(row);
+
+        //  lstService.Add((T)Convert.ChangeType(serviceDTO, typeof(T)));
+        //  }
+        //  }
+        //      return lstService;
+        //  }
+
         public override List<T> RetrieveAllById<T>(int id)
-        {
-            var lstService = new List<T>();
-
-            var sqlOperation = new SqlOperation { ProcedureName = "RET_ALL_SERVICE_BY_ID_PR" };
-            sqlOperation.AddIntParam("P_IDPACKAGE", id);
-
-            //Devuelve la lista de diccionarios
+         {
+        var lstService = new List<T>();
+        
+         var sqlOperation = new SqlOperation { ProcedureName = "RET_ALL_SERV_BY_PACK" };
+         sqlOperation.AddIntParam("ID", id);//Parametro que se envia
+            System.Console.WriteLine("parametro en factory= " + id);
+            // Devuelve la lista de diccionarios
             var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
-            if (lstResults.Count > 0)
-            {
-                foreach (var row in lstResults)
-                {
+       
+         if (lstResults.Count > 0)
+         {
+          foreach (var row in lstResults)
+          {
 
-                    var serviceDTO = BuildService<T>(row);
+         var serviceDTO = BuildService<T>(row);
+        lstService.Add(serviceDTO);
 
-                    lstService.Add((T)Convert.ChangeType(serviceDTO, typeof(T)));
-                }
-            }
-            return lstService;
+        }
+        }
+         return lstService;
         }
     }
 

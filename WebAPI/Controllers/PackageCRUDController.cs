@@ -80,7 +80,7 @@ namespace WebAPI.Controllers
                 var um = new PackageManager();
                 var package = new Package { IdPackage = Id };
 
-                return Ok(um.RetrieveById(package));
+                return Ok(um.RetrieveAllById(package));
 
             }
             catch (Exception ex)

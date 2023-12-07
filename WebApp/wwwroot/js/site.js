@@ -4,10 +4,11 @@
 // Write your JavaScript code.
 
 // Check if the user has admin rights in sessionStorage
-var obj = JSON.parse(sessionStorage.getItem("SESSION_USER"));
-console.log(obj);
+var session = JSON.parse(sessionStorage.getItem("SESSION_USER"));
+session.id
+console.log(session);
 
-const isAdmin = obj.role;
+const isAdmin = session.role;
 console.log(isAdmin);
 // Get all elements with a specific class
 const menuItemslogout = document.getElementsByClassName('vis-log-out');
@@ -16,6 +17,6 @@ const menuItemslogout = document.getElementsByClassName('vis-log-out');
 if (isAdmin != null) {
     for (let i = 0; i < menuItemslogout.length; i++) {
         menuItemslogout[i].style.display = 'none';
-        document.getElementById('pfp').setAttribute("src", obj.photo );
+        document.getElementById('pfp').setAttribute("src", session.photo );
     }
 }
