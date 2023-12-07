@@ -65,7 +65,7 @@
 
     </div>
 
-    <div class="row">
+    <div class="row" id="form-pack">
         <div class="col-lg-6">
             <div class="bs-component">
                 <form>
@@ -83,11 +83,19 @@
                     </div>
                     <div class="form-group">
                         <label for="txtPackageName" class="form-label mt-4">Package Name</label>
-                        <input id="txtPackageName" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter Pakage Name">
-                        <small id="emailHelp" class="form-text text-muted">Service ID </small>
+                        <input id="txtPackageName" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Pakage Name">
+                        <small id="emailHelp" class="form-text text-muted">Package Name </small>
                     </div>
-
-
+                    <div class="form-group">
+                        <label for="txtdescription" class="form-label mt-4">Package Description</label>
+                        <input id="txtdescription" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter Pakage description">
+                        <small id="emailHelp" class="form-text text-muted">Package Description </small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtPackageId" class="form-label mt-4">Cost</label>
+                        <input id="txtCost" type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter Package cost">
+                        <small id="emailHelp" class="form-text text-muted">Cost </small>
+                    </div>
                     
 
 
@@ -98,45 +106,19 @@
                 </form>
                 <br />
                 @*<button id="btnNew" class="source-button btn btn-info btn-xs" type="button" tabindex="0"><i class="bi bi-code">New</i></button>*@
+                <p>Para crear un paquete nuevo, rellene los campos :Package Name, Package ID, Package Description y Cost </p><br />
+                <p>Para añadir un servicio a un paquete existente rellene los campos: Service ID y Package ID </p><br />
                 <button id="btnCreate" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Registrar</i></button>
                 <button id="btnAddService" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Add Service</i></button>
                 <button id="btnDelete" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Delete</i></button>
-                <button id="btnSeeDetails" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">See Details</i></button>
-                @*<button id="btnUpdate" class="source-button btn btn-warning btn-xs" type="button" tabindex="0"><i class="bi bi-code">Update</i></button>
+                @*<button id="btnSeeDetails" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">See Details</i></button>
+                <button id="btnUpdate" class="source-button btn btn-warning btn-xs" type="button" tabindex="0"><i class="bi bi-code">Update</i></button>
                 <button id="btnDelete" class="source-button btn btn-danger btn-xs" type="button" tabindex="0"><i class="bi bi-code">Delete</i></button>*@
             </div>
         </div>
       
         <br />
-        <div class=" row">
-            <legend>Packages List</legend>
-            <div class="col-lg-6">
-
-                <table id="tblPackages_Services" class=" display" style="width:100%">
-
-                    <thead>
-
-                        <tr>
-
-                            <th>Id Package</th>
-
-                            <th>Name Package</th>
-
-                            <th>Name Service</th>
-
-                            <th>Cost</th>
-
-                            <th>Description</th>
-
-                        </tr>
-
-                    </thead>
-
-                </table>
-
-            </div>
-
-        </div>
+        
 
     </div>
 </div>
