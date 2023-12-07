@@ -8,6 +8,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class PackageCRUDController : Controller
     {
+      
 
         [HttpPost]
         [Route("Create")]
@@ -34,6 +35,7 @@ namespace WebAPI.Controllers
 
             try
             {
+                
                 um.AddService(package_service);
                 return Ok(package_service);
             }
@@ -53,9 +55,32 @@ namespace WebAPI.Controllers
             {
 
                 var um = new PackageManager();
-                var package = new Package { Id = Id };
+                var package = new Package { IdPackage = Id };
 
                 return Ok(um.RetrieveById(package));
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+
+        }
+
+        
+        [HttpGet]
+        [Route("RetrieveAllById/{Id}")]
+        public async Task<IActionResult> RetrieveAllById(int Id)
+        {
+
+            try
+            {
+
+                var um = new PackageManager();
+                var package = new Package { IdPackage = Id };
+
+                return Ok(um.RetrieveAllById(package));
 
             }
             catch (Exception ex)
@@ -99,6 +124,8 @@ namespace WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+
 
         [HttpPut]
         [Route("Update")]

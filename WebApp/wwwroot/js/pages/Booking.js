@@ -1,4 +1,4 @@
-﻿/Clase JS que es el controlador de la vista.
+﻿
 //Cities.cshtml
 
 //Definicion de la clase
@@ -9,8 +9,30 @@ function BookingController() {
 
     this.InitView = function () {
 
-        console.log("User view init!!!");
+        console.log("Booking view init!!!");
 
+        $("#txtIdPackage").change(function () {
+            // Cuando el usuario selecciona un nuevo paquete, actualizar el Total Price
+            var packageId = $(this).val();
+            console.log("Package ID selected:", packageId);
+            // Llamado al API para obtener el precio del paquete
+            var packageCtrlActions = new ControlActions();
+            var packageServiceRoute = "PackageCRUD/RetrieveById?id=" + packageId;
+
+            packageCtrlActions.GetToApi(packageServiceRoute, function (package) {
+                // Actualizar el campo Total Price con el precio del paquete
+                if (package && package.Cost !== undefined) {
+                    // Actualizar el campo Total Price con el costo del paquete
+                    console.log("Package Cost retrieved:", package.Cost);
+                    $("#txtTotalPrice").val(package.Cost);
+                } else {
+                    console.error("Error: No se pudo obtener el costo del paquete.");
+                }
+            }, function (error) {
+                console.error("Error al llamar al API para obtener el costo del paquete:", error);
+            
+            });
+        });
 
         //Binding del evento del clic al metodo de create del controlador
         $("#btnCreate").click(function () {
@@ -18,23 +40,9 @@ function BookingController() {
             vc.Create();
         })
 
-        //
-        $("#btnUpdate").click(function () {
-            var vc = new BookingController();
-            vc.Update();
-        })
-
-        $("#btnDelete").click(function () {
-            var vc = new BookingController();
-            vc.Delete();
-        })
-
-        //Inicializacion de la tabla
-        // this.LoadTable();
-
-
 
     }
+
 
     this.Create = function () {
 
@@ -61,12 +69,14 @@ function BookingController() {
         //Crear un DTO de PETS
 
         var booking = {};
-        booking.idpet = $("#txtNamePet").val();
-        booking.iduser = $("#txtAge").val();
-        booking.checkInDate = $("#txtBreed").val();
-        booking.checkOutDate = $("#txtWeight").val();
-        booking.considerations = $("#txtBreed").val();
-        booking.status = $("#txtWeight").val();
+        booking.checkInDate = $("#txtCheckInDate").val();
+        booking.checkOutDate = $("#txtCheckOutDate").val();
+        booking.considerations = $("#txtConsiderations").val();
+        booking.status = $("#txtStatus").val();
+        booking.iduser = $("#txtIdUser").val();
+        booking.idpet = $("#txtIdPet").val();
+        booking.idPackage = $("#txtIdPackage").val();
+        booking.totalPrice = $("#txtTotalPrice").val();
 
 
 
@@ -74,10 +84,16 @@ function BookingController() {
         var ctrlActions = new ControlActions();
         var serviceRoute = this.ApiService + "/Create";
 
-        ctrlActions.PostToAPI(serviceRoute, pets, function () {
-            console.log("Pet created ---> " + JSON.stringify(pets))
+        ctrlActions.PostToAPI(serviceRoute, booking, function () {
+            console.log("Booking created ---> " + JSON.stringify(booking))
 
-        });
-
-        console.log(JSON.stringify(pets));
+            window.location.href = "https://localhost:7298/Checkout";
+        }, function (error) {
+            console.error("Error al crear la reserva:", error);
+        })
     }
+}
+$(document).ready(function () {
+    var viewController = new BookingController();
+    viewController.InitView();
+})
