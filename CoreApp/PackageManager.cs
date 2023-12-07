@@ -35,7 +35,12 @@ namespace CoreApp
             var uc = new PackageCrudFactory();
             return uc.RetrieveAll<Package>();
         }
-
+        public List<Service> RetrieveAllById(Package package)
+        {
+            var uc = new ServiceCrudFactory();
+            System.Console.WriteLine("parametro en manager= " + package.IdPackage);
+            return uc.RetrieveAllById<Service>(package.IdPackage);
+        }
         public void Update(Package package)
         {
             var uc = new PackageCrudFactory();

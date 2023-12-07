@@ -8,7 +8,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ServiceCRUDController : ControllerBase
+    public class ServiceCRUDController : Controller
     {
         ///Controlador de mantenimiento del servicio.
         ///C -> Create (post)
@@ -25,6 +25,12 @@ namespace WebAPI.Controllers
             try
             {
                 um.Create(service);
+                string totalAsString = service.Cost.ToString();
+                HttpContext.Session.SetString("total", totalAsString);
+                System.Console.WriteLine("service cost= " + service.Cost);
+                System.Console.WriteLine("session= " + HttpContext.Session.GetString("total"));
+
+
                 return Ok(service);
             }
             catch (Exception ex)

@@ -73,7 +73,7 @@ namespace DataAccess
             var sqlOperation = new SqlOperation { ProcedureName = "RET_ALL_PACKAGES" };
 
             var lstResult = _dao.ExecuteQueryProcedure(sqlOperation);
-
+            
             if (lstResult.Count > 0)
             {
               
@@ -89,6 +89,11 @@ namespace DataAccess
       
         }
 
+        public override List<T> RetrieveAllById<T>(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public override T RetrieveByEmail<T>(string email)
         {
             throw new NotImplementedException();
@@ -96,7 +101,21 @@ namespace DataAccess
 
         public override T RetrieveById<T>(int id)
         {
-            throw new NotImplementedException();
+            var sqlOperation = new SqlOperation { ProcedureName = "RET_BY_ID_PACKAGE" };
+
+            sqlOperation.AddIntParam("ID", id);//Parametro que se envia
+
+            var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);//Se ejecuta el procedimiento almacenado, el resultado se almacena en lstResults, que es una lista de diccionarios. 
+            if (lstResults.Count > 0)
+            {
+                var row = lstResults[0];//Extraemos el primer valor de la lista
+
+                //Construir el objeto
+                var package = BuildPackage<T>(row);
+                return package;
+
+            }
+            return default(T);
         }
 
         public override void Update(BaseDTO baseDTO)
@@ -113,11 +132,15 @@ namespace DataAccess
         {
             var package = new Package
             {
+                /* IdPackage = (int)row["ID_PACKAGE"],
+                 NamePackage = (string)row["NAME_PACKAGE"],
+                 Cost = (float)(double)row["COST"],
+                 Description = (string)row["DESCRIPTION"],
+              */
                 IdPackage = (int)row["ID_PACKAGE"],
-                NamePackage = (string)row["NAME_PACKAGE"],
                 Cost = (float)(double)row["COST"],
                 Description = (string)row["DESCRIPTION"],
-             
+                NamePackage = (string)row["NAME_PACKAGE"],
             };
 
             return (T)Convert.ChangeType(package, typeof(T));

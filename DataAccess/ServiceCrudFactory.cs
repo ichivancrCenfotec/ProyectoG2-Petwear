@@ -52,6 +52,7 @@ namespace DataAccess
 
             //Devuelve la lista de diccionarios
             var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
+            System.Console.WriteLine("listea de resultados " + lstResults);
             if (lstResults.Count > 0)
             {
                 foreach (var row in lstResults)
@@ -65,6 +66,9 @@ namespace DataAccess
             return lstService;
 
         }
+
+        
+
         private T BuildService<T>(Dictionary<string, object> row)
         {
             //Construir el objeto
@@ -84,21 +88,7 @@ namespace DataAccess
         public override T RetrieveById<T>(int id)
 
         {
-            var sqlOperation = new SqlOperation { ProcedureName = "RET_ID_SERVICE_PR" };
-
-            sqlOperation.AddIntParam("ID_SERVICE", id);
-
-            var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
-            if (lstResults.Count > 0)
-            {
-                var row = lstResults[0];
-
-                //Construir el objeto
-                var serviceDTO = BuildService<T>(row);
-                return serviceDTO;
-
-            }
-            return default(T);
+            throw new NotImplementedException();
         }
 
         public override void Update(BaseDTO baseDTO)
@@ -138,6 +128,51 @@ namespace DataAccess
         public override void AddService(BaseDTO baseDTO)
         {
             throw new NotImplementedException();
+        }
+
+        // public override List<T> RetrieveAllById<T>(int id)
+        // {
+        //     var lstService = new List<T>();
+
+        // var sqlOperation = new SqlOperation { ProcedureName = "RET_ALL_SERVICE_BY_ID_PR" };
+        // sqlOperation.AddIntParam("P_IDPACKAGE", id);
+
+        //Devuelve la lista de diccionarios
+        //  var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
+        //     if (lstResults.Count > 0)
+        //    {
+        //       foreach (var row in lstResults)
+        //       {
+
+        //  var serviceDTO = BuildService<T>(row);
+
+        //  lstService.Add((T)Convert.ChangeType(serviceDTO, typeof(T)));
+        //  }
+        //  }
+        //      return lstService;
+        //  }
+
+        public override List<T> RetrieveAllById<T>(int id)
+         {
+        var lstService = new List<T>();
+        
+         var sqlOperation = new SqlOperation { ProcedureName = "RET_ALL_SERV_BY_PACK" };
+         sqlOperation.AddIntParam("ID", id);//Parametro que se envia
+            
+            // Devuelve la lista de diccionarios
+            var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
+       
+         if (lstResults.Count > 0)
+         {
+          foreach (var row in lstResults)
+          {
+
+         var serviceDTO = BuildService<T>(row);
+        lstService.Add(serviceDTO);
+
+        }
+        }
+         return lstService;
         }
     }
 
