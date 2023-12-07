@@ -2,9 +2,9 @@
 @model WebApp.Pages.BookingModel
 @{
 }
+<script src="~/js/pages/booking.js"></script>
 <div class="bs-docs-section">
     <br />
-
 
     <div class="row">
         <div class="col-lg-6">
@@ -16,37 +16,47 @@
                         <label for="txtId" class="form-label mt-4">Booking ID</label>
                         <input id="txtId" type="number" class="form-control" readonly="readonly">
                     </div>
-                    <div class="form-group">
-                        <label for="txtId" class="form-label mt-4">Pet ID</label>
-                        <input id="txtIdPet" type="number" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtId" class="form-label mt-4">User ID</label>
-                        <input id="txtIdUser" type="number" class="form-control">
-                    </div>
+ 
                     <div class="form-group">
                         <label for="txtDate" class="form-label mt-4">ChecInDate</label>
                         <input type="datetime-local" class="form-control" id="txtCheckInDate" />
                     </div>
+
                     <div class="form-group">
                         <label for="txtDate" class="form-label mt-4">ChecOutDate</label>
                         <input type="datetime-local" class="form-control" id="txtCheckOutDate" />
+                    <div class="form-group">
+                        <label for="txtConsiderations" class="form-label mt-4">Considetarions</label>
+                        <input type="text" class="form-control" id="txtConsiderations" />
                     </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="txtStatus" class="form-label mt-4">Status</label>
                         <input type="text" class="form-control" id="txtStatus"/>
                     </div>
+
                     <div class="form-group">
-                        <label for="txtPackage" class="form-label mt-4">Package</label>
-                    <select name="packages" id="packages">
-                        <option value="1"></option>
-                        
-                    </select>
+                        <label for="txtId" class="form-label mt-4">User ID</label>
+                        <input id="txtIdUser" type="number" class="form-control">
+                    </div>
+
+                   <div class="form-group">
+                        <label for="txtId" class="form-label mt-4">Pet ID</label>
+                        <input id="txtIdPet" type="number" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtIdPackage" class="form-label mt-4">ID Package</label>
+                        <input id="txtIdPackage" type="number" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtTotalPrice" class="form-label mt-4">Total Price</label>
+                        <input id="txtTotalPrice" type="number" class="form-control">
                     </div>
                 </form>
                 <br />
                 @*<button id="btnNew" class="source-button btn btn-info btn-xs" type="button" tabindex="0"><i class="bi bi-code">New</i></button>*@
-                <button id="btnCreate" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Registrar reserva</i></button>
+                <button id="btnCreate" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Pagar</i></button>
                 @*<button id="btnUpdate" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Update</i></button>
                 <button id="btnDelete" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Delete</i></button>
                 @*<button id="btnUpdate" class="source-button btn btn-warning btn-xs" type="button" tabindex="0"><i class="bi bi-code">Update</i></button>
