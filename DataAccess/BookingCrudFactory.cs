@@ -22,12 +22,14 @@ namespace DataAccess
             var booking = baseDTO as Booking;
 
             var sqlOperation = new SqlOperation { ProcedureName = "CRE_BOOKING_PR" };
-            sqlOperation.AddIntParam("P_idPet", booking.IdPet);
-            sqlOperation.AddIntParam("P_idUser", booking.IdUser);
             sqlOperation.AddDateTimeParam("P_checkInDate", booking.CheckInDate);
             sqlOperation.AddDateTimeParam("P_checkOutDate", booking.CheckOutDate);
             sqlOperation.AddVarcharParam("P_considerations", booking.Considerations);
-            sqlOperation.AddBoolParam("P_status", booking.Status);
+            sqlOperation.AddVarcharParam("P_status", booking.Status);
+            sqlOperation.AddIntParam("P_id", booking.IdUser);
+            sqlOperation.AddIntParam("P_idPet", booking.IdPet);
+            sqlOperation.AddIntParam("P_idPackage", booking.IdPackage);
+            sqlOperation.AddFloatParam("P_totalPrice", booking.TotalPrice);
 
 
             _dao.ExecuteProcedure(sqlOperation);
@@ -61,12 +63,14 @@ namespace DataAccess
                     var bookingDTO = new Booking()
                     {
                         Id = (int)row["idBooking"],
-                        IdPet = (int)row["idPet"],
-                        IdUser = (int)row["idUser"],
                         CheckInDate = (DateTime)row["checkInDate"],
                         CheckOutDate = (DateTime)row["checkOutDate"],
                         Considerations = (string)row["considerations"],
-                        Status = (bool)row["status"]
+                        Status = (string)row["status"],
+                        IdUser = (int)row["idUser"],
+                        IdPet = (int)row["idPet"],
+                        IdPackage = (int)row["idPackage"],
+                        TotalPrice = Convert.ToSingle(row["totalPrice"])
                     };
                     lstBooking.Add((T)Convert.ChangeType(bookingDTO, typeof(T)));
                 }
@@ -79,12 +83,14 @@ namespace DataAccess
             var booking = new Booking()
             {
                 Id = (int)row["idBooking"],
-                IdPet = (int)row["idPet"],
-                IdUser = (int)row["idUser"],
                 CheckInDate = (DateTime)row["checkInDate"],
                 CheckOutDate = (DateTime)row["checkOutDate"],
                 Considerations = (string)row["considerations"],
-                Status = (bool)row["status"]
+                Status = (string)row["status"],
+                IdUser = (int)row["idUser"],
+                IdPet = (int)row["idPet"],
+                IdPackage = (int)row["idPackage"]
+                
             };
             return (T)Convert.ChangeType(booking, typeof(T));
 
@@ -115,12 +121,15 @@ namespace DataAccess
 
             var sqlOperation = new SqlOperation { ProcedureName = "UPDATE_BOOKING_PR" };
             sqlOperation.AddIntParam("P_idBooking", booking.Id);
-            sqlOperation.AddIntParam("P_idPet", booking.IdPet);
-            sqlOperation.AddIntParam("P_idUser", booking.IdUser);
             sqlOperation.AddDateTimeParam("P_checkInDate", booking.CheckInDate);
             sqlOperation.AddDateTimeParam("P_checkOutDate", booking.CheckOutDate);
             sqlOperation.AddVarcharParam("P_considerations", booking.Considerations);
-            sqlOperation.AddBoolParam("P_status", booking.Status);
+            sqlOperation.AddVarcharParam("P_status", booking.Status);
+            sqlOperation.AddIntParam("P_id", booking.IdUser);
+            sqlOperation.AddIntParam("P_idPet", booking.IdPet);
+            sqlOperation.AddIntParam("P_idPackage", booking.IdPackage);
+            sqlOperation.AddFloatParam("P_totalPrice", booking.TotalPrice);
+
 
             _dao.ExecuteProcedure(sqlOperation);
 
@@ -135,7 +144,7 @@ namespace DataAccess
         {
             throw new NotImplementedException();
         }
-
+      
         public override void NewPassword(BaseDTO baseDTO)
         {
             throw new NotImplementedException();
