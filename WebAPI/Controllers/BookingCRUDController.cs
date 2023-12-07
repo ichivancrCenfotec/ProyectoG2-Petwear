@@ -20,7 +20,6 @@ namespace WebAPI.Controllers
             try
             {
                 bm.Create(booking);
-                //TempData["Total"] = booking.TotalPrice;
                 return Ok(booking);
             }
             catch (Exception ex)
