@@ -12,6 +12,8 @@
     <None Include="wwwroot\img\gatito-gris-pared-monocromatica-detras-ella.jpg" />
     <None Include="wwwroot\img\icono.png" />
     <None Include="wwwroot\img\perro.jpg" />
+    <PackageReference Include="IdentityServer4.Storage" Version="4.1.2" />
+    <PackageReference Include="MySql.Data" Version="8.2.0" />
 
     <PackageReference Include="SendGrid" Version="9.28.1" />
 
