@@ -142,6 +142,7 @@ namespace WebAPI.Controllers
             }
         }
 
+
         [HttpPost]
         [Route("ValidateOTP")]
         public async Task<IActionResult> ValidateOTP(User request)
@@ -253,6 +254,28 @@ namespace WebAPI.Controllers
                 var user = new User { Id = id };
 
                 return Ok(um.RetrieveById(user));
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+
+        }
+
+        [HttpGet]
+        [Route("RetrievePETById")]
+        public async Task<IActionResult> RetrievePetById(int id)
+        {
+
+            try
+            {
+
+                var um = new UserManager();
+                var user = new User { Id = id };
+                System.Console.WriteLine("parametro en controller= " + user.Id);
+                return Ok(um.RetrieveAllById(user));
 
             }
             catch (Exception ex)

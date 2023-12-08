@@ -71,11 +71,6 @@ namespace DataAccess
 
         }
 
-        public override List<T> RetrieveAllById<T>(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public override T RetrieveByEmail<T>(string email)
         {
             throw new NotImplementedException();
@@ -132,14 +127,37 @@ namespace DataAccess
                 NamePet = (string)row["NAMEPET"],
                 Age = (int)row["AGE"],
                 Breed = (string)row["BREED"],
-                Weight = (float)row["WEIGHT"],
+                Weight = (float)(double)row["WEIGHT"],
                 Description = (string)row["DESCRIPTION"],
                 LevelAggressiveness = (int)row["LEVELAGGRESSIVENESS"],
-                FotoUno = (string)row["FOTO_UNO"],
-                FotoDos = (string)row["FOTO_DOS"]
+                FotoUno = (string)row["PHOTO1"],
+                FotoDos = (string)row["PHOTO2"]
             };
 
             return (T)Convert.ChangeType(pet, typeof(T));
+        }
+
+        public override List<T> RetrieveAllById<T>(int id)
+        {
+            var lstService = new List<T>();
+            System.Console.WriteLine("parametro en manager= " + id);
+            var sqlOperation = new SqlOperation { ProcedureName = "RET_ALL_PETS_BY_USER" };
+            sqlOperation.AddIntParam("ID", id);//Parametro que se envia
+
+            // Devuelve la lista de diccionarios
+            var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
+
+            if (lstResults.Count > 0)
+            {
+                foreach (var row in lstResults)
+                {
+
+                    var petDTO = BuildPet<T>(row);
+                    lstService.Add(petDTO);
+
+                }
+            }
+            return lstService;
         }
     }
 }
