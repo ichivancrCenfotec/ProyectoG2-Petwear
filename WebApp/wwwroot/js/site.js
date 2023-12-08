@@ -5,18 +5,36 @@
 
 // Check if the user has admin rights in sessionStorage
 var session = JSON.parse(sessionStorage.getItem("SESSION_USER"));
-session.id
 console.log(session);
-console.log(session);
-const isAdmin = session.role;
-console.log(isAdmin);
+
+
+
 // Get all elements with a specific class
 const menuItemslogout = document.getElementsByClassName('vis-log-out');
-
+const menuItemslogin = document.getElementsByClassName('vis-log-in');
+const menuItemsadmin = document.getElementsByClassName('admin-only');
 // Hide all menu items with the specified class if the user is not an admin
-if (isAdmin != null) {
+for (let i = 0; i < menuItemsadmin.length; i++) {
+    menuItemsadmin[i].style.display = 'none';
+    console.log(menuItemsadmin[i].innerHTML);
+}
+for (let i = 0; i < menuItemslogin.length; i++) {
+    menuItemslogin[i].style.display = 'none';
+}
+
+if (session != null) {
+    const isAdmin = session.role;
+    if (isAdmin == "Administrador") {
+        for (let i = 0; i < menuItemsadmin.length; i++) {
+            menuItemsadmin[i].style.display = 'block';
+        }
+}
     for (let i = 0; i < menuItemslogout.length; i++) {
         menuItemslogout[i].style.display = 'none';
-        document.getElementById('pfp').setAttribute("src", session.photo );
+        
     }
+    for (let i = 0; i < menuItemslogin.length; i++) {
+        menuItemslogin[i].style.display = 'block';
+    }
+
 }
