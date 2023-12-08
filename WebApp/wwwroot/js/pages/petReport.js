@@ -2,10 +2,10 @@
 //Cities.cshtml
 
 //Definicion de la clase
-function PetsController() {
+function UsersController() {
 
-    this.ViewName = "Pets";
-    this.ApiService = "PetCRUD";
+    this.ViewName = "petReport";
+    this.ApiService = "UserCRUD";
 
     this.InitView = function () {
 
@@ -13,20 +13,20 @@ function PetsController() {
 
 
         //Binding del evento del clic al metodo de create del controlador
-        $("#btnCreate").click(function () {
-            var vc = new PetsController();
+        $("#btnSave").click(function () {
+            var vc = new UsersController();
             vc.Create();
         })
 
         //
-        $("#btnUpdate").click(function () {
-            var vc = new PetsController();
-            vc.Update();
+        $("#btnPrint").click(function () {
+            var vc = new UsersController();
+            vc.Create();
         })
 
-        $("#btnDelete").click(function () {
-            var vc = new PetsController();
-            vc.Delete();
+        $("#btnSendByEmail").click(function () {
+            var vc = new UsersController();
+            vc.Create();
         })
 
         //Inicializacion de la tabla
@@ -40,88 +40,86 @@ function PetsController() {
 
         /*
 
-        EndPoint: https://localhost:7246/api/PetCRUD/Create
+        EndPoint: https://localhost:7246/api/UserCRUD/Create
 
         {
   "id": 0,
-  "idPet": 0,
-  "namePet": "string",
-  "age": 0,
-  "breed": "string",
-  "weight": 0,
-  "description": "string",
-  "levelAggressiveness": 0,
-  "fotoUno": "string",
-  "fotoDos": "string"
+  "name": "string",
+  "email": "string",
+  "password": "string",
+  "createdDate": "2023-10-21T14:34:13.507Z",
+  "status": 0,
+  "fechaNacimiento": "2023-10-21T14:34:13.507Z"
 }
 
         
         */
 
-        //Crear un DTO de PETS
+        //Crear un DTO de USER
 
-        var pets = {};
-        pets.namepet = $("#txtNamePet").val();
-        pets.age = $("#txtAge").val();
-        pets.breed = $("#txtBreed").val();
-        pets.weight = $("#txtWeight").val();    
-        pets.description = $("#txtDescription").val();
-        pets.levelAggressiveness = $("#LevelAggressiveness").val();
-        pets.fotoUno = localStorage.getItem('photouser1');
-        pets.fotoDos = localStorage.getItem('photouser2');
+        var users = {};
+        users.name = $("#txtName").val();
 
-  
+
+
 
         //Llamado al API
         var ctrlActions = new ControlActions();
         var serviceRoute = this.ApiService + "/Create";
 
-        ctrlActions.PostToAPI(serviceRoute, pets, function () {
-            console.log("Pet created ---> " + JSON.stringify(pets))
+        ctrlActions.PostToAPI(serviceRoute, users, function () {
+            console.log("User created ---> " + JSON.stringify(users))
 
+            window.location.href = "https://localhost:7298/RegisterValidation";
         });
 
-        console.log(JSON.stringify(pets));
+        console.log(JSON.stringify(users));
     }
 
-    this.Update = function () {
 
-        var pets = {};
-        pets.idPet = $("#txtPetId").val();
-        pets.namePet = $("#txtNamePet").val();
-        pets.age = $("#txtAge").val();
-        pets.breed = $("#txtBreed").val();
-        pets.weight = $("#txtWeight").val();
-        pets.description = $("#txtDescription").val();
-        pets.levelAggressiveness = $("#txtLevelAggressiveness").val();
-        pets.fotoUno = localStorage.getItem('photouser1');
-        pets.fotoDos = localStorage.getItem('photouser2');
+    /*---------------------------------------------------------------------------------------------------------------------
+   this.Update = function () {
+
+       var users = {};
+       users.id = $("#txtId").val();
+       users.name = $("#txtName").val();
+       users.lastname = $("#txtLastName").val();
+       users.email = $("#txtEmail").val();
+       users.password = $("#txtPassword").val();
+       users.address = $("#txtAddress").val();
+       users.phone = $("#txtNumber").val();
+       users.role = $("#txtRole").val();
+       users.photo = localStorage.getItem('photouser');
 
 
-        //Llamado al API
-        var ctrlActions = new ControlActions();
-        var serviceRoute = this.ApiService + "/Update";
 
-        ctrlActions.PutToAPI(serviceRoute, users, function () {
-            console.log("Pet updated ---> " + JSON.stringify(pets))
+       //Llamado al API
+       var ctrlActions = new ControlActions();
+       var serviceRoute = this.ApiService + "/Update";
 
-        });
-    }
+       ctrlActions.PutToAPI(serviceRoute, users, function () {
+           console.log("User updated ---> " + JSON.stringify(users))
 
-    this.Delete = function () {
-        //Crear un DTO de USER
-        var pets = {};
-        pets.idPet = $("#txtIdPet").val();
+       });
+   }
 
-        //Llamado al API
-        var ctrlActions = new ControlActions();
-        var serviceRoute = this.ApiService + "/Delete";
+  
+   this.Delete = function () {
+       //Crear un DTO de USER
+       var users = {};
+       users.id = $("#txtId").val();
 
-        ctrlActions.DeleteToAPI(serviceRoute, users, function () {
-            console.log("Pet deleted ---> " + JSON.stringify(pets))
-        });
+       //Llamado al API
+       var ctrlActions = new ControlActions();
+       var serviceRoute = this.ApiService + "/Delete";
 
-    }
+       ctrlActions.DeleteToAPI(serviceRoute, users, function () {
+           console.log("User deleted ---> " + JSON.stringify(users))
+       });
+
+   }
+   ------------------------------------------------------------------------------------------------------------------------*/
+
 
     /*
      this.LoadTable = function () {
@@ -190,6 +188,6 @@ function PetsController() {
 
 //Instanciamiento de la clase
 $(document).ready(function () {
-    var viewCont = new PetsController();
+    var viewCont = new UsersController();
     viewCont.InitView();
 })

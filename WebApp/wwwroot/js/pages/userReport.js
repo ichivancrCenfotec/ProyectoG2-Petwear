@@ -4,7 +4,7 @@
 //Definicion de la clase
 function UsersController() {
 
-    this.ViewName = "Users";
+    this.ViewName = "userReport";
     this.ApiService = "UserCRUD";
 
     this.InitView = function () {
@@ -13,20 +13,20 @@ function UsersController() {
 
 
         //Binding del evento del clic al metodo de create del controlador
-        $("#btnCreate").click(function () {
+        $("#btnSave").click(function () {
             var vc = new UsersController();
             vc.Create();
         })
 
         //
-        $("#btnUpdate").click(function () {
+        $("#btnPrint").click(function () {
             var vc = new UsersController();
-            vc.Update();
+            vc.Create();
         })
 
-        $("#btnDelete").click(function () {
+        $("#btnSendByEmail").click(function () {
             var vc = new UsersController();
-            vc.Delete();
+            vc.Create();
         })
 
         //Inicializacion de la tabla
@@ -59,13 +59,7 @@ function UsersController() {
 
         var users = {};
         users.name = $("#txtName").val();
-        users.lastname = $("#txtLastName").val();
-        users.email = $("#txtEmail").val();
-        users.password = $("#txtPassword").val();
-        users.address = $("#txtAddress").val();
-        users.phone = $("#txtNumber").val();
-        users.role = $("#txtRole").val();
-        users.photo = localStorage.getItem('photouser');
+     
 
   
 
@@ -82,6 +76,8 @@ function UsersController() {
         console.log(JSON.stringify(users));
     }
 
+
+     /*---------------------------------------------------------------------------------------------------------------------
     this.Update = function () {
 
         var users = {};
@@ -107,6 +103,7 @@ function UsersController() {
         });
     }
 
+   
     this.Delete = function () {
         //Crear un DTO de USER
         var users = {};
@@ -121,6 +118,8 @@ function UsersController() {
         });
 
     }
+    ------------------------------------------------------------------------------------------------------------------------*/
+
 
     /*
      this.LoadTable = function () {
