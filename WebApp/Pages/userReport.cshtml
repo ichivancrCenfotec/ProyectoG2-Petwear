@@ -2,3 +2,50 @@
 @model WebApp.Pages.reporteUsuarioModel
 @{
 }
+<script src="~/js/pages/userReport.js"></script>
+<div class="bs-docs-section">
+    <br />
+    <div class="row">
+        <legend>Report list</legend>
+        <div class="col-lg-12">
+            <table id="tbListHistory" class="display" styile="width:100%">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="bs-component">
+                <form>
+                    <fieldset>
+                        <legend>Enter the data associated with the pet you wish to consult</legend>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCityID" class="form-label mt-4">USER ID</label>
+                            <input type="number" class="form-control" id="txtCityID">
+
+
+                </form>
+                <br />
+                @*<button id="btnNew" class="source-button btn btn-info btn-xs" type="button" tabindex="0"><i class="bi bi-code">New</i></button>*@
+                <button id="btnCreate" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Save</i></button>
+
+                <button id="btnUpdate" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">Print</i></button>
+
+                <button id="btnDelete" class="source-button btn btn-primary btn-xs" type="button" tabindex="0"><i class="bi bi-code">send by e-mail</i></button>
+                @*<button id="btnUpdate" class="source-button btn btn-warning btn-xs" type="button" tabindex="0"><i class="bi bi-code">Update</i></button>
+                    <button id="btnDelete" class="source-button btn btn-danger btn-xs" type="button" tabindex="0"><i class="bi bi-code">Delete</i></button>*@
+            </div>
+        </div>
+    </div>
+</div>
