@@ -21,6 +21,12 @@ namespace DataAccess
         {
             var booking = baseDTO as Booking;
 
+            var packageCrudFactory = new PackageCrudFactory();
+
+            var package = packageCrudFactory.RetrieveById<Package>(booking.IdPackage);
+
+            booking.TotalPrice = package.Cost;
+
             var sqlOperation = new SqlOperation { ProcedureName = "CRE_BOOKING_PR" };
             sqlOperation.AddDateTimeParam("P_checkInDate", booking.CheckInDate);
             sqlOperation.AddDateTimeParam("P_checkOutDate", booking.CheckOutDate);
