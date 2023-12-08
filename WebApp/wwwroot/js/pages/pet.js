@@ -59,7 +59,7 @@ function PetsController() {
         */
 
         //Crear un DTO de PETS
-
+        var session = JSON.parse(sessionStorage.getItem("SESSION_USER"));
         var pets = {};
         pets.namepet = $("#txtNamePet").val();
         pets.age = $("#txtAge").val();
@@ -67,19 +67,23 @@ function PetsController() {
         pets.weight = $("#txtWeight").val();    
         pets.description = $("#txtDescription").val();
         pets.levelAggressiveness = $("#LevelAggressiveness").val();
-        pets.fotoUno = localStorage.getItem('photouser1');
-        pets.fotoDos = localStorage.getItem('photouser2');
-
+        pets.fotoUno = "ewqe"
+        pets.fotoDos = "wqeqw"
+        pets.id = session.id;
+       
+        
   
 
         //Llamado al API
         var ctrlActions = new ControlActions();
         var serviceRoute = this.ApiService + "/Create";
-
+      
         ctrlActions.PostToAPI(serviceRoute, pets, function () {
             console.log("Pet created ---> " + JSON.stringify(pets))
 
         });
+
+
 
         console.log(JSON.stringify(pets));
     }

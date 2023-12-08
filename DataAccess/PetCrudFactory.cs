@@ -19,7 +19,19 @@ namespace DataAccess
 
         public override void AddService(BaseDTO baseDTO)
         {
-            throw new NotImplementedException();
+            var pet = baseDTO as Pet;
+
+
+
+            var sqlOperation = new SqlOperation { ProcedureName = "ADD_PET" };
+
+            sqlOperation.AddIntParam("P_ID", pet.Id);
+            sqlOperation.AddIntParam("P_IDPET", 2);
+
+
+
+            //Invocamos
+            _dao.ExecuteProcedure(sqlOperation);
         }
 
         public override void Create(BaseDTO baseDTO)
@@ -131,7 +143,8 @@ namespace DataAccess
                 Description = (string)row["DESCRIPTION"],
                 LevelAggressiveness = (int)row["LEVELAGGRESSIVENESS"],
                 FotoUno = (string)row["PHOTO1"],
-                FotoDos = (string)row["PHOTO2"]
+                FotoDos = (string)row["PHOTO2"],
+                idRoom = (int)row["IDROOM"]
             };
 
             return (T)Convert.ChangeType(pet, typeof(T));

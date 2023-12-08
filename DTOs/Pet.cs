@@ -17,6 +17,7 @@ namespace DTOs
         public int LevelAggressiveness {  get; set; }
         public string? FotoUno { get; set; }
         public string? FotoDos { get; set; }
+        public int idRoom { get; set; }
 
         //Constructor
         public Pet()
