@@ -3,12 +3,13 @@ using DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.services;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ServiceCRUDController : ControllerBase
+    public class ServiceCRUDController : Controller
     {
         ///Controlador de mantenimiento del servicio.
         ///C -> Create (post)
@@ -25,6 +26,8 @@ namespace WebAPI.Controllers
             try
             {
                 um.Create(service);
+                
+
                 return Ok(service);
             }
             catch (Exception ex)
@@ -59,7 +62,7 @@ namespace WebAPI.Controllers
             try
             {
                 var um = new ServiceManager();
-
+                
                 return Ok(um.RetrieveAll());
             }
             catch (Exception ex)

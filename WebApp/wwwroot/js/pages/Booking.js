@@ -13,7 +13,7 @@ function BookingController() {
 
         $("#txtIdPackage").change(function () {
             // Cuando el usuario selecciona un nuevo paquete, actualizar el Total Price
-            var packageId = $(this).val();
+            var packageId = $("#txtIdPackage").val();
             console.log("Package ID selected:", packageId);
             // Llamado al API para obtener el precio del paquete
             var packageCtrlActions = new ControlActions();
