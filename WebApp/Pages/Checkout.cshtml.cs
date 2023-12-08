@@ -156,7 +156,7 @@ namespace WebApp.Pages
 
             Console.ReadLine();
         }
-
+        /*
         static async Task ReadAsAsync<Service>()
         {
             var formatters = new List<MediaTypeFormatter>() {
@@ -164,10 +164,10 @@ namespace WebApp.Pages
                 new JsonMediaTypeFormatter(),
                 new XmlMediaTypeFormatter()
             };
-          // resp.Content.ReadAsAsync<IEnumerable<Service>>(formatters);
+         //resp.Content.ReadAsAsync<IEnumerable<Service>>(formatters);
         }
 
-
+        */
         public void OnGet( Service service)
         {
 
