@@ -3,6 +3,7 @@ using DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.services;
 
 namespace WebAPI.Controllers
 {
@@ -25,11 +26,7 @@ namespace WebAPI.Controllers
             try
             {
                 um.Create(service);
-                string totalAsString = service.Cost.ToString();
-                HttpContext.Session.SetString("total", totalAsString);
-                System.Console.WriteLine("service cost= " + service.Cost);
-                System.Console.WriteLine("session= " + HttpContext.Session.GetString("total"));
-
+                
 
                 return Ok(service);
             }
@@ -65,7 +62,7 @@ namespace WebAPI.Controllers
             try
             {
                 var um = new ServiceManager();
-
+                
                 return Ok(um.RetrieveAll());
             }
             catch (Exception ex)

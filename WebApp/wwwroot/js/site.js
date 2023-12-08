@@ -7,7 +7,7 @@
 var session = JSON.parse(sessionStorage.getItem("SESSION_USER"));
 session.id
 console.log(session);
-
+console.log(session);
 const isAdmin = session.role;
 console.log(isAdmin);
 // Get all elements with a specific class
