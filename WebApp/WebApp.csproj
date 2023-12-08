@@ -13,6 +13,7 @@
     <None Include="wwwroot\img\icono.png" />
     <None Include="wwwroot\img\perro.jpg" />
     <PackageReference Include="IdentityServer4.Storage" Version="4.1.2" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
     <PackageReference Include="MySql.Data" Version="8.2.0" />
 
     <PackageReference Include="SendGrid" Version="9.28.1" />
