@@ -31,6 +31,8 @@ namespace DataAccess.CRUD
         public abstract void VerifyStatus(BaseDTO baseDTO);
         public abstract void AddService(BaseDTO baseDTO);
 
+      
+
         /*
                 public abstract void OTP(BaseDTO baseDTO);
 

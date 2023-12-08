@@ -92,5 +92,27 @@ namespace WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet]
+        [Route("RetrieveAllById")]
+        public async Task<IActionResult> RetrieveAllById(int Id)
+        {
+
+            try
+            {
+
+                var um = new BookingManager();
+                var booking = new Booking { IdBooking = Id };
+
+                return Ok(um.RetrieveAllById(booking));
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+
+        }
     }
 }

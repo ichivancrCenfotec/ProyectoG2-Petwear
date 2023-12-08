@@ -35,7 +35,6 @@ function PackagesController() {
             vc.LoadTablePackages_Services();
         })
 
-        
 
         //Inicializacion de la tabla
          this.LoadTableServices();
@@ -293,13 +292,9 @@ function PackagesController() {
 
     
     
-        this.LoadTablePackages_Services = function () {
-
-
-
+    this.LoadTablePackages_Services = function () {
         var packages = {};
-            packages.idpackage = $("#txtPackageId").val();
- 
+        packages.idpackage = $("#txtPackageId").val();
 
 
         //Llamado al API
@@ -332,20 +327,15 @@ function PackagesController() {
               "columns": columns
 
             });
+            
+            
 
-        };
+       
+        
+
+     
+    };
     
-
-
-
-    
-
-
-
-
-    
-
-
 
 }
 

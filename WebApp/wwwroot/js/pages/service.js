@@ -74,6 +74,7 @@ function ServicesController() {
 
         ctrlActions.PostToAPI(serviceRoute, services, function () {
             console.log("Service created ---> " + JSON.stringify(services))
+            window.location.href = "https://localhost:7298/Payment";
         });
 
         console.log(JSON.stringify(services));

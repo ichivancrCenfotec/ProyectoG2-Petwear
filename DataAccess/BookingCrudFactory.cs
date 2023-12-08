@@ -21,6 +21,12 @@ namespace DataAccess
         {
             var booking = baseDTO as Booking;
 
+            var packageCrudFactory = new PackageCrudFactory();
+
+            var package = packageCrudFactory.RetrieveById<Package>(booking.IdPackage);
+
+            booking.TotalPrice = package.Cost;
+
             var sqlOperation = new SqlOperation { ProcedureName = "CRE_BOOKING_PR" };
             sqlOperation.AddDateTimeParam("P_checkInDate", booking.CheckInDate);
             sqlOperation.AddDateTimeParam("P_checkOutDate", booking.CheckOutDate);
@@ -40,7 +46,7 @@ namespace DataAccess
             var booking = baseDTO as Booking;
 
             var sqlOperation = new SqlOperation {ProcedureName= "DELETE_BOOKING_PR" };
-            sqlOperation.AddIntParam("P_ID", booking.Id);
+            sqlOperation.AddIntParam("P_ID", booking.IdBooking);
         }
 
         public override T Retrieve<T>()
@@ -62,7 +68,7 @@ namespace DataAccess
                 {
                     var bookingDTO = new Booking()
                     {
-                        Id = (int)row["idBooking"],
+                        IdBooking = (int)row["idBooking"],
                         CheckInDate = (DateTime)row["checkInDate"],
                         CheckOutDate = (DateTime)row["checkOutDate"],
                         Considerations = (string)row["considerations"],
