@@ -9,6 +9,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using MySqlX.XDevAPI;
 using IdentityServer4.Models;
+using System.Net.Http.Formatting;
 
 namespace WebApp.Pages
 {
@@ -63,9 +64,6 @@ namespace WebApp.Pages
         }
 
 
-            /* ESTO LO COMENTÉ PORQUE NO FUNCIONA READ AS ASYNC (no sé qué debe llevar el método )
-             * 
-             * 
         static async Task<Service> GetItemAsync(string path)
         {
             Service service = null;
@@ -86,7 +84,7 @@ namespace WebApp.Pages
             service = await response.Content.ReadAsAsync<Service>();
             return service;
         }
-            */
+            
             
         static async Task<HttpStatusCode> DeleteProductAsync(int id)
         {
@@ -123,7 +121,7 @@ namespace WebApp.Pages
 
                 var url = await CreateItemAsync(service);
                 Console.WriteLine($"Created at {url}");
-                /* 
+                
             // Get the product
             service = await GetItemAsync(url.PathAndQuery);
             ShowItem(service);
@@ -137,7 +135,7 @@ namespace WebApp.Pages
             service = await GetItemAsync(url.PathAndQuery);
             ShowItem(service);
 
-              */
+              
                 // Delete the product
                 var statusCode = await DeleteProductAsync(service.IdService);
                 Console.WriteLine($"Deleted (HTTP Status = {(int)statusCode})");
@@ -152,7 +150,16 @@ namespace WebApp.Pages
             Console.ReadLine();
         }
 
-        
+        static async Task ReadAsAsync<Service>()
+        {
+            var formatters = new List<MediaTypeFormatter>() {
+                //new MyCustomFormatter(),
+                new JsonMediaTypeFormatter(),
+                new XmlMediaTypeFormatter()
+            };
+          // resp.Content.ReadAsAsync<IEnumerable<Service>>(formatters);
+        }
+
 
         public void OnGet( Service service)
         {
