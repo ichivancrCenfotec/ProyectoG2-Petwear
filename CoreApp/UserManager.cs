@@ -108,6 +108,13 @@ namespace CoreApp
             return uc.RetrieveById<User>(user.Id);
         }
 
+        public List<Pet> RetrieveAllById(User user)
+        {
+            var uc = new PetCrudFactory();
+            System.Console.WriteLine("parametro en manager= " + user.Id);
+            return uc.RetrieveAllById<Pet>(user.Id);
+        }
+
         public object? RetrieveByEmail(User user)
         {
             var uc = new UserCrudFactory();
