@@ -26,7 +26,8 @@ namespace WebApp.Pages
 
         public void OnGet()
         {
-            Total = "1111";
+            Total = TempData["Total"]?.ToString() ?? "";
+            System.Console.WriteLine(TempData["Total"]?.ToString() ?? "");
             
             PackageIdentifiers = TempData["PackageIdentifiers"]?.ToString() ?? "";
 
@@ -42,7 +43,7 @@ namespace WebApp.Pages
         public JsonResult OnPostCreateOrder()
         {
             //DeliveryAddress = TempData["DeliveryAddress"]?.ToString() ?? "";
-            Total = "1111";
+            Total = TempData["Total"]?.ToString() ?? "";
 
             //Total = TempData["Total"]?.ToString() ?? "";
             PackageIdentifiers = TempData["PackageIdentifiers"]?.ToString() ?? "";
