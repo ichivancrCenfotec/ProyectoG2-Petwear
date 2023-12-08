@@ -70,9 +70,10 @@ function PackagesController() {
         //Crear un DTO de PETS
 
         var packages = {};
+        packages.NamePackage = $("#txtPackageName").val();
         packages.packageId = $("#txtPackageId").val();
         packages.cost = $("#txtCost").val();
-        packages.desiption = $("#txtdescription").val();
+        packages.Description = $("#txtdescription").val();
        
 
 
@@ -83,7 +84,7 @@ function PackagesController() {
 
         ctrlActions.PostToAPI(serviceRoute, packages, function () {
             console.log("Package created ---> " + JSON.stringify(packages))
-
+            window.location.href = "https://localhost:7298/package";
         });
 
         console.log(JSON.stringify(packages));
@@ -298,26 +299,32 @@ function PackagesController() {
 
         //Llamado al API
         var ctrlActions = new ControlActions();
-      
 
-     
-            window.location.href = "https://localhost:7298/PackService";
-
-            var urlService = ctrlActions.GetUrlApiService(this.ApiService + "/RetrieveAllById/" + packages.idpackage);
             
-                 var columns = [];
+            
+
+            var ctrlActions = new ControlActions();
+
+            //Ruta del API para concluir el servicio
+            var serviceRoute = ctrlActions.GetUrlApiService(this.ApiService + "/RetrieveAllById/" + packages.idpackage);
+            
+            console.log(serviceRoute);
+
+            var columns = [];
             columns[0] = { "data": "idService" };
             columns[1] = { "data": "serviceName" };
             columns[2] = { "data": "description" };
             columns[3] = { "data": "cost" };
 
+           
+
             //Inicializamos la tabla como un datatable Y CARGAR A PARTIR DEL API
             $("#tblPackages_Services").dataTable({
                 "ajax": {
-                    "url": urlService,
-                    "dataSrc": ""
-                },
-                "columns": columns
+                    "url": serviceRoute,
+                   "dataSrc": ""
+              },
+              "columns": columns
 
             });
             
