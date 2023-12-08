@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace WebApp.Pages
 {
-    public class reporteMascotaModel : PageModel
+    public class PetReportModel : PageModel
     {
         public void OnGet()
         {
