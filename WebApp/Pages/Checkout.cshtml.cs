@@ -2,6 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text;
 using System.Text.Json.Nodes;
+using System;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using MySqlX.XDevAPI;
+using IdentityServer4.Models;
 
 namespace WebApp.Pages
 {
@@ -24,9 +31,133 @@ namespace WebApp.Pages
             PaypalUrl = configuration["PaypalSettings:Url"]!;
         }
 
-        public void OnGet()
+        public class Service
         {
-            Total = "1111";
+            public int IdService { get; set; }
+            public float Cost { get; set; }
+
+            public string? ServiceName { get; set; }
+
+            public string? Description { get; set; }
+
+            public int Availability { get; set; }
+        }
+
+        //Llamado a APIweb
+       
+        static HttpClient client = new HttpClient();
+
+        static void ShowItem(Service service)
+        {
+            Console.WriteLine($"{service.Cost}");
+        }
+
+        static async Task<Uri> CreateItemAsync(Service service)
+        {
+            HttpResponseMessage response = await client.PostAsJsonAsync(
+                "api/Service", service);
+            response.EnsureSuccessStatusCode();
+
+            // return URI of the created resource.
+            return response.Headers.Location;
+        }
+
+
+            /* ESTO LO COMENTÉ PORQUE NO FUNCIONA READ AS ASYNC (no sé qué debe llevar el método )
+             * 
+             * 
+        static async Task<Service> GetItemAsync(string path)
+        {
+            Service service = null;
+            HttpResponseMessage response = await client.GetAsync(path);
+            if (response.IsSuccessStatusCode)
+            {
+                service = await response.Content.ReadAsAsync<Service>();
+            }
+            return service;
+        }
+            
+        static async Task<Service> UpdateProductAsync(Service service)
+        {
+            HttpResponseMessage response = await client.PutAsJsonAsync($"api/Service/{service.IdService}", service);
+            response.EnsureSuccessStatusCode();
+
+            // Deserialize the updated product from the response body.
+            service = await response.Content.ReadAsAsync<Service>();
+            return service;
+        }
+            */
+            
+        static async Task<HttpStatusCode> DeleteProductAsync(int id)
+        {
+            HttpResponseMessage response = await client.DeleteAsync(
+                $"api/Service/{id}");
+            return response.StatusCode;
+        }
+
+        static void Main()
+        {
+            RunAsync().GetAwaiter().GetResult();
+        }
+                
+        static async Task RunAsync()
+        {
+            // Update port # in the following line.
+            client.BaseAddress = new Uri("https://localhost:7298/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            try
+            {
+                // Create a new item
+                Service service = new Service
+                {
+                    IdService = 123,
+                    Cost = 100,
+                    ServiceName = "Peluquería",
+                    Description = "Corte de pelo extremo",
+                    Availability = 2
+
+                };
+
+                var url = await CreateItemAsync(service);
+                Console.WriteLine($"Created at {url}");
+                /* 
+            // Get the product
+            service = await GetItemAsync(url.PathAndQuery);
+            ShowItem(service);
+
+            // Update the product
+            Console.WriteLine("Updating cost...");
+            service.Cost = 80;
+            await UpdateProductAsync(service);
+
+            // Get the updated product
+            service = await GetItemAsync(url.PathAndQuery);
+            ShowItem(service);
+
+              */
+                // Delete the product
+                var statusCode = await DeleteProductAsync(service.IdService);
+                Console.WriteLine($"Deleted (HTTP Status = {(int)statusCode})");
+                    
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            Console.ReadLine();
+        }
+
+        
+
+        public void OnGet( Service service)
+        {
+
+            Total = Convert.ToString(service.Cost); 
             
             PackageIdentifiers = TempData["PackageIdentifiers"]?.ToString() ?? "";
 
@@ -39,10 +170,10 @@ namespace WebApp.Pages
             }*/
         }
 
-        public JsonResult OnPostCreateOrder()
+        public JsonResult OnPostCreateOrder(Service service )
         {
             //DeliveryAddress = TempData["DeliveryAddress"]?.ToString() ?? "";
-            Total = "1111";
+            Total = Convert.ToString(service.Cost);
 
             //Total = TempData["Total"]?.ToString() ?? "";
             PackageIdentifiers = TempData["PackageIdentifiers"]?.ToString() ?? "";
@@ -222,5 +353,6 @@ namespace WebApp.Pages
             Console.WriteLine("JWT: " + accessToken);
             return accessToken;
         }
+
     }
 }
