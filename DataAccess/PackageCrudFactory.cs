@@ -91,7 +91,24 @@ namespace DataAccess
 
         public override List<T> RetrieveAllById<T>(int id)
         {
-            throw new NotImplementedException();
+            var lspackage = new List<T>();
+            var sqlOperation = new SqlOperation { ProcedureName = "RET_ALL_PACK_BY_BOOK" };
+
+            sqlOperation.AddIntParam("ID_BOOKING", id);
+
+            var lstResult = _dao.ExecuteQueryProcedure(sqlOperation);
+
+            if (lstResult.Count > 0)
+            {
+
+                foreach (var row in lstResult)
+                {
+                    var userDTO = BuildPackage<T>(row);
+                    lspackage.Add(userDTO);
+                }
+
+            }
+            return lspackage;
         }
 
         public override T RetrieveByEmail<T>(string email)

@@ -25,6 +25,14 @@ namespace CoreApp
                 bc.Create(booking);
             }
         }
+
+        public List<Package> RetrieveAllById(Booking booking)
+        {
+            var bc = new PackageCrudFactory();
+            System.Console.WriteLine("parametro en manager= " + booking.IdBooking);
+            return bc.RetrieveAllById<Package>(booking.IdBooking);
+        }
+
         public void Update(Booking booking)
         {
             var bc=new BookingCrudFactory();
