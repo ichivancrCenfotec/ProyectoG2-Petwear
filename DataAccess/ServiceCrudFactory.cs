@@ -158,7 +158,7 @@ namespace DataAccess
         
          var sqlOperation = new SqlOperation { ProcedureName = "RET_ALL_SERV_BY_PACK" };
          sqlOperation.AddIntParam("ID", id);//Parametro que se envia
-            System.Console.WriteLine("parametro en factory= " + id);
+            
             // Devuelve la lista de diccionarios
             var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
        

@@ -166,7 +166,6 @@ namespace WebApp.Pages
 
             Total = Convert.ToString(service.Cost); 
             
-            //Total = TempData["Total"]?.ToString() ?? "";
             PackageIdentifiers = TempData["PackageIdentifiers"]?.ToString() ?? "";
 
             TempData.Keep();
