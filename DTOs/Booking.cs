@@ -22,5 +22,7 @@ namespace DTOs
 
         public float TotalPrice { get; set; }
 
+        public int IdBooking { get; set; }
+
     }
 }

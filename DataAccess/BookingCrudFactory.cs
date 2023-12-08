@@ -46,7 +46,7 @@ namespace DataAccess
             var booking = baseDTO as Booking;
 
             var sqlOperation = new SqlOperation {ProcedureName= "DELETE_BOOKING_PR" };
-            sqlOperation.AddIntParam("P_ID", booking.Id);
+            sqlOperation.AddIntParam("P_ID", booking.IdBooking);
         }
 
         public override T Retrieve<T>()
@@ -68,7 +68,7 @@ namespace DataAccess
                 {
                     var bookingDTO = new Booking()
                     {
-                        Id = (int)row["idBooking"],
+                        IdBooking = (int)row["idBooking"],
                         CheckInDate = (DateTime)row["checkInDate"],
                         CheckOutDate = (DateTime)row["checkOutDate"],
                         Considerations = (string)row["considerations"],
