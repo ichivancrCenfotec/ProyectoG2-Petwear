@@ -1,3 +1,5 @@
+
+=======
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text;
@@ -64,6 +66,12 @@ namespace WebApp.Pages
         }
 
 
+
+            /* ESTO LO COMENTï¿½ PORQUE NO FUNCIONA READ AS ASYNC (no sï¿½ quï¿½ debe llevar el mï¿½todo )
+             * 
+             * 
+=======
+
         static async Task<Service> GetItemAsync(string path)
         {
             Service service = null;
@@ -113,7 +121,7 @@ namespace WebApp.Pages
                 {
                     IdService = 123,
                     Cost = 100,
-                    ServiceName = "Peluquería",
+                    ServiceName = "Peluquerï¿½a",
                     Description = "Corte de pelo extremo",
                     Availability = 2
 
@@ -363,3 +371,4 @@ namespace WebApp.Pages
 
     }
 }
+
