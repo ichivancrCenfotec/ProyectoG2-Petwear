@@ -42,5 +42,11 @@ namespace CoreApp
             var pc = new PetCrudFactory();
             return pc.RetrieveById<User>(pet.Id);
         }
+
+        public void AddPet(Pet pet)
+        {
+            var uc = new PetCrudFactory();
+            uc.AddService(pet);
+        }
     }
 }

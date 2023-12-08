@@ -24,6 +24,7 @@ namespace WebAPI.Controllers
 
             try
             {
+                pm.AddPet(pet);
                 pm.Create(pet);
                 return Ok(pet);
             }
@@ -33,6 +34,8 @@ namespace WebAPI.Controllers
             }
 
         }
+
+
 
         [HttpGet]
         [Route("RetrieveById")]
