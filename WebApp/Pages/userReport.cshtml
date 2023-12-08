@@ -1,4 +1,30 @@
 ﻿@page
-@model WebApp.Pages.reporteUsuarioModel
+@model WebApp.Pages.UserReportModel
 @{
 }
+<script src="~/js/pages/userreport.js"></script>
+<div class="bs-docs-section">
+    <br />
+    <div class="row">
+        <legend>Users list</legend>
+        <div class="col-lg-12">
+            <table id="tbListUsers" class="display" styile="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>LastName</th>
+                        <!--     <th>Password</th>-->
+                        <th>Email</th>
+                        <th>Adress</th>
+                        <th>Role</th>
+                        <th>Photo</th>
+                        <th>PhoneNumber</th>
+                        <!-- <th>ValidationOTP</th>-->
+                        <!--  <th>ResetOTP</th>-->
+                        <th>Status</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>

@@ -11,29 +11,6 @@ function BookingController() {
 
         console.log("Booking view init!!!");
 
-        $("#txtIdPackage").change(function () {
-            // Cuando el usuario selecciona un nuevo paquete, actualizar el Total Price
-            var packageId = $("#txtIdPackage").val();
-            console.log("Package ID selected:", packageId);
-            // Llamado al API para obtener el precio del paquete
-            var packageCtrlActions = new ControlActions();
-            var packageServiceRoute = "PackageCRUD/RetrieveById?id=" + packageId;
-
-            packageCtrlActions.GetToApi(packageServiceRoute, function (package) {
-                // Actualizar el campo Total Price con el precio del paquete
-                if (package && package.Cost !== undefined) {
-                    // Actualizar el campo Total Price con el costo del paquete
-                    console.log("Package Cost retrieved:", package.Cost);
-                    $("#txtTotalPrice").val(package.Cost);
-                } else {
-                    console.error("Error: No se pudo obtener el costo del paquete.");
-                }
-            }, function (error) {
-                console.error("Error al llamar al API para obtener el costo del paquete:", error);
-            
-            });
-        });
-
         //Binding del evento del clic al metodo de create del controlador
         $("#btnCreate").click(function () {
             var vc = new BookingController();

@@ -4,6 +4,7 @@ using DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -79,7 +80,29 @@ namespace DataAccess
 
         public override List<T> RetrieveAll<T>()
         {
-            throw new NotImplementedException();
+            var lstPets = new List<T>();
+
+            var sqlOperation = new SqlOperation { ProcedureName = "RET_ALL_PETS" };
+
+            //Devuelve la lista de diccionarios
+
+            var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
+
+
+            if (lstResults.Count > 0)
+            {
+                foreach (var row in lstResults)
+                {
+
+                    var petDTO = BuildPet<T>(row);
+
+                    lstPets.Add(petDTO);
+
+                }
+
+            }
+
+            return lstPets;
 
         }
 
@@ -135,7 +158,7 @@ namespace DataAccess
             var pet = new Pet
             {
 
-                idPet = (int)row["IDPET"],
+                Id = (int)row["IDPET"],
                 NamePet = (string)row["NAMEPET"],
                 Age = (int)row["AGE"],
                 Breed = (string)row["BREED"],
@@ -144,8 +167,19 @@ namespace DataAccess
                 LevelAggressiveness = (int)row["LEVELAGGRESSIVENESS"],
                 FotoUno = (string)row["PHOTO1"],
                 FotoDos = (string)row["PHOTO2"],
-                idRoom = (int)row["IDROOM"]
+                
+               
             };
+            if (row.ContainsKey("ID_ROOM") && row["ID_ROOM"] != DBNull.Value)
+            {
+                pet.idRoom = (int)row["ID_ROOM"];
+            }
+            else
+            {
+                // Assign a default value or null based on your requirement
+                pet.idRoom = 0; // You can change this to the default value you prefer or set it to null if idRoom is nullable
+            }
+
 
             return (T)Convert.ChangeType(pet, typeof(T));
         }

@@ -95,8 +95,9 @@ namespace DataAccess
                 Status = (string)row["status"],
                 IdUser = (int)row["idUser"],
                 IdPet = (int)row["idPet"],
-                IdPackage = (int)row["idPackage"]
-                
+                IdPackage = (int)row["idPackage"],
+                TotalPrice = Convert.ToSingle(row["totalPrice"])
+
             };
             return (T)Convert.ChangeType(booking, typeof(T));
 
