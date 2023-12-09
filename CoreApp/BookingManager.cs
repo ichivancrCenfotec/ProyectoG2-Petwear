@@ -29,8 +29,8 @@ namespace CoreApp
         public List<Package> RetrieveAllById(Booking booking)
         {
             var bc = new PackageCrudFactory();
-            System.Console.WriteLine("parametro en manager= " + booking.IdBooking);
-            return bc.RetrieveAllById<Package>(booking.IdBooking);
+            System.Console.WriteLine("parametro en manager= " + booking.Id);
+            return bc.RetrieveAllById<Package>(booking.Id);
         }
 
         public void Update(Booking booking)

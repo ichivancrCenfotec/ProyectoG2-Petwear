@@ -1,5 +1,5 @@
 ﻿
-//Cities.cshtml
+
 
 //Definicion de la clase
 function BookingController() {

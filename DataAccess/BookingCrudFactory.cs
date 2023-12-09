@@ -45,8 +45,8 @@ namespace DataAccess
         {
             var booking = baseDTO as Booking;
 
-            var sqlOperation = new SqlOperation {ProcedureName= "DELETE_BOOKING_PR" };
-            sqlOperation.AddIntParam("P_ID", booking.IdBooking);
+            var sqlOperation = new SqlOperation {ProcedureName= "DELETE_BOOKING" };
+            sqlOperation.AddIntParam("P_IDBOOKING", booking.Id);
         }
 
         public override T Retrieve<T>()
@@ -58,7 +58,7 @@ namespace DataAccess
         {
             var lstBooking = new List<T>();
 
-            var sqlOperation = new SqlOperation { ProcedureName = "RET_ALL_BOOKINGS_PR" };
+            var sqlOperation = new SqlOperation { ProcedureName = "RET_ALL_BOOKING" };
 
             //Devuelve la lista de diccionarios
             var lstResults = _dao.ExecuteQueryProcedure(sqlOperation);
@@ -68,15 +68,15 @@ namespace DataAccess
                 {
                     var bookingDTO = new Booking()
                     {
-                        IdBooking = (int)row["idBooking"],
-                        CheckInDate = (DateTime)row["checkInDate"],
-                        CheckOutDate = (DateTime)row["checkOutDate"],
-                        Considerations = (string)row["considerations"],
-                        Status = (string)row["status"],
-                        IdUser = (int)row["idUser"],
-                        IdPet = (int)row["idPet"],
-                        IdPackage = (int)row["idPackage"],
-                        TotalPrice = Convert.ToSingle(row["totalPrice"])
+                        Id = (int)row["ID_BOOKING"],
+                        CheckInDate = (DateTime)row["CHECK_IN"],
+                        CheckOutDate = (DateTime)row["CHECK_OUT"],
+                        Considerations = (string)row["CONSIDERATIONS"],
+                        Status = (string)row["STATUS"],
+                        IdUser = (int)row["ID"],
+                        IdPet = (int)row["IDPET"],
+                        IdPackage = (int)row["ID_PACKAGE"],
+                        TotalPrice = Convert.ToSingle(row["TOTALPRICE"])
                     };
                     lstBooking.Add((T)Convert.ChangeType(bookingDTO, typeof(T)));
                 }
@@ -126,16 +126,22 @@ namespace DataAccess
         {
             var booking = baseDTO as Booking;
 
-            var sqlOperation = new SqlOperation { ProcedureName = "UPDATE_BOOKING_PR" };
-            sqlOperation.AddIntParam("P_idBooking", booking.Id);
-            sqlOperation.AddDateTimeParam("P_checkInDate", booking.CheckInDate);
-            sqlOperation.AddDateTimeParam("P_checkOutDate", booking.CheckOutDate);
-            sqlOperation.AddVarcharParam("P_considerations", booking.Considerations);
-            sqlOperation.AddVarcharParam("P_status", booking.Status);
-            sqlOperation.AddIntParam("P_id", booking.IdUser);
-            sqlOperation.AddIntParam("P_idPet", booking.IdPet);
-            sqlOperation.AddIntParam("P_idPackage", booking.IdPackage);
-            sqlOperation.AddFloatParam("P_totalPrice", booking.TotalPrice);
+            var packageCrudFactory = new PackageCrudFactory();
+
+            var package = packageCrudFactory.RetrieveById<Package>(booking.IdPackage);
+
+            booking.TotalPrice = package.Cost;
+
+            var sqlOperation = new SqlOperation { ProcedureName = "UPDATE_BOOKING" };
+            sqlOperation.AddIntParam("P_IDBOOKING", booking.Id);
+            sqlOperation.AddDateTimeParam("P_CHECK_IN", booking.CheckInDate);
+            sqlOperation.AddDateTimeParam("P_CHECK_OUT", booking.CheckOutDate);
+            sqlOperation.AddVarcharParam("P_CONSIDERATIONS", booking.Considerations);
+            sqlOperation.AddVarcharParam("P_STATUS", booking.Status);
+            sqlOperation.AddIntParam("P_ID", booking.IdUser);
+            sqlOperation.AddIntParam("P_IDPET", booking.IdPet);
+            sqlOperation.AddIntParam("P_IDPACKAGE", booking.IdPackage);
+            sqlOperation.AddFloatParam("P_TOTALPRICE", booking.TotalPrice);
 
 
             _dao.ExecuteProcedure(sqlOperation);
