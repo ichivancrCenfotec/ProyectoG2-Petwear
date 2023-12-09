@@ -1,5 +1,5 @@
 ﻿
-//Cities.cshtml
+
 
 //Definicion de la clase
 function BookingController() {
@@ -44,13 +44,13 @@ function BookingController() {
         */
 
         //Crear un DTO de PETS
-
+        var session = JSON.parse(sessionStorage.getItem("SESSION_USER"));
         var booking = {};
         booking.checkInDate = $("#txtCheckInDate").val();
         booking.checkOutDate = $("#txtCheckOutDate").val();
         booking.considerations = $("#txtConsiderations").val();
         booking.status = $("#txtStatus").val();
-        booking.iduser = $("#txtIdUser").val();
+        booking.iduser = session.id;
         booking.idpet = $("#txtIdPet").val();
         booking.idPackage = $("#txtIdPackage").val();
         booking.totalPrice = $("#txtTotalPrice").val();

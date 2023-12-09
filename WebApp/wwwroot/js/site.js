@@ -7,6 +7,9 @@
 var session = JSON.parse(sessionStorage.getItem("SESSION_USER"));
 console.log(session);
 
+document.getElementById('logout').onclick = function (e) {
+    sessionStorage.removeItem("SESSION_USER")
+}
 
 
 // Get all elements with a specific class

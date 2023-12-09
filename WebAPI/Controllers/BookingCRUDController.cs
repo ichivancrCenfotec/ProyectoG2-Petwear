@@ -102,7 +102,7 @@ namespace WebAPI.Controllers
             {
 
                 var um = new BookingManager();
-                var booking = new Booking { IdBooking = Id };
+                var booking = new Booking { Id = Id };
 
                 return Ok(um.RetrieveAllById(booking));
 
