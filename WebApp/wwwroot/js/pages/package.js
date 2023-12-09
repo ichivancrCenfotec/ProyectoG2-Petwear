@@ -298,7 +298,7 @@ function PackagesController() {
 
 
         //Llamado al API
-        var ctrlActions = new ControlActions();
+      
 
             
             

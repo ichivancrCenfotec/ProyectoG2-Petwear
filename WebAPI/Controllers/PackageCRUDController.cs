@@ -70,7 +70,7 @@ namespace WebAPI.Controllers
 
         
         [HttpGet]
-        [Route("RetrieveAllById")]
+        [Route("RetrieveAllById/{id}")]
         public async Task<IActionResult> RetrieveAllById(int Id)
         {
 
