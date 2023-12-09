@@ -31,6 +31,7 @@ function BookingSettingsController() {
         //Crear un DTO de PETS
 
         var booking = {};
+        booking.idbooking = $("#txtID").val();
         booking.checkInDate = $("#txtCheckInDate").val();
         booking.checkOutDate = $("#txtCheckOutDate").val();
         booking.considerations = $("#txtConsiderations").val();
@@ -53,7 +54,7 @@ function BookingSettingsController() {
     }
     this.Delete = function () {
         var booking = {}
-        booking.id = $("#txtID").val();
+        booking.idbooking = $("#txtID").val();
 
 
         // Llamado al API para eliminar el usuario

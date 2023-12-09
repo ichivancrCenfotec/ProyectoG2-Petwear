@@ -11,7 +11,7 @@ namespace DTOs
     public class Booking : BaseDTO
     {
 
-        
+        public int idBooking { get; set; }
         public DateTime CheckInDate { get; set; }
         public DateTime CheckOutDate { get; set; }
         public string Considerations { get; set; }

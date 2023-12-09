@@ -46,7 +46,9 @@ namespace DataAccess
             var booking = baseDTO as Booking;
 
             var sqlOperation = new SqlOperation {ProcedureName= "DELETE_BOOKING" };
-            sqlOperation.AddIntParam("P_IDBOOKING", booking.Id);
+            sqlOperation.AddIntParam("P_IDBOOKING", booking.idBooking);
+
+            _dao.ExecuteProcedure(sqlOperation);
         }
 
         public override T Retrieve<T>()
@@ -133,7 +135,7 @@ namespace DataAccess
             booking.TotalPrice = package.Cost;
 
             var sqlOperation = new SqlOperation { ProcedureName = "UPDATE_BOOKING" };
-            sqlOperation.AddIntParam("P_IDBOOKING", booking.Id);
+            sqlOperation.AddIntParam("P_IDBOOKING", booking.idBooking);
             sqlOperation.AddDateTimeParam("P_CHECK_IN", booking.CheckInDate);
             sqlOperation.AddDateTimeParam("P_CHECK_OUT", booking.CheckOutDate);
             sqlOperation.AddVarcharParam("P_CONSIDERATIONS", booking.Considerations);
