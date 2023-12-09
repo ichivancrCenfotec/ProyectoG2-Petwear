@@ -53,8 +53,18 @@ function BookingSettingsController() {
         })
     }
     this.Delete = function () {
-        var booking = {}
+        var booking = {};
+        
         booking.idbooking = $("#txtID").val();
+        booking.checkInDate = $("#txtCheckInDate").val();
+        booking.checkOutDate = $("#txtCheckOutDate").val();
+        booking.considerations = " ";
+        booking.status = " ";
+        booking.iduser = 1;
+        booking.idpet = 1;
+        booking.idPackage = 1;
+        booking.totalPrice = 1;
+
 
 
         // Llamado al API para eliminar el usuario
