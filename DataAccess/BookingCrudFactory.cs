@@ -171,5 +171,10 @@ namespace DataAccess
         {
             throw new NotImplementedException();
         }
+
+        public override void UpdateRole(BaseDTO baseDTO)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

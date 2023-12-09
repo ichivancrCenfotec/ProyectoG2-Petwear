@@ -6,11 +6,37 @@ function UserReportController() {
     this.InitView = function () {
 
         console.log("User Report view init!!!");
-       
+
+        $("#btnAssign").click(function () {
+            var vc = new UserReportController();
+            vc.Update();
+        })
+
+
         //Inicializacion y carga de la tabla
 
         this.LoadTable();
 
+    }
+
+
+    this.Update = function () {
+
+        var users = {};
+        users.id = $("#txtId").val();
+        users.role = $("#txtRole").val();
+     
+
+
+
+        //Llamado al API
+        var ctrlActions = new ControlActions();
+        var serviceRoute = this.ApiService + "/UpdateRole";
+
+        ctrlActions.PutToAPI(serviceRoute, users, function () {
+            console.log("User Role Assigned ---> " + JSON.stringify(users))
+
+        });
     }
 
     this.LoadTable = function () {

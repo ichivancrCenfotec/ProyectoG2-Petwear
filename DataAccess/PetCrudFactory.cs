@@ -206,6 +206,11 @@ namespace DataAccess
             }
             return lstService;
         }
+
+        public override void UpdateRole(BaseDTO baseDTO)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

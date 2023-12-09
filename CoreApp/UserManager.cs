@@ -88,6 +88,11 @@ namespace CoreApp
             var uc = new UserCrudFactory();
             uc.NewPassword(user);
         }
+        public void UpdateRole(User user) 
+        {
+            var uc = new UserCrudFactory();
+            uc.UpdateRole(user);
+        }
 
         public void Delete(User user)
         {

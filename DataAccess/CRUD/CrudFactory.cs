@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace DataAccess.CRUD
 {
@@ -30,6 +31,8 @@ namespace DataAccess.CRUD
         public abstract void NewPassword(BaseDTO baseDTO);
         public abstract void VerifyStatus(BaseDTO baseDTO);
         public abstract void AddService(BaseDTO baseDTO);
+
+        public abstract void UpdateRole(BaseDTO baseDTO);
 
       
 

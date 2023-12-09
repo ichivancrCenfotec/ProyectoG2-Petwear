@@ -27,7 +27,7 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> Create(User user)
         {
             var um = new UserManager();
-            EmailSender emailSender = new EmailSender();   
+            EmailSender emailSender = new EmailSender();
 
 
             try
@@ -64,7 +64,7 @@ namespace WebAPI.Controllers
                 emailSender.SendEmail(user.Email, user3.Name, user3.ResetOTP).Wait();
 
                 return Ok(user);
-			}
+            }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
@@ -92,6 +92,25 @@ namespace WebAPI.Controllers
 
         }
 
+        [HttpPut]
+        [Route("UpdateRole")]
+
+        public async Task<IActionResult> UpdateRoled(User user)
+        {
+
+            var um = new UserManager();
+
+            try
+            {
+                um.UpdateRole(user);
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost]
         [Route("LogIn")]
         public async Task<IActionResult> LogIn(User request)
@@ -104,15 +123,15 @@ namespace WebAPI.Controllers
             try
             {
                 var um = new UserManager();
-                var user =new User { Email = email };
+                var user = new User { Email = email };
                 User user1 = (User)um.RetrieveByEmail(user);
 
 
                 if (VerifyPassword(password, user1))
                 {
-                    
+
                     return Ok(user1);
-                    }
+                }
                 else
                 {
                     return StatusCode(500, "Wrong Password or User not validated");
@@ -123,15 +142,15 @@ namespace WebAPI.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
-            
-          
+
+
         }
 
         private bool VerifyPassword(string password, User user)
         {
             var userPassword = user.Password;
             var userStatus = user.Status;
-            
+
             if (password == userPassword && user.Status != 0)
             {
                 return true;
@@ -160,8 +179,8 @@ namespace WebAPI.Controllers
 
 
                 if (VerifyRegistrationOTP(resetOTP, user1))
-                {   
-                       um.VerifyRegister(user1);
+                {
+                    um.VerifyRegister(user1);
                     return Ok(user1);
 
                 }
@@ -211,7 +230,7 @@ namespace WebAPI.Controllers
                 if (VerifyOTP(resetOTP, user1))
                 {
                     return Ok(user1);
-      
+
                 }
                 else
                 {
@@ -389,6 +408,6 @@ namespace WebAPI.Controllers
             }
 
         }
-
     }
+
 }

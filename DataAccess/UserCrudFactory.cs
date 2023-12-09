@@ -263,5 +263,17 @@ namespace DataAccess
         {
             throw new NotImplementedException();
         }
+
+        public override void UpdateRole(BaseDTO baseDTO)
+        {
+            var user = baseDTO as User;
+
+            var sqlOperation = new SqlOperation { ProcedureName = "UPDATE_ROLE" };
+
+            sqlOperation.AddIntParam("P_ID", user.Id);
+            sqlOperation.AddVarcharParam("P_ROLE", user.Role);
+
+            _dao.ExecuteProcedure(sqlOperation);
+        }
     }
 }
