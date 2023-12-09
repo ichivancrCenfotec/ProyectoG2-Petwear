@@ -33,14 +33,20 @@ namespace CoreApp
 
         public object? RetrieveAll()
         {
-            var pc = new UserCrudFactory();
-            return pc.RetrieveAll<User>();
+            var pc = new PetCrudFactory();
+            return pc.RetrieveAll<Pet>();
         }
 
         public object? RetrieveById(Pet pet)
         {
             var pc = new PetCrudFactory();
             return pc.RetrieveById<User>(pet.Id);
+        }
+
+        public void AddPet(Pet pet)
+        {
+            var uc = new PetCrudFactory();
+            uc.AddService(pet);
         }
     }
 }

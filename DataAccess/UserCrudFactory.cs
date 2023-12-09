@@ -251,12 +251,14 @@ namespace DataAccess
 
             return (T)Convert.ChangeType(user, typeof(T));
         }
+       
 
         public override void AddService(BaseDTO baseDTO)
         {
             throw new NotImplementedException();
         }
 
+      
         public override List<T> RetrieveAllById<T>(int id)
         {
             throw new NotImplementedException();

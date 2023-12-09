@@ -24,6 +24,7 @@ namespace WebAPI.Controllers
 
             try
             {
+                pm.AddPet(pet);
                 pm.Create(pet);
                 return Ok(pet);
             }
@@ -33,6 +34,8 @@ namespace WebAPI.Controllers
             }
 
         }
+
+
 
         [HttpGet]
         [Route("RetrieveById")]
@@ -66,6 +69,7 @@ namespace WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        
 
         [HttpPut]
         [Route("Update")]
