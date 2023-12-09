@@ -284,7 +284,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("RetrievePETById")]
+        [Route("RetrievePETById/{id}")]
         public async Task<IActionResult> RetrievePetById(int id)
         {
 
