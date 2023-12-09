@@ -66,11 +66,6 @@ namespace WebApp.Pages
 
 
 
-            /* ESTO LO COMENT� PORQUE NO FUNCIONA READ AS ASYNC (no s� qu� debe llevar el m�todo )
-             * 
-             * 
-=======
-
         static async Task<Service> GetItemAsync(string path)
         {
             Service service = null;
@@ -156,22 +151,11 @@ namespace WebApp.Pages
 
             Console.ReadLine();
         }
-        /*
-        static async Task ReadAsAsync<Service>()
-        {
-            var formatters = new List<MediaTypeFormatter>() {
-                //new MyCustomFormatter(),
-                new JsonMediaTypeFormatter(),
-                new XmlMediaTypeFormatter()
-            };
-         //resp.Content.ReadAsAsync<IEnumerable<Service>>(formatters);
-        }
-
-        */
+        
         public void OnGet( Service service)
         {
 
-            Total = Convert.ToString(service.Cost); 
+            Total = "782";
             
             PackageIdentifiers = TempData["PackageIdentifiers"]?.ToString() ?? "";
 
@@ -187,7 +171,7 @@ namespace WebApp.Pages
         public JsonResult OnPostCreateOrder(Service service )
         {
             //DeliveryAddress = TempData["DeliveryAddress"]?.ToString() ?? "";
-            Total = Convert.ToString(service.Cost);
+            Total = "782";
 
             //Total = TempData["Total"]?.ToString() ?? "";
             PackageIdentifiers = TempData["PackageIdentifiers"]?.ToString() ?? "";
